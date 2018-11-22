@@ -43,14 +43,18 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "motor.h"
+#include "odometry.h"
+#include "PID.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+Odometry odometry;
+PID_VALUE pidValSum;
+PID_VALUE pidValDiff;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,7 +77,13 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  #error "reglage des diff constantes"
+  int sum = 0;
+  int diff =0;
+  int Te =10; 
+  InitializationPid(pidValSum); /* ; needed ??? */
+  InitializationPid(pidValDiff);
+  init_odometry(&odometry,&htim2,&htim3,&htim15);
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -107,7 +117,8 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
+  NewVoltageCalculation(pidValDiff,Te);
+  NewVoltageCalculation(pidValSum,Te);
   }
   /* USER CODE END 3 */
 

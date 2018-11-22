@@ -36,7 +36,7 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "odometry.h"
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -56,7 +56,7 @@ void NMI_Handler(void)
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
 
   /* USER CODE END NonMaskableInt_IRQn 1 */
-}
+} 
 
 /**
 * @brief This function handles Hard fault interrupt.
@@ -192,6 +192,13 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
+extern Odometry odometry;
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+  #error "htim not implemented"
+  if(htim->instance ==htim15->instance){
+    updateodometry(odometry);
+  }
+}
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
