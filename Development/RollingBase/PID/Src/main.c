@@ -78,12 +78,15 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
   #error "reglage des diff constantes"
+  int sumGoal = 0;
+  int diffGoal = 0;
   int sum = 0;
-  int diff =0;
-  int Te =10; 
-  InitializationPid(pidValSum); /* ; needed ??? */
-  InitializationPid(pidValDiff);
+  int diff = 0;
+  int Te =0.01; 
+  InitializationPid(pidValSum, sumGoal, 0.1, 0.1, 0.1);
+  InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
   init_odometry(&odometry,&htim2,&htim3,&htim15);
+
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -113,12 +116,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+   sum = odometry.encoder_l.steps + odometry.encoder_r.steps;
+   diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
 
   /* USER CODE END WHILE */
-
   /* USER CODE BEGIN 3 */
-  NewVoltageCalculation(pidValDiff,Te);
-  NewVoltageCalculation(pidValSum,Te);
+  newValueCalculation(pidValDiff, Te, sum);
+  newValueCalculation(pidValSum, Te, diff);
+  DRIVE_MOTOR_R(pidValDiff.currentValue+pidValSum.currentValue)
+  DRIVE_MOTOR_L(pidValDiff.currentValue-pidValSum.currentValue)
+  HAL_Delay(Te);
   }
   /* USER CODE END 3 */
 

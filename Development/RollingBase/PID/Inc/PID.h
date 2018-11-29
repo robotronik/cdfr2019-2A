@@ -14,11 +14,11 @@ typedef struct
 {
     CORRECTOR_PARAMETERS correctorValues;
     int errorGap[3];
-    int previousValue;
-    int newValue;
+    int currentValue;
+    int finalValue;
 }PID_VALUE;
 
-#define InitializationPid(pid)\
+#define InitializationPid(pid, goal, newKp, newKi, newKd)\
 {\
     int i;\
     \
@@ -27,36 +27,36 @@ typedef struct
     pid.errorGap[i] = 0;\
     }\
     \
-    pid.previousValue = 0;\
-    pid.newValue = 0;\
-    pid.correctorValues.kp = 0;\
-    pid.correctorValues.kd = 0;\
-    pid.correctorValues.ki = 0;\
+    pid.currentValue = 0;\
+    pid.finalValue = goal;\
+    pid.correctorValues.kp = newKp;\
+    pid.correctorValues.kd = newKd;\
+    pid.correctorValues.ki = newKi;\
 }\
 
 #define PCalculation(pid)\
 {\
-    pid.newValue += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]);\
+    pid.currentValue += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]);\
 }\
 
 #define ICalculation(pid, T)\
 {\
-    pid.newValue += pid.correctorValues.ki*pid.errorGap[0]*T;\
+    pid.currentValue += pid.correctorValues.ki*pid.errorGap[0]*T;\
 }\
 
 #define DCalculation(pid, T)\
 {\
-    pid.newValue += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]*2 + pid.errorGap[2]);\
+    pid.currentValue += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]*2 + pid.errorGap[2]);\
 }\
 
-#define newValueCalculation(pid, T, currentValue)\
+#define finalValueCalculation(pid, T, currentValue)\
 {\
     pid.errorGap[2] = 0;\
     Swap(pid.errorGap[2],pid.errorGap[1])\
     Swap(pid.errorGap[1],pid.errorGap[0])\
-    Swap(pid.previousValue, pid.newValue)\
-    pid.newValue = currentValue;\
-    pid.errorGap[0] = pid.newValue - previousValue;\
+    Swap(pid.currentValue, pid.finalValue)\
+    pid.currentValue = currentValue;\
+    pid.erro0rGap[0] = pid.finalValue - pid.currentValue;\
     PCalculation(pid)\
     ICalculation(pid, T)\
     DCalculation(pid, T)\
