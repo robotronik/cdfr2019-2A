@@ -42,6 +42,17 @@
 #define __MAIN_H__
 
 /* Includes ------------------------------------------------------------------*/
+#include "stm32f3xx_ll_usart.h"
+#include "stm32f3xx_ll_rcc.h"
+#include "stm32f3xx_ll_bus.h"
+#include "stm32f3xx_ll_cortex.h"
+#include "stm32f3xx_ll_system.h"
+#include "stm32f3xx_ll_utils.h"
+#include "stm32f3xx_ll_pwr.h"
+#include "stm32f3xx_ll_gpio.h"
+#include "stm32f3xx_ll_dma.h"
+
+#include "stm32f3xx_ll_exti.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -49,20 +60,36 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define B1_Pin GPIO_PIN_13
-#define B1_GPIO_Port GPIOC
-#define USART_TX_Pin GPIO_PIN_2
-#define USART_TX_GPIO_Port GPIOA
-#define USART_RX_Pin GPIO_PIN_3
-#define USART_RX_GPIO_Port GPIOA
-#define LD2_Pin GPIO_PIN_5
-#define LD2_GPIO_Port GPIOA
-#define TMS_Pin GPIO_PIN_13
-#define TMS_GPIO_Port GPIOA
-#define TCK_Pin GPIO_PIN_14
-#define TCK_GPIO_Port GPIOA
-#define SWO_Pin GPIO_PIN_3
-#define SWO_GPIO_Port GPIOB
+#define TIM2_CH1_Pin GPIO_PIN_0
+#define TIM2_CH1_GPIO_Port GPIOA
+#define TIM2_CH2_Pin GPIO_PIN_1
+#define TIM2_CH2_GPIO_Port GPIOA
+#define EN_R_Pin GPIO_PIN_6
+#define EN_R_GPIO_Port GPIOA
+#define NBRAKE_R_Pin GPIO_PIN_7
+#define NBRAKE_R_GPIO_Port GPIOA
+#define DIR_R_Pin GPIO_PIN_0
+#define DIR_R_GPIO_Port GPIOB
+#define DIAG_R_Pin GPIO_PIN_1
+#define DIAG_R_GPIO_Port GPIOB
+#define TIM1_CH1_Pin GPIO_PIN_8
+#define TIM1_CH1_GPIO_Port GPIOA
+#define TIM1_CH2_Pin GPIO_PIN_9
+#define TIM1_CH2_GPIO_Port GPIOA
+#define TACHO_R_Pin GPIO_PIN_10
+#define TACHO_R_GPIO_Port GPIOA
+#define LED_Pin GPIO_PIN_11
+#define LED_GPIO_Port GPIOA
+#define TACHO_L_Pin GPIO_PIN_12
+#define TACHO_L_GPIO_Port GPIOA
+#define DIAG_L_Pin GPIO_PIN_15
+#define DIAG_L_GPIO_Port GPIOA
+#define DIR_L_Pin GPIO_PIN_3
+#define DIR_L_GPIO_Port GPIOB
+#define NBRAKE_L_Pin GPIO_PIN_4
+#define NBRAKE_L_GPIO_Port GPIOB
+#define EN_L_Pin GPIO_PIN_5
+#define EN_L_GPIO_Port GPIOB
 
 /* ########################## Assert Selection ############################## */
 /**

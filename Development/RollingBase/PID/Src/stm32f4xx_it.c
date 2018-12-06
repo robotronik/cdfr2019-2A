@@ -195,7 +195,6 @@ void SysTick_Handler(void)
 extern Odometry odometry;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-  #error "htim not implemented"
   if(htim->instance ==htim15->instance){
     updateodometry(odometry);
   }
