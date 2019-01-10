@@ -1,0 +1,8 @@
+(sym_lib_table
+  (lib (name 2)(type Legacy)(uri /Users/luc/Desktop/Luc/Travail/Associations/Robotronik/cdfr2019-2A/Electronique/Rolling_Base/PCB/lib/2.lib)(options "")(descr ""))
+  (lib (name mcp2562)(type Legacy)(uri /Users/luc/Desktop/Luc/Travail/Associations/Robotronik/cdfr2019-2A/Electronique/Rolling_Base/PCB/lib/mcp2562.lib)(options "")(descr ""))
+  (lib (name Motor_Card-cache)(type Legacy)(uri /Users/luc/Desktop/Luc/Travail/Associations/Robotronik/cdfr2019-2A/Electronique/Rolling_Base/PCB/lib/Motor_Card-cache.lib)(options "")(descr ""))
+  (lib (name Propulsion_control)(type Legacy)(uri /Users/luc/Desktop/Luc/Travail/Associations/Robotronik/cdfr2019-2A/Electronique/Rolling_Base/PCB/lib/Propulsion_control.lib)(options "")(descr ""))
+  (lib (name stm32f042k6tx)(type Legacy)(uri /Users/luc/Desktop/Luc/Travail/Associations/Robotronik/cdfr2019-2A/Electronique/Rolling_Base/PCB/lib/stm32f042k6tx.lib)(options "")(descr ""))
+  (lib (name Motor_Card-rescue)(type Legacy)(uri ${KIPRJMOD}/Motor_Card-rescue.lib)(options "")(descr ""))
+)
