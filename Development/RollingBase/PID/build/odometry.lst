@@ -1,0 +1,504 @@
+ARM GAS  /tmp/ccBDLulx.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"odometry.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	__aeabi_f2d
+  18              		.global	__aeabi_i2d
+  19              		.global	__aeabi_dmul
+  20              		.global	__aeabi_dadd
+  21              		.global	__aeabi_d2f
+  22              		.section	.text.update_odometry,"ax",%progbits
+  23              		.align	1
+  24              		.p2align 2,,3
+  25              		.global	update_odometry
+  26              		.arch armv7e-m
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  30              		.fpu fpv4-sp-d16
+  32              	update_odometry:
+  33              	.LVL0:
+  34              	.LFB728:
+  35              		.file 1 "Src/odometry.c"
+   1:Src/odometry.c **** #include "odometry.h"
+   2:Src/odometry.c **** 
+   3:Src/odometry.c **** volatile float ENCODER_DIST=199.66;//distance between encoders
+   4:Src/odometry.c **** volatile float ENCODER_STEP_DIST=20.65*2*M_PI/1440.0;//distance for 1 encoder step
+   5:Src/odometry.c **** volatile float deltaL=(20.65*2*M_PI/1440.0)/199.66;//ENCODER_STEP_DIST/ENCODER_DIST
+   6:Src/odometry.c **** 
+   7:Src/odometry.c **** void update_odometry(Odometry *odometry){
+  36              		.loc 1 7 41 view -0
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 16
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+   8:Src/odometry.c ****   int dl_l = update_encoder(&odometry->encoder_l);
+  40              		.loc 1 8 3 view .LVU1
+   7:Src/odometry.c ****   int dl_l = update_encoder(&odometry->encoder_l);
+  41              		.loc 1 7 41 is_stmt 0 view .LVU2
+  42 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 36
+  45              		.cfi_offset 4, -36
+  46              		.cfi_offset 5, -32
+  47              		.cfi_offset 6, -28
+  48              		.cfi_offset 7, -24
+  49              		.cfi_offset 8, -20
+ARM GAS  /tmp/ccBDLulx.s 			page 2
+
+
+  50              		.cfi_offset 9, -16
+  51              		.cfi_offset 10, -12
+  52              		.cfi_offset 11, -8
+  53              		.cfi_offset 14, -4
+  54 0004 85B0     		sub	sp, sp, #20
+  55              	.LCFI1:
+  56              		.cfi_def_cfa_offset 56
+   7:Src/odometry.c ****   int dl_l = update_encoder(&odometry->encoder_l);
+  57              		.loc 1 7 41 view .LVU3
+  58 0006 0446     		mov	r4, r0
+  59              		.loc 1 8 14 view .LVU4
+  60 0008 FFF7FEFF 		bl	update_encoder
+  61              	.LVL1:
+  62              		.loc 1 8 14 view .LVU5
+  63 000c 0546     		mov	r5, r0
+  64              	.LVL2:
+   9:Src/odometry.c ****   int dl_r = update_encoder(&odometry->encoder_r);
+  65              		.loc 1 9 3 is_stmt 1 view .LVU6
+  66              		.loc 1 9 14 is_stmt 0 view .LVU7
+  67 000e 04F10C00 		add	r0, r4, #12
+  68              	.LVL3:
+  69              		.loc 1 9 14 view .LVU8
+  70 0012 FFF7FEFF 		bl	update_encoder
+  71              	.LVL4:
+  10:Src/odometry.c **** 
+  11:Src/odometry.c **** #if TEST_ENCODER==1
+  12:Src/odometry.c ****   led_level = (int) (((float) odometry->encoder_l.htim->Instance->CNT / ENCODER_MAX)*255);
+  13:Src/odometry.c **** #endif
+  14:Src/odometry.c **** 
+  15:Src/odometry.c **** #if TEST_ENCODER==2
+  16:Src/odometry.c ****   led_level = (int) (((float) odometry->encoder_r.htim->Instance->CNT / ENCODER_MAX)*255);
+  17:Src/odometry.c **** #endif
+  18:Src/odometry.c **** 
+  19:Src/odometry.c **** 
+  20:Src/odometry.c ****   odometry->x = odometry->x
+  72              		.loc 1 20 25 view .LVU9
+  73 0016 D4ED067A 		vldr.32	s15, [r4, #24]
+  21:Src/odometry.c ****     + cos(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+  74              		.loc 1 21 27 view .LVU10
+  75 001a DFF82CB1 		ldr	fp, .L11+16
+  20:Src/odometry.c ****     + cos(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+  76              		.loc 1 20 25 view .LVU11
+  77 001e CDED007A 		vstr.32	s15, [sp]
+   9:Src/odometry.c **** 
+  78              		.loc 1 9 14 view .LVU12
+  79 0022 8246     		mov	r10, r0
+  80              	.LVL5:
+  20:Src/odometry.c ****     + cos(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+  81              		.loc 1 20 3 is_stmt 1 view .LVU13
+  82              		.loc 1 21 19 is_stmt 0 view .LVU14
+  83 0024 206A     		ldr	r0, [r4, #32]	@ float
+  84              	.LVL6:
+  85              		.loc 1 21 7 view .LVU15
+  86 0026 FFF7FEFF 		bl	__aeabi_f2d
+  87              	.LVL7:
+  88 002a 41EC100B 		vmov	d0, r0, r1
+  89 002e FFF7FEFF 		bl	cos
+ARM GAS  /tmp/ccBDLulx.s 			page 3
+
+
+  90              	.LVL8:
+  91 0032 53EC102B 		vmov	r2, r3, d0
+  92              		.loc 1 21 45 view .LVU16
+  93 0036 05EB0A00 		add	r0, r5, r10
+  94              		.loc 1 21 7 view .LVU17
+  95 003a CDE90223 		strd	r2, [sp, #8]
+  96              		.loc 1 21 45 view .LVU18
+  97 003e FFF7FEFF 		bl	__aeabi_i2d
+  98              	.LVL9:
+  99              		.loc 1 21 27 view .LVU19
+ 100 0042 DBF80080 		ldr	r8, [fp]	@ float
+ 101              		.loc 1 21 45 view .LVU20
+ 102 0046 0646     		mov	r6, r0
+ 103              		.loc 1 21 27 view .LVU21
+ 104 0048 4046     		mov	r0, r8	@ float
+ 105              		.loc 1 21 45 view .LVU22
+ 106 004a 0F46     		mov	r7, r1
+ 107              		.loc 1 21 27 view .LVU23
+ 108 004c FFF7FEFF 		bl	__aeabi_f2d
+ 109              	.LVL10:
+ 110 0050 DDE90223 		ldrd	r2, [sp, #8]
+ 111 0054 FFF7FEFF 		bl	__aeabi_dmul
+ 112              	.LVL11:
+ 113              		.loc 1 21 45 view .LVU24
+ 114 0058 3246     		mov	r2, r6
+ 115 005a 3B46     		mov	r3, r7
+ 116 005c FFF7FEFF 		bl	__aeabi_dmul
+ 117              	.LVL12:
+ 118 0060 8046     		mov	r8, r0
+  20:Src/odometry.c ****     + cos(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 119              		.loc 1 20 25 view .LVU25
+ 120 0062 0098     		ldr	r0, [sp]	@ float
+ 121              		.loc 1 21 45 view .LVU26
+ 122 0064 8946     		mov	r9, r1
+  20:Src/odometry.c ****     + cos(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 123              		.loc 1 20 25 view .LVU27
+ 124 0066 FFF7FEFF 		bl	__aeabi_f2d
+ 125              	.LVL13:
+ 126              		.loc 1 21 5 view .LVU28
+ 127 006a 0246     		mov	r2, r0
+ 128 006c 0B46     		mov	r3, r1
+ 129 006e 4046     		mov	r0, r8
+ 130 0070 4946     		mov	r1, r9
+ 131 0072 FFF7FEFF 		bl	__aeabi_dadd
+ 132              	.LVL14:
+ 133 0076 FFF7FEFF 		bl	__aeabi_d2f
+ 134              	.LVL15:
+  20:Src/odometry.c ****     + cos(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 135              		.loc 1 20 15 view .LVU29
+ 136 007a A061     		str	r0, [r4, #24]	@ float
+  22:Src/odometry.c **** 
+  23:Src/odometry.c ****   odometry->y = odometry->y
+ 137              		.loc 1 23 3 is_stmt 1 view .LVU30
+ 138              		.loc 1 23 25 is_stmt 0 view .LVU31
+ 139 007c D4F81C80 		ldr	r8, [r4, #28]	@ float
+  24:Src/odometry.c ****     + sin(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 140              		.loc 1 24 19 view .LVU32
+ARM GAS  /tmp/ccBDLulx.s 			page 4
+
+
+ 141 0080 206A     		ldr	r0, [r4, #32]	@ float
+ 142              		.loc 1 24 7 view .LVU33
+ 143 0082 FFF7FEFF 		bl	__aeabi_f2d
+ 144              	.LVL16:
+ 145 0086 41EC100B 		vmov	d0, r0, r1
+ 146 008a FFF7FEFF 		bl	sin
+ 147              	.LVL17:
+ 148 008e 53EC102B 		vmov	r2, r3, d0
+ 149              		.loc 1 24 27 view .LVU34
+ 150 0092 DBF80000 		ldr	r0, [fp]	@ float
+ 151              		.loc 1 24 7 view .LVU35
+ 152 0096 CDE90023 		strd	r2, [sp]
+ 153              		.loc 1 24 27 view .LVU36
+ 154 009a FFF7FEFF 		bl	__aeabi_f2d
+ 155              	.LVL18:
+ 156 009e DDE90023 		ldrd	r2, [sp]
+ 157 00a2 FFF7FEFF 		bl	__aeabi_dmul
+ 158              	.LVL19:
+ 159              		.loc 1 24 45 view .LVU37
+ 160 00a6 3246     		mov	r2, r6
+ 161 00a8 3B46     		mov	r3, r7
+ 162 00aa FFF7FEFF 		bl	__aeabi_dmul
+ 163              	.LVL20:
+ 164 00ae 0646     		mov	r6, r0
+  23:Src/odometry.c ****     + sin(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 165              		.loc 1 23 25 view .LVU38
+ 166 00b0 4046     		mov	r0, r8	@ float
+ 167              		.loc 1 24 45 view .LVU39
+ 168 00b2 0F46     		mov	r7, r1
+  23:Src/odometry.c ****     + sin(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 169              		.loc 1 23 25 view .LVU40
+ 170 00b4 FFF7FEFF 		bl	__aeabi_f2d
+ 171              	.LVL21:
+ 172              		.loc 1 24 5 view .LVU41
+ 173 00b8 0B46     		mov	r3, r1
+ 174 00ba 0246     		mov	r2, r0
+ 175 00bc 3946     		mov	r1, r7
+ 176 00be 3046     		mov	r0, r6
+ 177 00c0 FFF7FEFF 		bl	__aeabi_dadd
+ 178              	.LVL22:
+ 179 00c4 FFF7FEFF 		bl	__aeabi_d2f
+ 180              	.LVL23:
+  25:Src/odometry.c **** 
+  26:Src/odometry.c ****   odometry->theta = odometry->theta+deltaL*(dl_l - dl_r);
+ 181              		.loc 1 26 50 view .LVU42
+ 182 00c8 A5EB0A05 		sub	r5, r5, r10
+ 183              	.LVL24:
+ 184              		.loc 1 26 43 view .LVU43
+ 185 00cc 1A4B     		ldr	r3, .L11
+  23:Src/odometry.c ****     + sin(odometry->theta)*ENCODER_STEP_DIST*(dl_l + dl_r);
+ 186              		.loc 1 23 15 view .LVU44
+ 187 00ce E061     		str	r0, [r4, #28]	@ float
+ 188              		.loc 1 26 3 is_stmt 1 view .LVU45
+ 189              		.loc 1 26 43 is_stmt 0 view .LVU46
+ 190 00d0 07EE905A 		vmov	s15, r5	@ int
+ 191              		.loc 1 26 29 view .LVU47
+ 192 00d4 94ED087A 		vldr.32	s14, [r4, #32]
+ARM GAS  /tmp/ccBDLulx.s 			page 5
+
+
+ 193              		.loc 1 26 43 view .LVU48
+ 194 00d8 93ED006A 		vldr.32	s12, [r3]
+  27:Src/odometry.c **** 
+  28:Src/odometry.c ****   if(odometry->theta>PI)//angle limitation to -PI +PI
+ 195              		.loc 1 28 5 view .LVU49
+ 196 00dc DFED176A 		vldr.32	s13, .L11+4
+  26:Src/odometry.c **** 
+ 197              		.loc 1 26 43 view .LVU50
+ 198 00e0 F8EEE77A 		vcvt.f32.s32	s15, s15
+  26:Src/odometry.c **** 
+ 199              		.loc 1 26 36 view .LVU51
+ 200 00e4 A7EE867A 		vfma.f32	s14, s15, s12
+  26:Src/odometry.c **** 
+ 201              		.loc 1 26 19 view .LVU52
+ 202 00e8 84ED087A 		vstr.32	s14, [r4, #32]
+ 203              		.loc 1 28 3 is_stmt 1 view .LVU53
+ 204              		.loc 1 28 14 is_stmt 0 view .LVU54
+ 205 00ec D4ED087A 		vldr.32	s15, [r4, #32]
+ 206              		.loc 1 28 5 view .LVU55
+ 207 00f0 F4EEE67A 		vcmpe.f32	s15, s13
+ 208 00f4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 209 00f8 0ADD     		ble	.L8
+  29:Src/odometry.c ****   {
+  30:Src/odometry.c ****     odometry->theta=odometry->theta-2*PI;
+ 210              		.loc 1 30 5 is_stmt 1 view .LVU56
+ 211              		.loc 1 30 29 is_stmt 0 view .LVU57
+ 212 00fa D4ED087A 		vldr.32	s15, [r4, #32]
+ 213              		.loc 1 30 36 view .LVU58
+ 214 00fe 9FED107A 		vldr.32	s14, .L11+8
+ 215 0102 77EEC77A 		vsub.f32	s15, s15, s14
+ 216              		.loc 1 30 20 view .LVU59
+ 217 0106 C4ED087A 		vstr.32	s15, [r4, #32]
+ 218              	.L1:
+  31:Src/odometry.c ****   }
+  32:Src/odometry.c ****   else if(odometry->theta<=-PI)
+  33:Src/odometry.c ****   {
+  34:Src/odometry.c ****     odometry->theta=odometry->theta+2*PI;
+  35:Src/odometry.c ****   }
+  36:Src/odometry.c **** }
+ 219              		.loc 1 36 1 view .LVU60
+ 220 010a 05B0     		add	sp, sp, #20
+ 221              	.LCFI2:
+ 222              		.cfi_remember_state
+ 223              		.cfi_def_cfa_offset 36
+ 224              		@ sp needed
+ 225 010c BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 226              	.LVL25:
+ 227              	.L8:
+ 228              	.LCFI3:
+ 229              		.cfi_restore_state
+  32:Src/odometry.c ****   {
+ 230              		.loc 1 32 8 is_stmt 1 view .LVU61
+  32:Src/odometry.c ****   {
+ 231              		.loc 1 32 19 is_stmt 0 view .LVU62
+ 232 0110 94ED087A 		vldr.32	s14, [r4, #32]
+  32:Src/odometry.c ****   {
+ 233              		.loc 1 32 10 view .LVU63
+ARM GAS  /tmp/ccBDLulx.s 			page 6
+
+
+ 234 0114 DFED0B7A 		vldr.32	s15, .L11+12
+ 235 0118 B4EEE77A 		vcmpe.f32	s14, s15
+ 236 011c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 237 0120 F3D8     		bhi	.L1
+  34:Src/odometry.c ****   }
+ 238              		.loc 1 34 5 is_stmt 1 view .LVU64
+  34:Src/odometry.c ****   }
+ 239              		.loc 1 34 29 is_stmt 0 view .LVU65
+ 240 0122 D4ED087A 		vldr.32	s15, [r4, #32]
+  34:Src/odometry.c ****   }
+ 241              		.loc 1 34 36 view .LVU66
+ 242 0126 9FED067A 		vldr.32	s14, .L11+8
+ 243 012a 77EE877A 		vadd.f32	s15, s15, s14
+  34:Src/odometry.c ****   }
+ 244              		.loc 1 34 20 view .LVU67
+ 245 012e C4ED087A 		vstr.32	s15, [r4, #32]
+ 246              		.loc 1 36 1 view .LVU68
+ 247 0132 05B0     		add	sp, sp, #20
+ 248              	.LCFI4:
+ 249              		.cfi_def_cfa_offset 36
+ 250              		@ sp needed
+ 251 0134 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 252              	.LVL26:
+ 253              	.L12:
+ 254              		.loc 1 36 1 view .LVU69
+ 255              		.align	2
+ 256              	.L11:
+ 257 0138 00000000 		.word	.LANCHOR1
+ 258 013c DB0F4940 		.word	1078530011
+ 259 0140 DB0FC940 		.word	1086918619
+ 260 0144 DB0F49C0 		.word	3226013659
+ 261 0148 00000000 		.word	.LANCHOR0
+ 262              		.cfi_endproc
+ 263              	.LFE728:
+ 265              		.section	.text.init_odometry,"ax",%progbits
+ 266              		.align	1
+ 267              		.p2align 2,,3
+ 268              		.global	init_odometry
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 272              		.fpu fpv4-sp-d16
+ 274              	init_odometry:
+ 275              	.LVL27:
+ 276              	.LFB729:
+  37:Src/odometry.c **** 
+  38:Src/odometry.c **** void init_odometry(Odometry *odometry, TIM_HandleTypeDef *htim_l, TIM_HandleTypeDef *htim_r, TIM_Ha
+ 277              		.loc 1 38 123 is_stmt 1 view -0
+ 278              		.cfi_startproc
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+  39:Src/odometry.c ****   odometry->x = odometry->y = 0;
+ 281              		.loc 1 39 3 view .LVU71
+  38:Src/odometry.c ****   odometry->x = odometry->y = 0;
+ 282              		.loc 1 38 123 is_stmt 0 view .LVU72
+ 283 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 284              	.LCFI5:
+ARM GAS  /tmp/ccBDLulx.s 			page 7
+
+
+ 285              		.cfi_def_cfa_offset 24
+ 286              		.cfi_offset 3, -24
+ 287              		.cfi_offset 4, -20
+ 288              		.cfi_offset 5, -16
+ 289              		.cfi_offset 6, -12
+ 290              		.cfi_offset 7, -8
+ 291              		.cfi_offset 14, -4
+ 292              		.loc 1 39 29 view .LVU73
+ 293 0002 0025     		movs	r5, #0
+  38:Src/odometry.c ****   odometry->x = odometry->y = 0;
+ 294              		.loc 1 38 123 view .LVU74
+ 295 0004 1746     		mov	r7, r2
+ 296              		.loc 1 39 29 view .LVU75
+ 297 0006 C561     		str	r5, [r0, #28]	@ float
+ 298              		.loc 1 39 15 view .LVU76
+ 299 0008 8561     		str	r5, [r0, #24]	@ float
+  40:Src/odometry.c ****   odometry->theta = 0;
+ 300              		.loc 1 40 3 is_stmt 1 view .LVU77
+ 301              		.loc 1 40 19 is_stmt 0 view .LVU78
+ 302 000a 0562     		str	r5, [r0, #32]	@ float
+  41:Src/odometry.c **** 
+  42:Src/odometry.c ****   init_encoder(&odometry->encoder_l, htim_l);
+ 303              		.loc 1 42 3 is_stmt 1 view .LVU79
+  43:Src/odometry.c ****   init_encoder(&odometry->encoder_r, htim_r);
+ 304              		.loc 1 43 3 is_stmt 0 view .LVU80
+ 305 000c 00F10C05 		add	r5, r0, #12
+  38:Src/odometry.c ****   odometry->x = odometry->y = 0;
+ 306              		.loc 1 38 123 view .LVU81
+ 307 0010 1E46     		mov	r6, r3
+ 308 0012 0446     		mov	r4, r0
+  42:Src/odometry.c ****   init_encoder(&odometry->encoder_r, htim_r);
+ 309              		.loc 1 42 3 view .LVU82
+ 310 0014 FFF7FEFF 		bl	init_encoder
+ 311              	.LVL28:
+ 312              		.loc 1 43 3 is_stmt 1 view .LVU83
+ 313 0018 3946     		mov	r1, r7
+ 314 001a 2846     		mov	r0, r5
+ 315 001c FFF7FEFF 		bl	init_encoder
+ 316              	.LVL29:
+  44:Src/odometry.c **** 
+  45:Src/odometry.c ****   start_encoder(&odometry->encoder_l);
+ 317              		.loc 1 45 3 view .LVU84
+ 318 0020 2046     		mov	r0, r4
+ 319 0022 FFF7FEFF 		bl	start_encoder
+ 320              	.LVL30:
+  46:Src/odometry.c ****   start_encoder(&odometry->encoder_r);
+ 321              		.loc 1 46 3 view .LVU85
+ 322 0026 2846     		mov	r0, r5
+ 323 0028 FFF7FEFF 		bl	start_encoder
+ 324              	.LVL31:
+  47:Src/odometry.c **** 
+  48:Src/odometry.c ****   HAL_TIM_Base_Start_IT(htim_poll);
+ 325              		.loc 1 48 3 view .LVU86
+ 326 002c 3046     		mov	r0, r6
+  49:Src/odometry.c **** }
+ 327              		.loc 1 49 1 is_stmt 0 view .LVU87
+ 328 002e BDE8F840 		pop	{r3, r4, r5, r6, r7, lr}
+ARM GAS  /tmp/ccBDLulx.s 			page 8
+
+
+ 329              	.LCFI6:
+ 330              		.cfi_restore 14
+ 331              		.cfi_restore 7
+ 332              		.cfi_restore 6
+ 333              		.cfi_restore 5
+ 334              		.cfi_restore 4
+ 335              		.cfi_restore 3
+ 336              		.cfi_def_cfa_offset 0
+ 337              	.LVL32:
+  48:Src/odometry.c **** }
+ 338              		.loc 1 48 3 view .LVU88
+ 339 0032 FFF7FEBF 		b	HAL_TIM_Base_Start_IT
+ 340              	.LVL33:
+  48:Src/odometry.c **** }
+ 341              		.loc 1 48 3 view .LVU89
+ 342              		.cfi_endproc
+ 343              	.LFE729:
+ 345              		.global	deltaL
+ 346              		.global	ENCODER_STEP_DIST
+ 347              		.global	ENCODER_DIST
+ 348 0036 00BF     		.section	.data.ENCODER_DIST,"aw"
+ 349              		.align	2
+ 352              	ENCODER_DIST:
+ 353 0000 F6A84743 		.word	1128769782
+ 354              		.section	.data.ENCODER_STEP_DIST,"aw"
+ 355              		.align	2
+ 356              		.set	.LANCHOR0,. + 0
+ 359              	ENCODER_STEP_DIST:
+ 360 0000 B987B83D 		.word	1035503545
+ 361              		.section	.data.deltaL,"aw"
+ 362              		.align	2
+ 363              		.set	.LANCHOR1,. + 0
+ 366              	deltaL:
+ 367 0000 D199EC39 		.word	971807185
+ 368              		.text
+ 369              	.Letext0:
+ 370              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 371              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 372              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 373              		.file 5 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/system_stm32f3xx.h"
+ 374              		.file 6 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 375              		.file 7 "/usr/arm-none-eabi/include/sys/lock.h"
+ 376              		.file 8 "/usr/arm-none-eabi/include/sys/_types.h"
+ 377              		.file 9 "/usr/lib/gcc/arm-none-eabi/8.2.0/include/stddef.h"
+ 378              		.file 10 "/usr/arm-none-eabi/include/sys/reent.h"
+ 379              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 380              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 381              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 382              		.file 14 "/usr/arm-none-eabi/include/math.h"
+ 383              		.file 15 "Inc/encoder.h"
+ 384              		.file 16 "Inc/odometry.h"
+ 385              		.file 17 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_dma.h"
+ARM GAS  /tmp/ccBDLulx.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 odometry.c
+     /tmp/ccBDLulx.s:23     .text.update_odometry:0000000000000000 $t
+     /tmp/ccBDLulx.s:32     .text.update_odometry:0000000000000000 update_odometry
+     /tmp/ccBDLulx.s:257    .text.update_odometry:0000000000000138 $d
+     /tmp/ccBDLulx.s:266    .text.init_odometry:0000000000000000 $t
+     /tmp/ccBDLulx.s:274    .text.init_odometry:0000000000000000 init_odometry
+     /tmp/ccBDLulx.s:366    .data.deltaL:0000000000000000 deltaL
+     /tmp/ccBDLulx.s:359    .data.ENCODER_STEP_DIST:0000000000000000 ENCODER_STEP_DIST
+     /tmp/ccBDLulx.s:352    .data.ENCODER_DIST:0000000000000000 ENCODER_DIST
+     /tmp/ccBDLulx.s:349    .data.ENCODER_DIST:0000000000000000 $d
+     /tmp/ccBDLulx.s:355    .data.ENCODER_STEP_DIST:0000000000000000 $d
+     /tmp/ccBDLulx.s:362    .data.deltaL:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_f2d
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dadd
+__aeabi_d2f
+update_encoder
+cos
+sin
+init_encoder
+start_encoder
+HAL_TIM_Base_Start_IT

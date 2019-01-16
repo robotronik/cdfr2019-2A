@@ -1,0 +1,2268 @@
+ARM GAS  /tmp/ccUnHqr7.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f3xx_ll_exti.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LL_EXTI_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.p2align 2,,3
+  20              		.global	LL_EXTI_DeInit
+  21              		.arch armv7e-m
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  25              		.fpu fpv4-sp-d16
+  27              	LL_EXTI_DeInit:
+  28              	.LFB695:
+  29              		.file 1 "Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c"
+   1:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /**
+   2:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   ******************************************************************************
+   3:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @file    stm32f3xx_ll_exti.c
+   4:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @author  MCD Application Team
+   5:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @brief   EXTI LL module driver.
+   6:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   ******************************************************************************
+   7:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @attention
+   8:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *
+   9:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
+  10:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *
+  11:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  12:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * are permitted provided that the following conditions are met:
+  13:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  14:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *      this list of conditions and the following disclaimer.
+  15:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  16:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *      this list of conditions and the following disclaimer in the documentation
+  17:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *      and/or other materials provided with the distribution.
+  18:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  19:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *      may be used to endorse or promote products derived from this software
+  20:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *      without specific prior written permission.
+  21:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *
+  22:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  23:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  24:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  25:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  26:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  27:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  28:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  29:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ARM GAS  /tmp/ccUnHqr7.s 			page 2
+
+
+  30:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  31:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  32:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *
+  33:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   ******************************************************************************
+  34:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  35:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(USE_FULL_LL_DRIVER)
+  36:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  37:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Includes ------------------------------------------------------------------*/
+  38:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #include "stm32f3xx_ll_exti.h"
+  39:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #ifdef  USE_FULL_ASSERT
+  40:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #include "stm32_assert.h"
+  41:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #else
+  42:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #define assert_param(expr) ((void)0U)
+  43:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+  44:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  45:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /** @addtogroup STM32F3xx_LL_Driver
+  46:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @{
+  47:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  48:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  49:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined (EXTI)
+  50:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  51:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /** @defgroup EXTI_LL EXTI
+  52:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @{
+  53:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  54:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  55:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Private types -------------------------------------------------------------*/
+  56:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Private variables ---------------------------------------------------------*/
+  57:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Private constants ---------------------------------------------------------*/
+  58:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Private macros ------------------------------------------------------------*/
+  59:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /** @addtogroup EXTI_LL_Private_Macros
+  60:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @{
+  61:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  62:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  63:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #define IS_LL_EXTI_LINE_0_31(__VALUE__)              (((__VALUE__) & ~LL_EXTI_LINE_ALL_0_31) == 0x0
+  64:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+  65:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #define IS_LL_EXTI_LINE_32_63(__VALUE__)             (((__VALUE__) & ~LL_EXTI_LINE_ALL_32_63) == 0x
+  66:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+  67:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  68:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #define IS_LL_EXTI_MODE(__VALUE__)                   (((__VALUE__) == LL_EXTI_MODE_IT)            \
+  69:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****                                                    || ((__VALUE__) == LL_EXTI_MODE_EVENT)         \
+  70:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****                                                    || ((__VALUE__) == LL_EXTI_MODE_IT_EVENT))
+  71:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  72:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  73:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #define IS_LL_EXTI_TRIGGER(__VALUE__)                (((__VALUE__) == LL_EXTI_TRIGGER_NONE)       \
+  74:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****                                                    || ((__VALUE__) == LL_EXTI_TRIGGER_RISING)     \
+  75:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****                                                    || ((__VALUE__) == LL_EXTI_TRIGGER_FALLING)    \
+  76:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****                                                    || ((__VALUE__) == LL_EXTI_TRIGGER_RISING_FALLIN
+  77:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  78:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /**
+  79:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @}
+  80:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  81:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  82:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Private function prototypes -----------------------------------------------*/
+  83:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  84:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /* Exported functions --------------------------------------------------------*/
+  85:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /** @addtogroup EXTI_LL_Exported_Functions
+  86:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @{
+ARM GAS  /tmp/ccUnHqr7.s 			page 3
+
+
+  87:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  88:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  89:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /** @addtogroup EXTI_LL_EF_Init
+  90:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @{
+  91:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  92:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  93:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /**
+  94:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @brief  De-initialize the EXTI registers to their default reset values.
+  95:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @retval An ErrorStatus enumeration value:
+  96:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *          - SUCCESS: EXTI registers are de-initialized
+  97:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *          - ERROR: not applicable
+  98:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+  99:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** uint32_t LL_EXTI_DeInit(void)
+ 100:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** {
+  30              		.loc 1 100 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+ 101:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Interrupt mask register set to default reset values */
+ 102:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(IMR,   0x1F800000U);
+  35              		.loc 1 102 3 view .LVU1
+ 100:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Interrupt mask register set to default reset values */
+  36              		.loc 1 100 1 is_stmt 0 view .LVU2
+  37 0000 30B4     		push	{r4, r5}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 4, -8
+  41              		.cfi_offset 5, -4
+  42              		.loc 1 102 3 view .LVU3
+  43 0002 0B4B     		ldr	r3, .L4
+ 103:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Event mask register set to default reset values */
+ 104:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(EMR,   0x00000000U);
+ 105:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Rising Trigger selection register set to default reset values */
+ 106:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(RTSR,  0x00000000U);
+ 107:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Falling Trigger selection register set to default reset values */
+ 108:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(FTSR,  0x00000000U);
+ 109:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Software interrupt event register set to default reset values */
+ 110:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(SWIER, 0x00000000U);
+ 111:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Pending register clear */
+ 112:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(PR,    0x007FFFFFU);
+  44              		.loc 1 112 3 view .LVU4
+  45 0004 0B48     		ldr	r0, .L4+4
+ 104:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Rising Trigger selection register set to default reset values */
+  46              		.loc 1 104 3 view .LVU5
+  47 0006 0022     		movs	r2, #0
+ 102:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Event mask register set to default reset values */
+  48              		.loc 1 102 3 view .LVU6
+  49 0008 4FF0FC55 		mov	r5, #528482304
+ 113:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+ 114:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 115:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Interrupt mask register 2 set to default reset values */
+ 116:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(STM32F334x8)
+ 117:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(IMR2,        0xFFFFFFFEU);
+ 118:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #else
+ 119:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(IMR2,        0xFFFFFFFCU);
+  50              		.loc 1 119 3 view .LVU7
+ARM GAS  /tmp/ccUnHqr7.s 			page 4
+
+
+  51 000c 6FF00304 		mvn	r4, #3
+ 120:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif  
+ 121:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Event mask register 2 set to default reset values */
+ 122:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(EMR2,        0x00000000U);
+ 123:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Rising Trigger selection register 2 set to default reset values */
+ 124:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(RTSR2,       0x00000000U);
+ 125:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Falling Trigger selection register 2 set to default reset values */
+ 126:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(FTSR2,       0x00000000U);
+ 127:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Software interrupt event register 2 set to default reset values */
+ 128:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(SWIER2,      0x00000000U);
+ 129:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Pending register 2 clear */
+ 130:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   LL_EXTI_WriteReg(PR2,         0x00000003U);
+  52              		.loc 1 130 3 view .LVU8
+  53 0010 0321     		movs	r1, #3
+ 102:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Event mask register set to default reset values */
+  54              		.loc 1 102 3 view .LVU9
+  55 0012 1D60     		str	r5, [r3]
+ 104:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Rising Trigger selection register set to default reset values */
+  56              		.loc 1 104 3 is_stmt 1 view .LVU10
+  57 0014 5A60     		str	r2, [r3, #4]
+ 106:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Falling Trigger selection register set to default reset values */
+  58              		.loc 1 106 3 view .LVU11
+  59 0016 9A60     		str	r2, [r3, #8]
+ 108:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Software interrupt event register set to default reset values */
+  60              		.loc 1 108 3 view .LVU12
+  61 0018 DA60     		str	r2, [r3, #12]
+ 110:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Pending register clear */
+  62              		.loc 1 110 3 view .LVU13
+  63 001a 1A61     		str	r2, [r3, #16]
+ 112:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  64              		.loc 1 112 3 view .LVU14
+  65 001c 5861     		str	r0, [r3, #20]
+ 119:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif  
+  66              		.loc 1 119 3 view .LVU15
+  67 001e 1C62     		str	r4, [r3, #32]
+ 122:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Rising Trigger selection register 2 set to default reset values */
+  68              		.loc 1 122 3 view .LVU16
+ 131:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+ 132:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 133:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   return SUCCESS;
+ 134:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** }
+  69              		.loc 1 134 1 is_stmt 0 view .LVU17
+  70 0020 0120     		movs	r0, #1
+ 122:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Rising Trigger selection register 2 set to default reset values */
+  71              		.loc 1 122 3 view .LVU18
+  72 0022 5A62     		str	r2, [r3, #36]
+ 124:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Falling Trigger selection register 2 set to default reset values */
+  73              		.loc 1 124 3 is_stmt 1 view .LVU19
+  74 0024 9A62     		str	r2, [r3, #40]
+ 126:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Software interrupt event register 2 set to default reset values */
+  75              		.loc 1 126 3 view .LVU20
+  76              		.loc 1 134 1 is_stmt 0 view .LVU21
+  77 0026 30BC     		pop	{r4, r5}
+  78              	.LCFI1:
+  79              		.cfi_restore 5
+  80              		.cfi_restore 4
+  81              		.cfi_def_cfa_offset 0
+ARM GAS  /tmp/ccUnHqr7.s 			page 5
+
+
+ 126:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Software interrupt event register 2 set to default reset values */
+  82              		.loc 1 126 3 view .LVU22
+  83 0028 DA62     		str	r2, [r3, #44]
+ 128:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Pending register 2 clear */
+  84              		.loc 1 128 3 is_stmt 1 view .LVU23
+  85 002a 1A63     		str	r2, [r3, #48]
+ 130:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+  86              		.loc 1 130 3 view .LVU24
+  87 002c 5963     		str	r1, [r3, #52]
+ 133:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** }
+  88              		.loc 1 133 3 view .LVU25
+  89              		.loc 1 134 1 is_stmt 0 view .LVU26
+  90 002e 7047     		bx	lr
+  91              	.L5:
+  92              		.align	2
+  93              	.L4:
+  94 0030 00040140 		.word	1073808384
+  95 0034 FFFF7F00 		.word	8388607
+  96              		.cfi_endproc
+  97              	.LFE695:
+  99              		.section	.text.LL_EXTI_Init,"ax",%progbits
+ 100              		.align	1
+ 101              		.p2align 2,,3
+ 102              		.global	LL_EXTI_Init
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.fpu fpv4-sp-d16
+ 108              	LL_EXTI_Init:
+ 109              	.LVL0:
+ 110              	.LFB696:
+ 135:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+ 136:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /**
+ 137:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @brief  Initialize the EXTI registers according to the specified parameters in EXTI_InitStruct.
+ 138:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @param  EXTI_InitStruct pointer to a @ref LL_EXTI_InitTypeDef structure.
+ 139:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @retval An ErrorStatus enumeration value:
+ 140:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *          - SUCCESS: EXTI registers are initialized
+ 141:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   *          - ERROR: not applicable
+ 142:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+ 143:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** uint32_t LL_EXTI_Init(LL_EXTI_InitTypeDef *EXTI_InitStruct)
+ 144:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** {
+ 111              		.loc 1 144 1 is_stmt 1 view -0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+ 145:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   ErrorStatus status = SUCCESS;
+ 116              		.loc 1 145 3 view .LVU28
+ 146:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* Check the parameters */
+ 147:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   assert_param(IS_LL_EXTI_LINE_0_31(EXTI_InitStruct->Line_0_31));
+ 117              		.loc 1 147 3 view .LVU29
+ 148:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 149:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   assert_param(IS_LL_EXTI_LINE_32_63(EXTI_InitStruct->Line_32_63));
+ 118              		.loc 1 149 3 view .LVU30
+ 150:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 151:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   assert_param(IS_FUNCTIONAL_STATE(EXTI_InitStruct->LineCommand));
+ 119              		.loc 1 151 3 view .LVU31
+ARM GAS  /tmp/ccUnHqr7.s 			page 6
+
+
+ 152:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   assert_param(IS_LL_EXTI_MODE(EXTI_InitStruct->Mode));
+ 120              		.loc 1 152 3 view .LVU32
+ 153:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+ 154:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* ENABLE LineCommand */
+ 155:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   if (EXTI_InitStruct->LineCommand != DISABLE)
+ 121              		.loc 1 155 3 view .LVU33
+ 144:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   ErrorStatus status = SUCCESS;
+ 122              		.loc 1 144 1 is_stmt 0 view .LVU34
+ 123 0000 0346     		mov	r3, r0
+ 124              		.loc 1 155 6 view .LVU35
+ 125 0002 007A     		ldrb	r0, [r0, #8]	@ zero_extendqisi2
+ 126              	.LVL1:
+ 127              		.loc 1 155 6 view .LVU36
+ 128 0004 D3E90012 		ldrd	r1, r2, [r3]
+ 129 0008 50B3     		cbz	r0, .L7
+ 156:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   {
+ 157:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     assert_param(IS_LL_EXTI_TRIGGER(EXTI_InitStruct->Trigger));
+ 130              		.loc 1 157 5 is_stmt 1 view .LVU37
+ 158:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+ 159:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     /* Configure EXTI Lines in range from 0 to 31 */
+ 160:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     if (EXTI_InitStruct->Line_0_31 != LL_EXTI_LINE_NONE)
+ 131              		.loc 1 160 5 view .LVU38
+ 144:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   ErrorStatus status = SUCCESS;
+ 132              		.loc 1 144 1 is_stmt 0 view .LVU39
+ 133 000a 30B4     		push	{r4, r5}
+ 134              	.LCFI2:
+ 135              		.cfi_def_cfa_offset 8
+ 136              		.cfi_offset 4, -8
+ 137              		.cfi_offset 5, -4
+ 138              		.loc 1 160 8 view .LVU40
+ 139 000c 31B3     		cbz	r1, .L22
+ 161:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     {
+ 162:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       switch (EXTI_InitStruct->Mode)
+ 140              		.loc 1 162 7 is_stmt 1 view .LVU41
+ 141              		.loc 1 162 30 is_stmt 0 view .LVU42
+ 142 000e 587A     		ldrb	r0, [r3, #9]	@ zero_extendqisi2
+ 143 0010 0128     		cmp	r0, #1
+ 144 0012 63D0     		beq	.L9
+ 145 0014 0028     		cmp	r0, #0
+ 146 0016 4ED0     		beq	.L10
+ 147 0018 0228     		cmp	r0, #2
+ 148 001a 3AD0     		beq	.L11
+ 149 001c 0020     		movs	r0, #0
+ 150              	.L12:
+ 151              	.LVL2:
+ 163:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       {
+ 164:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         case LL_EXTI_MODE_IT:
+ 165:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* First Disable Event on provided Lines */
+ 166:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_DisableEvent_0_31(EXTI_InitStruct->Line_0_31);
+ 167:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable IT on provided Lines */
+ 168:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableIT_0_31(EXTI_InitStruct->Line_0_31);
+ 169:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 170:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         case LL_EXTI_MODE_EVENT:
+ 171:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* First Disable IT on provided Lines */
+ 172:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_DisableIT_0_31(EXTI_InitStruct->Line_0_31);
+ 173:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable Event on provided Lines */
+ 174:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableEvent_0_31(EXTI_InitStruct->Line_0_31);
+ARM GAS  /tmp/ccUnHqr7.s 			page 7
+
+
+ 175:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 176:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         case LL_EXTI_MODE_IT_EVENT:
+ 177:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Directly Enable IT & Event on provided Lines */
+ 178:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableIT_0_31(EXTI_InitStruct->Line_0_31);
+ 179:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableEvent_0_31(EXTI_InitStruct->Line_0_31);
+ 180:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 181:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         default:
+ 182:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           status = ERROR;
+ 183:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 184:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       }
+ 185:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       if (EXTI_InitStruct->Trigger != LL_EXTI_TRIGGER_NONE)
+ 152              		.loc 1 185 7 is_stmt 1 view .LVU43
+ 153              		.loc 1 185 26 is_stmt 0 view .LVU44
+ 154 001e 9C7A     		ldrb	r4, [r3, #10]	@ zero_extendqisi2
+ 155              		.loc 1 185 10 view .LVU45
+ 156 0020 44B1     		cbz	r4, .L8
+ 186:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       {
+ 187:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         switch (EXTI_InitStruct->Trigger)
+ 157              		.loc 1 187 9 is_stmt 1 view .LVU46
+ 158 0022 022C     		cmp	r4, #2
+ 159 0024 63D0     		beq	.L13
+ 160 0026 032C     		cmp	r4, #3
+ 161 0028 00F08D80 		beq	.L14
+ 162 002c 012C     		cmp	r4, #1
+ 163 002e 00F08180 		beq	.L38
+ 185:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       {
+ 164              		.loc 1 185 10 is_stmt 0 view .LVU47
+ 165 0032 0020     		movs	r0, #0
+ 166              	.L8:
+ 188:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         {
+ 189:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           case LL_EXTI_TRIGGER_RISING:
+ 190:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* First Disable Falling Trigger on provided Lines */
+ 191:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_DisableFallingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 192:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable Rising Trigger on provided Lines */
+ 193:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableRisingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 194:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 195:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           case LL_EXTI_TRIGGER_FALLING:
+ 196:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* First Disable Rising Trigger on provided Lines */
+ 197:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_DisableRisingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 198:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable Falling Trigger on provided Lines */
+ 199:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableFallingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 200:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 201:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           case LL_EXTI_TRIGGER_RISING_FALLING:
+ 202:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableRisingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 203:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableFallingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 204:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 205:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           default:
+ 206:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             status = ERROR;
+ 207:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 208:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         }
+ 209:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       }
+ 210:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     }
+ 211:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 212:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     /* Configure EXTI Lines in range from 32 to 63 */
+ 213:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     if (EXTI_InitStruct->Line_32_63 != LL_EXTI_LINE_NONE)
+ 167              		.loc 1 213 5 is_stmt 1 view .LVU48
+ 168              		.loc 1 213 8 is_stmt 0 view .LVU49
+ARM GAS  /tmp/ccUnHqr7.s 			page 8
+
+
+ 169 0034 82B1     		cbz	r2, .L6
+ 214:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     {
+ 215:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       switch (EXTI_InitStruct->Mode)
+ 170              		.loc 1 215 7 is_stmt 1 view .LVU50
+ 171              		.loc 1 215 30 is_stmt 0 view .LVU51
+ 172 0036 597A     		ldrb	r1, [r3, #9]	@ zero_extendqisi2
+ 173 0038 0129     		cmp	r1, #1
+ 174 003a 46D0     		beq	.L16
+ 175 003c 0029     		cmp	r1, #0
+ 176 003e 31D0     		beq	.L17
+ 177 0040 0229     		cmp	r1, #2
+ 178 0042 1ED0     		beq	.L18
+ 179 0044 0020     		movs	r0, #0
+ 180              	.L19:
+ 216:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       {
+ 217:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         case LL_EXTI_MODE_IT:
+ 218:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* First Disable Event on provided Lines */
+ 219:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_DisableEvent_32_63(EXTI_InitStruct->Line_32_63);
+ 220:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable IT on provided Lines */
+ 221:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableIT_32_63(EXTI_InitStruct->Line_32_63);
+ 222:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 223:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         case LL_EXTI_MODE_EVENT:
+ 224:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* First Disable IT on provided Lines */
+ 225:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_DisableIT_32_63(EXTI_InitStruct->Line_32_63);
+ 226:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable Event on provided Lines */
+ 227:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableEvent_32_63(EXTI_InitStruct->Line_32_63);
+ 228:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 229:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         case LL_EXTI_MODE_IT_EVENT:
+ 230:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Directly Enable IT & Event on provided Lines */
+ 231:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableIT_32_63(EXTI_InitStruct->Line_32_63);
+ 232:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableEvent_32_63(EXTI_InitStruct->Line_32_63);
+ 233:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 234:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         default:
+ 235:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           status = ERROR;
+ 236:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 237:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       }
+ 238:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       if (EXTI_InitStruct->Trigger != LL_EXTI_TRIGGER_NONE)
+ 181              		.loc 1 238 7 is_stmt 1 view .LVU52
+ 182              		.loc 1 238 26 is_stmt 0 view .LVU53
+ 183 0046 9B7A     		ldrb	r3, [r3, #10]	@ zero_extendqisi2
+ 184              	.LVL3:
+ 185              		.loc 1 238 10 view .LVU54
+ 186 0048 33B1     		cbz	r3, .L6
+ 239:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       {
+ 240:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         switch (EXTI_InitStruct->Trigger)
+ 187              		.loc 1 240 9 is_stmt 1 view .LVU55
+ 188 004a 022B     		cmp	r3, #2
+ 189 004c 69D0     		beq	.L20
+ 190 004e 032B     		cmp	r3, #3
+ 191 0050 5FD0     		beq	.L21
+ 192 0052 012B     		cmp	r3, #1
+ 193 0054 54D0     		beq	.L39
+ 238:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       {
+ 194              		.loc 1 238 10 is_stmt 0 view .LVU56
+ 195 0056 0020     		movs	r0, #0
+ 241:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         {
+ 242:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           case LL_EXTI_TRIGGER_RISING:
+ARM GAS  /tmp/ccUnHqr7.s 			page 9
+
+
+ 243:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* First Disable Falling Trigger on provided Lines */
+ 244:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_DisableFallingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 245:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable IT on provided Lines */
+ 246:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableRisingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 247:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 248:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           case LL_EXTI_TRIGGER_FALLING:
+ 249:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* First Disable Rising Trigger on provided Lines */
+ 250:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_DisableRisingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 251:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable Falling Trigger on provided Lines */
+ 252:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableFallingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 253:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 254:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           case LL_EXTI_TRIGGER_RISING_FALLING:
+ 255:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableRisingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 256:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableFallingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 257:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 258:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           default:
+ 259:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             status = ERROR;
+ 260:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 261:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****         }
+ 262:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****       }
+ 263:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     }
+ 264:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 265:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   }
+ 266:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   /* DISABLE LineCommand */
+ 267:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   else
+ 268:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   {
+ 269:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     /* De-configure EXTI Lines in range from 0 to 31 */
+ 270:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     LL_EXTI_DisableIT_0_31(EXTI_InitStruct->Line_0_31);
+ 271:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     LL_EXTI_DisableEvent_0_31(EXTI_InitStruct->Line_0_31);
+ 272:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 273:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     /* De-configure EXTI Lines in range from 32 to 63 */
+ 274:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     LL_EXTI_DisableIT_32_63(EXTI_InitStruct->Line_32_63);
+ 275:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     LL_EXTI_DisableEvent_32_63(EXTI_InitStruct->Line_32_63);
+ 276:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 277:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   }
+ 278:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   return status;
+ 196              		.loc 1 278 3 is_stmt 1 view .LVU57
+ 197              	.L6:
+ 279:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** }
+ 198              		.loc 1 279 1 is_stmt 0 view .LVU58
+ 199 0058 30BC     		pop	{r4, r5}
+ 200              	.LCFI3:
+ 201              		.cfi_remember_state
+ 202              		.cfi_restore 5
+ 203              		.cfi_restore 4
+ 204              		.cfi_def_cfa_offset 0
+ 205 005a 7047     		bx	lr
+ 206              	.LVL4:
+ 207              	.L22:
+ 208              	.LCFI4:
+ 209              		.cfi_restore_state
+ 209:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     }
+ 210              		.loc 1 209 7 view .LVU59
+ 211 005c 0120     		movs	r0, #1
+ 212 005e E9E7     		b	.L8
+ 213              	.L7:
+ 214              	.LCFI5:
+ARM GAS  /tmp/ccUnHqr7.s 			page 10
+
+
+ 215              		.cfi_def_cfa_offset 0
+ 216              		.cfi_restore 4
+ 217              		.cfi_restore 5
+ 270:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     LL_EXTI_DisableEvent_0_31(EXTI_InitStruct->Line_0_31);
+ 218              		.loc 1 270 5 is_stmt 1 view .LVU60
+ 219              	.LVL5:
+ 220              	.LBB58:
+ 221              	.LBI58:
+ 222              		.file 2 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h"
+   1:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+   2:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   ******************************************************************************
+   3:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @file    stm32f3xx_ll_exti.h
+   4:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @author  MCD Application Team
+   5:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief   Header file of EXTI LL module.
+   6:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   ******************************************************************************
+   7:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @attention
+   8:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *
+   9:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
+  10:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *
+  11:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * Redistribution and use in source and binary forms, with or without modification,
+  12:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * are permitted provided that the following conditions are met:
+  13:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *   1. Redistributions of source code must retain the above copyright notice,
+  14:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *      this list of conditions and the following disclaimer.
+  15:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  16:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *      this list of conditions and the following disclaimer in the documentation
+  17:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *      and/or other materials provided with the distribution.
+  18:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  19:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *      may be used to endorse or promote products derived from this software
+  20:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *      without specific prior written permission.
+  21:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *
+  22:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  23:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  24:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  25:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  26:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  27:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  28:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  29:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  30:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  31:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  32:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *
+  33:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   ******************************************************************************
+  34:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  35:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  36:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Define to prevent recursive inclusion -------------------------------------*/
+  37:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #ifndef __STM32F3xx_LL_EXTI_H
+  38:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define __STM32F3xx_LL_EXTI_H
+  39:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  40:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #ifdef __cplusplus
+  41:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** extern "C" {
+  42:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+  43:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  44:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Includes ------------------------------------------------------------------*/
+  45:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #include "stm32f3xx.h"
+  46:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  47:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @addtogroup STM32F3xx_LL_Driver
+  48:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ARM GAS  /tmp/ccUnHqr7.s 			page 11
+
+
+  49:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  50:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  51:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined (EXTI)
+  52:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  53:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL EXTI
+  54:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+  55:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  56:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  57:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Private types -------------------------------------------------------------*/
+  58:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Private variables ---------------------------------------------------------*/
+  59:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Private constants ---------------------------------------------------------*/
+  60:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Private Macros ------------------------------------------------------------*/
+  61:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(USE_FULL_LL_DRIVER)
+  62:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_Private_Macros EXTI Private Macros
+  63:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+  64:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  65:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+  66:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+  67:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  68:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif /*USE_FULL_LL_DRIVER*/
+  69:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Exported types ------------------------------------------------------------*/
+  70:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(USE_FULL_LL_DRIVER)
+  71:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_ES_INIT EXTI Exported Init structure
+  72:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+  73:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  74:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** typedef struct
+  75:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+  76:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  77:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   uint32_t Line_0_31;           /*!< Specifies the EXTI lines to be enabled or disabled for Lines i
+  78:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****                                      This parameter can be any combination of @ref EXTI_LL_EC_LINE 
+  79:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+  80:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  81:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   uint32_t Line_32_63;          /*!< Specifies the EXTI lines to be enabled or disabled for Lines i
+  82:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****                                      This parameter can be any combination of @ref EXTI_LL_EC_LINE 
+  83:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+  84:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  85:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   FunctionalState LineCommand;  /*!< Specifies the new state of the selected EXTI lines.
+  86:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****                                      This parameter can be set either to ENABLE or DISABLE */
+  87:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  88:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   uint8_t Mode;                 /*!< Specifies the mode for the EXTI lines.
+  89:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****                                      This parameter can be a value of @ref EXTI_LL_EC_MODE. */
+  90:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  91:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   uint8_t Trigger;              /*!< Specifies the trigger signal active edge for the EXTI lines.
+  92:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****                                      This parameter can be a value of @ref EXTI_LL_EC_TRIGGER. */
+  93:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** } LL_EXTI_InitTypeDef;
+  94:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+  95:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+  96:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+  97:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+  98:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif /*USE_FULL_LL_DRIVER*/
+  99:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 100:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Exported constants --------------------------------------------------------*/
+ 101:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_Exported_Constants EXTI Exported Constants
+ 102:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 103:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 104:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 105:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EC_LINE LINE
+ARM GAS  /tmp/ccUnHqr7.s 			page 12
+
+
+ 106:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 107:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 108:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_0                 EXTI_IMR_IM0           /*!< Extended line 0 */
+ 109:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_1                 EXTI_IMR_IM1           /*!< Extended line 1 */
+ 110:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_2                 EXTI_IMR_IM2           /*!< Extended line 2 */
+ 111:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_3                 EXTI_IMR_IM3           /*!< Extended line 3 */
+ 112:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_4                 EXTI_IMR_IM4           /*!< Extended line 4 */
+ 113:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_5                 EXTI_IMR_IM5           /*!< Extended line 5 */
+ 114:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_6                 EXTI_IMR_IM6           /*!< Extended line 6 */
+ 115:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_7                 EXTI_IMR_IM7           /*!< Extended line 7 */
+ 116:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_8                 EXTI_IMR_IM8           /*!< Extended line 8 */
+ 117:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_9                 EXTI_IMR_IM9           /*!< Extended line 9 */
+ 118:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_10                EXTI_IMR_IM10          /*!< Extended line 10 */
+ 119:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_11                EXTI_IMR_IM11          /*!< Extended line 11 */
+ 120:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_12                EXTI_IMR_IM12          /*!< Extended line 12 */
+ 121:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_13                EXTI_IMR_IM13          /*!< Extended line 13 */
+ 122:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_14                EXTI_IMR_IM14          /*!< Extended line 14 */
+ 123:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_15                EXTI_IMR_IM15          /*!< Extended line 15 */
+ 124:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM16)
+ 125:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_16                EXTI_IMR_IM16          /*!< Extended line 16 */
+ 126:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 127:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_17                EXTI_IMR_IM17          /*!< Extended line 17 */
+ 128:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM18)
+ 129:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_18                EXTI_IMR_IM18          /*!< Extended line 18 */
+ 130:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 131:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_19                EXTI_IMR_IM19          /*!< Extended line 19 */
+ 132:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM20)
+ 133:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_20                EXTI_IMR_IM20          /*!< Extended line 20 */
+ 134:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 135:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM21)
+ 136:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_21                EXTI_IMR_IM21          /*!< Extended line 21 */
+ 137:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 138:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM22)
+ 139:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_22                EXTI_IMR_IM22          /*!< Extended line 22 */
+ 140:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 141:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_23                EXTI_IMR_IM23          /*!< Extended line 23 */
+ 142:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM24)
+ 143:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_24                EXTI_IMR_IM24          /*!< Extended line 24 */
+ 144:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 145:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM25)
+ 146:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_25                EXTI_IMR_IM25          /*!< Extended line 25 */
+ 147:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 148:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM26)
+ 149:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_26                EXTI_IMR_IM26          /*!< Extended line 26 */
+ 150:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 151:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM27)
+ 152:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_27                EXTI_IMR_IM27          /*!< Extended line 27 */
+ 153:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 154:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM28)
+ 155:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_28                EXTI_IMR_IM28          /*!< Extended line 28 */
+ 156:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 157:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM29)
+ 158:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_29                EXTI_IMR_IM29          /*!< Extended line 29 */
+ 159:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 160:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM30)
+ 161:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_30                EXTI_IMR_IM30          /*!< Extended line 30 */
+ 162:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ARM GAS  /tmp/ccUnHqr7.s 			page 13
+
+
+ 163:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR_IM31)
+ 164:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_31                EXTI_IMR_IM31          /*!< Extended line 31 */
+ 165:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 166:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_ALL_0_31          EXTI_IMR_IM            /*!< All Extended line not reserved*/
+ 167:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 168:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 169:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_32                EXTI_IMR2_IM32          /*!< Extended line 32 */
+ 170:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM33)
+ 171:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_33                EXTI_IMR2_IM33          /*!< Extended line 33 */
+ 172:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 173:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM34)
+ 174:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_34                EXTI_IMR2_IM34          /*!< Extended line 34 */
+ 175:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 176:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM35)
+ 177:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_35                EXTI_IMR2_IM35          /*!< Extended line 35 */
+ 178:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 179:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM36)
+ 180:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_36                EXTI_IMR2_IM36          /*!< Extended line 36 */
+ 181:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 182:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM37)
+ 183:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_37                EXTI_IMR2_IM37          /*!< Extended line 37 */
+ 184:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 185:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM38)
+ 186:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_38                EXTI_IMR2_IM38          /*!< Extended line 38 */
+ 187:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 188:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM39)
+ 189:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_39                EXTI_IMR2_IM39          /*!< Extended line 39 */
+ 190:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 191:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_IMR2_IM40)
+ 192:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_40                EXTI_IMR2_IM40          /*!< Extended line 40 */
+ 193:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 194:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_ALL_32_63         EXTI_IMR2_IM            /*!< All Extended line not reserved*
+ 195:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 196:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 197:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 198:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_ALL               (0xFFFFFFFFU)  /*!< All Extended line */
+ 199:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 200:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(USE_FULL_LL_DRIVER)
+ 201:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_LINE_NONE              (0x00000000U)  /*!< None Extended line */
+ 202:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif /*USE_FULL_LL_DRIVER*/
+ 203:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 204:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 205:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 206:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 207:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(USE_FULL_LL_DRIVER)
+ 208:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 209:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EC_MODE Mode
+ 210:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 211:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 212:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_MODE_IT                 ((uint8_t)0x00U) /*!< Interrupt Mode */
+ 213:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_MODE_EVENT              ((uint8_t)0x01U) /*!< Event Mode */
+ 214:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_MODE_IT_EVENT           ((uint8_t)0x02U) /*!< Interrupt & Event Mode */
+ 215:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 216:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 217:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 218:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 219:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EC_TRIGGER Edge Trigger
+ARM GAS  /tmp/ccUnHqr7.s 			page 14
+
+
+ 220:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 221:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 222:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_TRIGGER_NONE            ((uint8_t)0x00U) /*!< No Trigger Mode */
+ 223:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_TRIGGER_RISING          ((uint8_t)0x01U) /*!< Trigger Rising Mode */
+ 224:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_TRIGGER_FALLING         ((uint8_t)0x02U) /*!< Trigger Falling Mode */
+ 225:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_TRIGGER_RISING_FALLING  ((uint8_t)0x03U) /*!< Trigger Rising & Falling Mode */
+ 226:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 227:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 228:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 229:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 230:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 231:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 232:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif /*USE_FULL_LL_DRIVER*/
+ 233:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 234:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 235:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 236:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 237:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 238:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 239:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Exported macro ------------------------------------------------------------*/
+ 240:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_Exported_Macros EXTI Exported Macros
+ 241:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 242:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 243:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 244:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EM_WRITE_READ Common Write and read registers Macros
+ 245:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 246:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 247:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 248:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 249:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Write a value in EXTI register
+ 250:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  __REG__ Register to be written
+ 251:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  __VALUE__ Value to be written in the register
+ 252:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 253:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 254:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_WriteReg(__REG__, __VALUE__) WRITE_REG(EXTI->__REG__, (__VALUE__))
+ 255:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 256:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 257:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Read a value in EXTI register
+ 258:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  __REG__ Register to be read
+ 259:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval Register value
+ 260:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 261:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #define LL_EXTI_ReadReg(__REG__) READ_REG(EXTI->__REG__)
+ 262:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 263:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 264:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 265:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 266:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 267:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 268:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 269:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 270:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 271:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 272:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 273:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /* Exported functions --------------------------------------------------------*/
+ 274:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_Exported_Functions EXTI Exported Functions
+ 275:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****  * @{
+ 276:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****  */
+ARM GAS  /tmp/ccUnHqr7.s 			page 15
+
+
+ 277:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EF_IT_Management IT_Management
+ 278:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 279:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 280:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 281:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 282:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Interrupt request for Lines in range 0 to 31
+ 283:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The reset value for the direct or internal lines (see RM)
+ 284:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       is set to 1 in order to enable the interrupt by default.
+ 285:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Bits are set automatically at Power on.
+ 286:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll IMR         IMx           LL_EXTI_EnableIT_0_31
+ 287:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 288:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 289:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 290:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 291:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 292:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 293:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 294:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 295:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 296:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 297:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 298:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 299:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 300:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 301:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 302:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 303:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 304:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 305:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_17
+ 306:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 307:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 308:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 309:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 310:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 311:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_23
+ 312:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_24
+ 313:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_25
+ 314:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_26
+ 315:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_27
+ 316:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_28
+ 317:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 318:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 319:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 320:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_0_31
+ 321:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 322:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 323:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 324:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableIT_0_31(uint32_t ExtiLine)
+ 325:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 326:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->IMR, ExtiLine);
+ 327:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 328:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 329:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 330:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Interrupt request for Lines in range 32 to 63
+ 331:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The reset value for the direct lines (lines from 32 to 34, line
+ 332:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       39) is set to 1 in order to enable the interrupt by default.
+ 333:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Bits are set automatically at Power on.
+ARM GAS  /tmp/ccUnHqr7.s 			page 16
+
+
+ 334:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll IMR2         IMx           LL_EXTI_EnableIT_32_63
+ 335:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 336:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_32
+ 337:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_33
+ 338:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_34
+ 339:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 340:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 341:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 342:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 343:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_39
+ 344:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_32_63
+ 345:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 346:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 347:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableIT_32_63(uint32_t ExtiLine)
+ 348:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 349:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->IMR2, ExtiLine);
+ 350:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 351:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 352:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 353:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 354:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Interrupt request for Lines in range 0 to 31
+ 355:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The reset value for the direct or internal lines (see RM)
+ 356:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       is set to 1 in order to enable the interrupt by default.
+ 357:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Bits are set automatically at Power on.
+ 358:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll IMR         IMx           LL_EXTI_DisableIT_0_31
+ 359:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 360:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 361:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 362:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 363:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 364:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 365:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 366:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 367:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 368:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 369:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 370:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 371:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 372:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 373:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 374:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 375:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 376:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 377:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_17
+ 378:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 379:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 380:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 381:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 382:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 383:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_23
+ 384:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_24
+ 385:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_25
+ 386:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_26
+ 387:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_27
+ 388:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_28
+ 389:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 390:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ARM GAS  /tmp/ccUnHqr7.s 			page 17
+
+
+ 391:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 392:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_0_31
+ 393:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 394:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 395:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 396:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableIT_0_31(uint32_t ExtiLine)
+ 223              		.loc 2 396 22 view .LVU61
+ 224              	.LBB59:
+ 397:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 398:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->IMR, ExtiLine);
+ 225              		.loc 2 398 3 view .LVU62
+ 226 0060 3D4B     		ldr	r3, .L40
+ 227              	.LVL6:
+ 228              		.loc 2 398 3 is_stmt 0 view .LVU63
+ 229 0062 1868     		ldr	r0, [r3]
+ 230 0064 C943     		mvns	r1, r1
+ 231 0066 0840     		ands	r0, r0, r1
+ 232 0068 1860     		str	r0, [r3]
+ 233              	.LVL7:
+ 234              		.loc 2 398 3 view .LVU64
+ 235              	.LBE59:
+ 236              	.LBE58:
+ 271:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 237              		.loc 1 271 5 is_stmt 1 view .LVU65
+ 238              	.LBB60:
+ 239              	.LBI60:
+ 399:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 400:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 401:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 402:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 403:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Interrupt request for Lines in range 32 to 63
+ 404:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The reset value for the direct lines (lines from 32 to 34, line
+ 405:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       39) is set to 1 in order to enable the interrupt by default.
+ 406:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Bits are set automatically at Power on.
+ 407:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll IMR2         IMx           LL_EXTI_DisableIT_32_63
+ 408:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 409:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_32
+ 410:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_33
+ 411:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_34
+ 412:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 413:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 414:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 415:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 416:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_39
+ 417:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_32_63
+ 418:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 419:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 420:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableIT_32_63(uint32_t ExtiLine)
+ 421:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 422:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->IMR2, ExtiLine);
+ 423:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 424:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 425:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 426:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 427:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Indicate if ExtiLine Interrupt request is enabled for Lines in range 0 to 31
+ 428:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The reset value for the direct or internal lines (see RM)
+ 429:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       is set to 1 in order to enable the interrupt by default.
+ARM GAS  /tmp/ccUnHqr7.s 			page 18
+
+
+ 430:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Bits are set automatically at Power on.
+ 431:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll IMR         IMx           LL_EXTI_IsEnabledIT_0_31
+ 432:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 433:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 434:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 435:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 436:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 437:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 438:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 439:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 440:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 441:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 442:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 443:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 444:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 445:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 446:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 447:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 448:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 449:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 450:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_17
+ 451:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 452:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 453:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 454:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 455:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 456:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_23
+ 457:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_24
+ 458:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_25
+ 459:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_26
+ 460:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_27
+ 461:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_28
+ 462:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 463:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 464:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 465:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_0_31
+ 466:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 467:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval State of bit (1 or 0).
+ 468:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 469:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE uint32_t LL_EXTI_IsEnabledIT_0_31(uint32_t ExtiLine)
+ 470:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 471:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   return (READ_BIT(EXTI->IMR, ExtiLine) == (ExtiLine));
+ 472:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 473:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 474:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 475:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 476:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Indicate if ExtiLine Interrupt request is enabled for Lines in range 32 to 63
+ 477:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The reset value for the direct lines (lines from 32 to 34, line
+ 478:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       39) is set to 1 in order to enable the interrupt by default.
+ 479:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Bits are set automatically at Power on.
+ 480:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll IMR2         IMx           LL_EXTI_IsEnabledIT_32_63
+ 481:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 482:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_32
+ 483:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_33
+ 484:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_34
+ 485:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 486:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ARM GAS  /tmp/ccUnHqr7.s 			page 19
+
+
+ 487:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 488:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 489:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_39
+ 490:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_32_63
+ 491:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval State of bit (1 or 0).
+ 492:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 493:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE uint32_t LL_EXTI_IsEnabledIT_32_63(uint32_t ExtiLine)
+ 494:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 495:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   return (READ_BIT(EXTI->IMR2, ExtiLine) == (ExtiLine));
+ 496:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 497:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 498:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 499:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 500:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 501:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 502:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 503:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EF_Event_Management Event_Management
+ 504:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 505:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 506:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 507:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 508:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Event request for Lines in range 0 to 31
+ 509:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll EMR         EMx           LL_EXTI_EnableEvent_0_31
+ 510:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 511:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 512:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 513:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 514:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 515:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 516:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 517:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 518:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 519:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 520:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 521:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 522:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 523:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 524:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 525:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 526:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 527:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 528:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_17
+ 529:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 530:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 531:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 532:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 533:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 534:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_23
+ 535:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_24
+ 536:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_25
+ 537:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_26
+ 538:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_27
+ 539:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_28
+ 540:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 541:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 542:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 543:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_0_31
+ARM GAS  /tmp/ccUnHqr7.s 			page 20
+
+
+ 544:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 545:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 546:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 547:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableEvent_0_31(uint32_t ExtiLine)
+ 548:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 549:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->EMR, ExtiLine);
+ 550:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 551:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 552:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 553:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 554:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 555:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Event request for Lines in range 32 to 63
+ 556:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll EMR2         EMx           LL_EXTI_EnableEvent_32_63
+ 557:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 558:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_32
+ 559:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_33
+ 560:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_34
+ 561:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 562:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 563:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 564:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 565:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_39
+ 566:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_32_63
+ 567:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 568:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 569:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableEvent_32_63(uint32_t ExtiLine)
+ 570:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 571:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->EMR2, ExtiLine);
+ 572:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 573:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 574:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 575:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 576:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Event request for Lines in range 0 to 31
+ 577:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll EMR         EMx           LL_EXTI_DisableEvent_0_31
+ 578:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 579:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 580:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 581:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 582:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 583:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 584:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 585:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 586:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 587:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 588:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 589:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 590:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 591:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 592:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 593:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 594:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 595:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 596:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_17
+ 597:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 598:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 599:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 600:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ARM GAS  /tmp/ccUnHqr7.s 			page 21
+
+
+ 601:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 602:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_23
+ 603:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_24
+ 604:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_25
+ 605:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_26
+ 606:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_27
+ 607:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_28
+ 608:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 609:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 610:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 611:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_0_31
+ 612:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 613:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 614:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 615:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableEvent_0_31(uint32_t ExtiLine)
+ 240              		.loc 2 615 22 view .LVU66
+ 241              	.LBB61:
+ 616:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 617:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->EMR, ExtiLine);
+ 242              		.loc 2 617 3 view .LVU67
+ 243 006a 5868     		ldr	r0, [r3, #4]
+ 244 006c 0140     		ands	r1, r1, r0
+ 245 006e 5960     		str	r1, [r3, #4]
+ 246              		.loc 2 617 3 is_stmt 0 view .LVU68
+ 247              	.LBE61:
+ 248              	.LBE60:
+ 274:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****     LL_EXTI_DisableEvent_32_63(EXTI_InitStruct->Line_32_63);
+ 249              		.loc 1 274 5 is_stmt 1 view .LVU69
+ 250              	.LVL8:
+ 251              	.LBB62:
+ 252              	.LBI62:
+ 420:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 253              		.loc 2 420 22 view .LVU70
+ 254              	.LBB63:
+ 422:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 255              		.loc 2 422 3 view .LVU71
+ 256 0070 196A     		ldr	r1, [r3, #32]
+ 257 0072 D243     		mvns	r2, r2
+ 258 0074 1140     		ands	r1, r1, r2
+ 259 0076 1962     		str	r1, [r3, #32]
+ 260              	.LVL9:
+ 422:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 261              		.loc 2 422 3 is_stmt 0 view .LVU72
+ 262              	.LBE63:
+ 263              	.LBE62:
+ 275:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 264              		.loc 1 275 5 is_stmt 1 view .LVU73
+ 265              	.LBB64:
+ 266              	.LBI64:
+ 618:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 619:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 620:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 621:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 622:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Event request for Lines in range 32 to 63
+ 623:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll EMR2         EMx           LL_EXTI_DisableEvent_32_63
+ 624:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 625:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_32
+ARM GAS  /tmp/ccUnHqr7.s 			page 22
+
+
+ 626:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_33
+ 627:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_34
+ 628:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 629:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 630:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 631:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 632:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_39
+ 633:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_32_63
+ 634:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 635:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 636:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableEvent_32_63(uint32_t ExtiLine)
+ 267              		.loc 2 636 22 view .LVU74
+ 268              	.LBB65:
+ 637:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 638:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->EMR2, ExtiLine);
+ 269              		.loc 2 638 3 view .LVU75
+ 270 0078 596A     		ldr	r1, [r3, #36]
+ 271 007a 0A40     		ands	r2, r2, r1
+ 272 007c 5A62     		str	r2, [r3, #36]
+ 273 007e 0120     		movs	r0, #1
+ 274              	.LBE65:
+ 275              	.LBE64:
+ 276              		.loc 1 279 1 is_stmt 0 view .LVU76
+ 277 0080 7047     		bx	lr
+ 278              	.LVL10:
+ 279              	.L18:
+ 280              	.LCFI6:
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 4, -8
+ 283              		.cfi_offset 5, -4
+ 231:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableEvent_32_63(EXTI_InitStruct->Line_32_63);
+ 284              		.loc 1 231 11 is_stmt 1 view .LVU77
+ 285              	.LBB66:
+ 286              	.LBI66:
+ 347:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 287              		.loc 2 347 22 view .LVU78
+ 288              	.LBB67:
+ 349:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 289              		.loc 2 349 3 view .LVU79
+ 290 0082 3549     		ldr	r1, .L40
+ 291 0084 0C6A     		ldr	r4, [r1, #32]
+ 292 0086 1443     		orrs	r4, r4, r2
+ 293 0088 0C62     		str	r4, [r1, #32]
+ 294              	.LVL11:
+ 349:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 295              		.loc 2 349 3 is_stmt 0 view .LVU80
+ 296              	.LBE67:
+ 297              	.LBE66:
+ 232:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 298              		.loc 1 232 11 is_stmt 1 view .LVU81
+ 299              	.LBB68:
+ 300              	.LBI68:
+ 569:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 301              		.loc 2 569 22 view .LVU82
+ 302              	.LBB69:
+ 571:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 303              		.loc 2 571 3 view .LVU83
+ARM GAS  /tmp/ccUnHqr7.s 			page 23
+
+
+ 304 008a 4C6A     		ldr	r4, [r1, #36]
+ 305 008c 1443     		orrs	r4, r4, r2
+ 306 008e 4C62     		str	r4, [r1, #36]
+ 307 0090 D9E7     		b	.L19
+ 308              	.LVL12:
+ 309              	.L11:
+ 571:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 310              		.loc 2 571 3 is_stmt 0 view .LVU84
+ 311              	.LBE69:
+ 312              	.LBE68:
+ 178:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           LL_EXTI_EnableEvent_0_31(EXTI_InitStruct->Line_0_31);
+ 313              		.loc 1 178 11 is_stmt 1 view .LVU85
+ 314              	.LBB70:
+ 315              	.LBI70:
+ 324:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 316              		.loc 2 324 22 view .LVU86
+ 317              	.LBB71:
+ 326:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 318              		.loc 2 326 3 view .LVU87
+ 319 0092 3148     		ldr	r0, .L40
+ 320 0094 0468     		ldr	r4, [r0]
+ 321 0096 0C43     		orrs	r4, r4, r1
+ 322 0098 0460     		str	r4, [r0]
+ 323              	.LVL13:
+ 326:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 324              		.loc 2 326 3 is_stmt 0 view .LVU88
+ 325              	.LBE71:
+ 326              	.LBE70:
+ 179:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 327              		.loc 1 179 11 is_stmt 1 view .LVU89
+ 328              	.LBB72:
+ 329              	.LBI72:
+ 547:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 330              		.loc 2 547 22 view .LVU90
+ 331              	.LBB73:
+ 549:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 332              		.loc 2 549 3 view .LVU91
+ 333 009a 4468     		ldr	r4, [r0, #4]
+ 334 009c 0C43     		orrs	r4, r4, r1
+ 335 009e 4460     		str	r4, [r0, #4]
+ 336 00a0 0120     		movs	r0, #1
+ 337 00a2 BCE7     		b	.L12
+ 338              	.LVL14:
+ 339              	.L17:
+ 549:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 340              		.loc 2 549 3 is_stmt 0 view .LVU92
+ 341              	.LBE73:
+ 342              	.LBE72:
+ 219:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable IT on provided Lines */
+ 343              		.loc 1 219 11 is_stmt 1 view .LVU93
+ 344              	.LBB74:
+ 345              	.LBI74:
+ 636:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 346              		.loc 2 636 22 view .LVU94
+ 347              	.LBB75:
+ 348              		.loc 2 638 3 view .LVU95
+ 349 00a4 2C49     		ldr	r1, .L40
+ARM GAS  /tmp/ccUnHqr7.s 			page 24
+
+
+ 350 00a6 4C6A     		ldr	r4, [r1, #36]
+ 351 00a8 24EA0204 		bic	r4, r4, r2
+ 352 00ac 4C62     		str	r4, [r1, #36]
+ 353              	.LVL15:
+ 354              		.loc 2 638 3 is_stmt 0 view .LVU96
+ 355              	.LBE75:
+ 356              	.LBE74:
+ 221:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 357              		.loc 1 221 11 is_stmt 1 view .LVU97
+ 358              	.LBB76:
+ 359              	.LBI76:
+ 347:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 360              		.loc 2 347 22 view .LVU98
+ 361              	.LBB77:
+ 349:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 362              		.loc 2 349 3 view .LVU99
+ 363 00ae 0C6A     		ldr	r4, [r1, #32]
+ 364 00b0 1443     		orrs	r4, r4, r2
+ 365 00b2 0C62     		str	r4, [r1, #32]
+ 366 00b4 C7E7     		b	.L19
+ 367              	.LVL16:
+ 368              	.L10:
+ 349:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 369              		.loc 2 349 3 is_stmt 0 view .LVU100
+ 370              	.LBE77:
+ 371              	.LBE76:
+ 166:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable IT on provided Lines */
+ 372              		.loc 1 166 11 is_stmt 1 view .LVU101
+ 373              	.LBB78:
+ 374              	.LBI78:
+ 615:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 375              		.loc 2 615 22 view .LVU102
+ 376              	.LBB79:
+ 617:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 377              		.loc 2 617 3 view .LVU103
+ 378 00b6 2848     		ldr	r0, .L40
+ 379 00b8 4468     		ldr	r4, [r0, #4]
+ 380 00ba 24EA0104 		bic	r4, r4, r1
+ 381 00be 4460     		str	r4, [r0, #4]
+ 382              	.LVL17:
+ 617:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 383              		.loc 2 617 3 is_stmt 0 view .LVU104
+ 384              	.LBE79:
+ 385              	.LBE78:
+ 168:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 386              		.loc 1 168 11 is_stmt 1 view .LVU105
+ 387              	.LBB80:
+ 388              	.LBI80:
+ 324:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 389              		.loc 2 324 22 view .LVU106
+ 390              	.LBB81:
+ 326:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 391              		.loc 2 326 3 view .LVU107
+ 392 00c0 0468     		ldr	r4, [r0]
+ 393 00c2 0C43     		orrs	r4, r4, r1
+ 394 00c4 0460     		str	r4, [r0]
+ 395 00c6 0120     		movs	r0, #1
+ARM GAS  /tmp/ccUnHqr7.s 			page 25
+
+
+ 396 00c8 A9E7     		b	.L12
+ 397              	.LVL18:
+ 398              	.L16:
+ 326:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 399              		.loc 2 326 3 is_stmt 0 view .LVU108
+ 400              	.LBE81:
+ 401              	.LBE80:
+ 225:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable Event on provided Lines */
+ 402              		.loc 1 225 11 is_stmt 1 view .LVU109
+ 403              	.LBB82:
+ 404              	.LBI82:
+ 420:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 405              		.loc 2 420 22 view .LVU110
+ 406              	.LBB83:
+ 422:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 407              		.loc 2 422 3 view .LVU111
+ 408 00ca 2349     		ldr	r1, .L40
+ 409 00cc 0C6A     		ldr	r4, [r1, #32]
+ 410 00ce 24EA0204 		bic	r4, r4, r2
+ 411 00d2 0C62     		str	r4, [r1, #32]
+ 412              	.LVL19:
+ 422:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 413              		.loc 2 422 3 is_stmt 0 view .LVU112
+ 414              	.LBE83:
+ 415              	.LBE82:
+ 227:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 416              		.loc 1 227 11 is_stmt 1 view .LVU113
+ 417              	.LBB84:
+ 418              	.LBI84:
+ 569:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 419              		.loc 2 569 22 view .LVU114
+ 420              	.LBB85:
+ 571:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 421              		.loc 2 571 3 view .LVU115
+ 422 00d4 4C6A     		ldr	r4, [r1, #36]
+ 423 00d6 1443     		orrs	r4, r4, r2
+ 424 00d8 4C62     		str	r4, [r1, #36]
+ 425 00da B4E7     		b	.L19
+ 426              	.LVL20:
+ 427              	.L9:
+ 571:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 428              		.loc 2 571 3 is_stmt 0 view .LVU116
+ 429              	.LBE85:
+ 430              	.LBE84:
+ 172:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           /* Then Enable Event on provided Lines */
+ 431              		.loc 1 172 11 is_stmt 1 view .LVU117
+ 432              	.LBB86:
+ 433              	.LBI86:
+ 396:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 434              		.loc 2 396 22 view .LVU118
+ 435              	.LBB87:
+ 398:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 436              		.loc 2 398 3 view .LVU119
+ 437 00dc 1E4C     		ldr	r4, .L40
+ 438 00de 2568     		ldr	r5, [r4]
+ 439 00e0 25EA0105 		bic	r5, r5, r1
+ 440 00e4 2560     		str	r5, [r4]
+ARM GAS  /tmp/ccUnHqr7.s 			page 26
+
+
+ 441              	.LVL21:
+ 398:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 442              		.loc 2 398 3 is_stmt 0 view .LVU120
+ 443              	.LBE87:
+ 444              	.LBE86:
+ 174:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****           break;
+ 445              		.loc 1 174 11 is_stmt 1 view .LVU121
+ 446              	.LBB88:
+ 447              	.LBI88:
+ 547:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 448              		.loc 2 547 22 view .LVU122
+ 449              	.LBB89:
+ 549:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 450              		.loc 2 549 3 view .LVU123
+ 451 00e6 6568     		ldr	r5, [r4, #4]
+ 452 00e8 0D43     		orrs	r5, r5, r1
+ 453 00ea 6560     		str	r5, [r4, #4]
+ 454 00ec 97E7     		b	.L12
+ 455              	.LVL22:
+ 456              	.L13:
+ 549:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 457              		.loc 2 549 3 is_stmt 0 view .LVU124
+ 458              	.LBE89:
+ 459              	.LBE88:
+ 197:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable Falling Trigger on provided Lines */
+ 460              		.loc 1 197 13 is_stmt 1 view .LVU125
+ 461              	.LBB90:
+ 462              	.LBI90:
+ 639:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 640:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 641:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 642:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 643:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Indicate if ExtiLine Event request is enabled for Lines in range 0 to 31
+ 644:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll EMR         EMx           LL_EXTI_IsEnabledEvent_0_31
+ 645:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be one of the following values:
+ 646:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 647:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 648:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 649:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 650:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 651:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 652:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 653:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 654:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 655:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 656:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 657:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 658:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 659:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 660:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 661:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 662:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 663:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_17
+ 664:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 665:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 666:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 667:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ARM GAS  /tmp/ccUnHqr7.s 			page 27
+
+
+ 668:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 669:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_23
+ 670:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_24
+ 671:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_25
+ 672:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_26
+ 673:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_27
+ 674:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_28
+ 675:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 676:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 677:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 678:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_0_31
+ 679:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 680:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval State of bit (1 or 0).
+ 681:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 682:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE uint32_t LL_EXTI_IsEnabledEvent_0_31(uint32_t ExtiLine)
+ 683:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 684:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   return (READ_BIT(EXTI->EMR, ExtiLine) == (ExtiLine));
+ 685:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 686:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 687:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 688:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 689:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 690:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Indicate if ExtiLine Event request is enabled for Lines in range 32 to 63
+ 691:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll EMR2         EMx           LL_EXTI_IsEnabledEvent_32_63
+ 692:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 693:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_32
+ 694:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_33
+ 695:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_34
+ 696:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 697:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 698:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 699:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 700:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_39
+ 701:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_ALL_32_63
+ 702:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval State of bit (1 or 0).
+ 703:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 704:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE uint32_t LL_EXTI_IsEnabledEvent_32_63(uint32_t ExtiLine)
+ 705:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 706:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   return (READ_BIT(EXTI->EMR2, ExtiLine) == (ExtiLine));
+ 707:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 708:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 709:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 710:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 711:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 712:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 713:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 714:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EF_Rising_Trigger_Management Rising_Trigger_Management
+ 715:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 716:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 717:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 718:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 719:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Rising Edge Trigger for Lines in range 0 to 31
+ 720:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 721:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a rising edge on a configurable interrupt
+ 722:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_RTSR register, the
+ 723:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+ 724:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for
+ARM GAS  /tmp/ccUnHqr7.s 			page 28
+
+
+ 725:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       the same interrupt line. In this case, both generate a trigger
+ 726:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       condition.
+ 727:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll RTSR        RTx           LL_EXTI_EnableRisingTrig_0_31
+ 728:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 729:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 730:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 731:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 732:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 733:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 734:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 735:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 736:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 737:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 738:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 739:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 740:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 741:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 742:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 743:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 744:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 745:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 746:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 747:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 748:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 749:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 750:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 751:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 752:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 753:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 754:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 755:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 756:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 757:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableRisingTrig_0_31(uint32_t ExtiLine)
+ 758:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 759:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->RTSR, ExtiLine);
+ 760:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 761:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 762:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 763:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 764:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 765:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Rising Edge Trigger for Lines in range 32 to 63
+ 766:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 767:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a rising edge on a configurable interrupt
+ 768:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_RTSR register, the
+ 769:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.Rising and falling edge triggers can be set for
+ 770:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       the same interrupt line. In this case, both generate a trigger
+ 771:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       condition.
+ 772:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll RTSR2        RTx           LL_EXTI_EnableRisingTrig_32_63
+ 773:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 774:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 775:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 776:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 777:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 778:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 779:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 780:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableRisingTrig_32_63(uint32_t ExtiLine)
+ 781:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ARM GAS  /tmp/ccUnHqr7.s 			page 29
+
+
+ 782:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->RTSR2, ExtiLine);
+ 783:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 784:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 785:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 786:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 787:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Rising Edge Trigger for Lines in range 0 to 31
+ 788:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 789:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a rising edge on a configurable interrupt
+ 790:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_RTSR register, the
+ 791:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+ 792:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for
+ 793:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       the same interrupt line. In this case, both generate a trigger
+ 794:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       condition.
+ 795:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll RTSR        RTx           LL_EXTI_DisableRisingTrig_0_31
+ 796:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 797:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 798:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 799:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 800:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 801:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 802:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 803:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 804:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 805:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 806:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 807:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 808:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 809:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 810:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 811:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 812:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 813:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 814:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 815:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 816:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 817:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 818:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 819:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 820:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 821:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 822:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 823:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 824:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 825:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableRisingTrig_0_31(uint32_t ExtiLine)
+ 463              		.loc 2 825 22 view .LVU126
+ 464              	.LBB91:
+ 826:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 827:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->RTSR, ExtiLine);
+ 465              		.loc 2 827 3 view .LVU127
+ 466 00ee 1A4C     		ldr	r4, .L40
+ 467 00f0 A568     		ldr	r5, [r4, #8]
+ 468 00f2 25EA0105 		bic	r5, r5, r1
+ 469 00f6 A560     		str	r5, [r4, #8]
+ 470              		.loc 2 827 3 is_stmt 0 view .LVU128
+ 471              	.LBE91:
+ 472              	.LBE90:
+ 199:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ARM GAS  /tmp/ccUnHqr7.s 			page 30
+
+
+ 473              		.loc 1 199 13 is_stmt 1 view .LVU129
+ 474              	.LVL23:
+ 475              	.LBB92:
+ 476              	.LBI92:
+ 828:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 829:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 830:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 831:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 832:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 833:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Rising Edge Trigger for Lines in range 32 to 63
+ 834:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 835:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a rising edge on a configurable interrupt
+ 836:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_RTSR register, the
+ 837:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+ 838:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for
+ 839:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       the same interrupt line. In this case, both generate a trigger
+ 840:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       condition.
+ 841:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll RTSR2        RTx           LL_EXTI_DisableRisingTrig_32_63
+ 842:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 843:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 844:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 845:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 846:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 847:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 848:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 849:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableRisingTrig_32_63(uint32_t ExtiLine)
+ 850:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 851:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->RTSR2, ExtiLine);
+ 852:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 853:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 854:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 855:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 856:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Check if rising edge trigger is enabled for Lines in range 0 to 31
+ 857:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll RTSR        RTx           LL_EXTI_IsEnabledRisingTrig_0_31
+ 858:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 859:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 860:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 861:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 862:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 863:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 864:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 865:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 866:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 867:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 868:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ 869:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 870:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 871:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 872:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 873:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 874:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 875:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 876:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 877:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 878:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 879:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 880:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ARM GAS  /tmp/ccUnHqr7.s 			page 31
+
+
+ 881:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 882:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 883:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 884:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 885:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval State of bit (1 or 0).
+ 886:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 887:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE uint32_t LL_EXTI_IsEnabledRisingTrig_0_31(uint32_t ExtiLine)
+ 888:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 889:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   return (READ_BIT(EXTI->RTSR, ExtiLine) == (ExtiLine));
+ 890:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 891:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 892:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 893:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 894:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Check if rising edge trigger is enabled for Lines in range 32 to 63
+ 895:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll RTSR2        RTx           LL_EXTI_IsEnabledRisingTrig_32_63
+ 896:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 897:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 898:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 899:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 900:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 901:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval State of bit (1 or 0).
+ 902:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 903:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE uint32_t LL_EXTI_IsEnabledRisingTrig_32_63(uint32_t ExtiLine)
+ 904:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 905:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   return (READ_BIT(EXTI->RTSR2, ExtiLine) == (ExtiLine));
+ 906:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 907:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 908:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 909:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 910:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @}
+ 911:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 912:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 913:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /** @defgroup EXTI_LL_EF_Falling_Trigger_Management Falling_Trigger_Management
+ 914:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @{
+ 915:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 916:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 917:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 918:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Falling Edge Trigger for Lines in range 0 to 31
+ 919:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 920:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a falling edge on a configurable interrupt
+ 921:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_FTSR register, the
+ 922:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+ 923:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for
+ 924:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       the same interrupt line. In this case, both generate a trigger
+ 925:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       condition.
+ 926:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll FTSR        FTx           LL_EXTI_EnableFallingTrig_0_31
+ 927:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 928:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 929:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 930:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 931:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 932:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+ 933:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+ 934:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+ 935:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+ 936:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+ 937:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+ARM GAS  /tmp/ccUnHqr7.s 			page 32
+
+
+ 938:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+ 939:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+ 940:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+ 941:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+ 942:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+ 943:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+ 944:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+ 945:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+ 946:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+ 947:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+ 948:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+ 949:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+ 950:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+ 951:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+ 952:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+ 953:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+ 954:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 955:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ 956:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableFallingTrig_0_31(uint32_t ExtiLine)
+ 477              		.loc 2 956 22 view .LVU130
+ 478              	.LBB93:
+ 957:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 958:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->FTSR, ExtiLine);
+ 479              		.loc 2 958 3 view .LVU131
+ 480 00f8 E568     		ldr	r5, [r4, #12]
+ 481 00fa 2943     		orrs	r1, r1, r5
+ 482 00fc E160     		str	r1, [r4, #12]
+ 483 00fe 99E7     		b	.L8
+ 484              	.LVL24:
+ 485              	.L39:
+ 486              		.loc 2 958 3 is_stmt 0 view .LVU132
+ 487              	.LBE93:
+ 488              	.LBE92:
+ 244:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable IT on provided Lines */
+ 489              		.loc 1 244 13 is_stmt 1 view .LVU133
+ 490              	.LBB94:
+ 491              	.LBI94:
+ 959:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 960:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 961:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+ 962:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 963:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Enable ExtiLine Falling Edge Trigger for Lines in range 32 to 63
+ 964:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 965:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a Falling edge on a configurable interrupt
+ 966:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_FTSR register, the
+ 967:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+ 968:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for
+ 969:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       the same interrupt line. In this case, both generate a trigger
+ 970:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       condition.
+ 971:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll FTSR2        FTx           LL_EXTI_EnableFallingTrig_32_63
+ 972:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 973:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+ 974:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+ 975:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+ 976:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+ 977:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+ 978:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+ARM GAS  /tmp/ccUnHqr7.s 			page 33
+
+
+ 979:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_EnableFallingTrig_32_63(uint32_t ExtiLine)
+ 980:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 981:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   SET_BIT(EXTI->FTSR2, ExtiLine);
+ 982:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 983:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #endif
+ 984:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 985:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+ 986:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Falling Edge Trigger for Lines in range 0 to 31
+ 987:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+ 988:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a Falling edge on a configurable interrupt
+ 989:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_FTSR register, the
+ 990:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+ 991:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for the same interrupt line.
+ 992:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       In this case, both generate a trigger condition.
+ 993:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll FTSR        FTx           LL_EXTI_DisableFallingTrig_0_31
+ 994:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+ 995:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_0
+ 996:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_1
+ 997:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_2
+ 998:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_3
+ 999:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_4
+1000:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_5
+1001:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_6
+1002:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_7
+1003:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_8
+1004:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_9
+1005:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_10
+1006:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_11
+1007:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_12
+1008:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_13
+1009:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_14
+1010:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_15
+1011:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_16
+1012:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_18
+1013:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_19
+1014:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_20
+1015:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_21
+1016:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_22
+1017:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_29
+1018:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_30
+1019:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_31
+1020:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note   Please check each device line mapping for EXTI Line availability
+1021:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+1022:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+1023:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableFallingTrig_0_31(uint32_t ExtiLine)
+1024:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+1025:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->FTSR, ExtiLine);
+1026:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+1027:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+1028:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** #if defined(EXTI_32_63_SUPPORT)
+1029:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** /**
+1030:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @brief  Disable ExtiLine Falling Edge Trigger for Lines in range 32 to 63
+1031:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @note The configurable wakeup lines are edge-triggered. No glitch must be
+1032:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       generated on these lines. If a Falling edge on a configurable interrupt
+1033:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       line occurs during a write operation in the EXTI_FTSR register, the
+1034:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       pending bit is not set.
+1035:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       Rising and falling edge triggers can be set for the same interrupt line.
+ARM GAS  /tmp/ccUnHqr7.s 			page 34
+
+
+1036:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *       In this case, both generate a trigger condition.
+1037:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @rmtoll FTSR2        FTx           LL_EXTI_DisableFallingTrig_32_63
+1038:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @param  ExtiLine This parameter can be a combination of the following values:
+1039:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_35
+1040:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_36
+1041:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_37
+1042:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   *         @arg @ref LL_EXTI_LINE_38
+1043:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   * @retval None
+1044:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   */
+1045:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** __STATIC_INLINE void LL_EXTI_DisableFallingTrig_32_63(uint32_t ExtiLine)
+ 492              		.loc 2 1045 22 view .LVU134
+ 493              	.LBB95:
+1046:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+1047:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h ****   CLEAR_BIT(EXTI->FTSR2, ExtiLine);
+ 494              		.loc 2 1047 3 view .LVU135
+ 495 0100 154B     		ldr	r3, .L40
+ 496 0102 D96A     		ldr	r1, [r3, #44]
+ 497 0104 21EA0201 		bic	r1, r1, r2
+ 498 0108 D962     		str	r1, [r3, #44]
+ 499              		.loc 2 1047 3 is_stmt 0 view .LVU136
+ 500              	.LBE95:
+ 501              	.LBE94:
+ 246:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 502              		.loc 1 246 13 is_stmt 1 view .LVU137
+ 503              	.LVL25:
+ 504              	.LBB96:
+ 505              	.LBI96:
+ 780:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 506              		.loc 2 780 22 view .LVU138
+ 507              	.LBB97:
+ 782:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 508              		.loc 2 782 3 view .LVU139
+ 509 010a 996A     		ldr	r1, [r3, #40]
+ 510 010c 0A43     		orrs	r2, r2, r1
+ 511 010e 9A62     		str	r2, [r3, #40]
+ 512 0110 A2E7     		b	.L6
+ 513              	.L21:
+ 782:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 514              		.loc 2 782 3 is_stmt 0 view .LVU140
+ 515              	.LBE97:
+ 516              	.LBE96:
+ 255:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableFallingTrig_32_63(EXTI_InitStruct->Line_32_63);
+ 517              		.loc 1 255 13 is_stmt 1 view .LVU141
+ 518              	.LVL26:
+ 519              	.LBB98:
+ 520              	.LBI98:
+ 780:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 521              		.loc 2 780 22 view .LVU142
+ 522              	.LBB99:
+ 782:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 523              		.loc 2 782 3 view .LVU143
+ 524 0112 114B     		ldr	r3, .L40
+ 525 0114 996A     		ldr	r1, [r3, #40]
+ 526 0116 1143     		orrs	r1, r1, r2
+ 527 0118 9962     		str	r1, [r3, #40]
+ 782:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 528              		.loc 2 782 3 is_stmt 0 view .LVU144
+ARM GAS  /tmp/ccUnHqr7.s 			page 35
+
+
+ 529              	.LBE99:
+ 530              	.LBE98:
+ 256:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 531              		.loc 1 256 13 is_stmt 1 view .LVU145
+ 532              	.LVL27:
+ 533              	.LBB100:
+ 534              	.LBI100:
+ 979:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 535              		.loc 2 979 22 view .LVU146
+ 536              	.LBB101:
+ 981:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 537              		.loc 2 981 3 view .LVU147
+ 538 011a D96A     		ldr	r1, [r3, #44]
+ 539 011c 0A43     		orrs	r2, r2, r1
+ 540 011e DA62     		str	r2, [r3, #44]
+ 541 0120 9AE7     		b	.L6
+ 542              	.L20:
+ 981:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 543              		.loc 2 981 3 is_stmt 0 view .LVU148
+ 544              	.LBE101:
+ 545              	.LBE100:
+ 250:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable Falling Trigger on provided Lines */
+ 546              		.loc 1 250 13 is_stmt 1 view .LVU149
+ 547              	.LVL28:
+ 548              	.LBB102:
+ 549              	.LBI102:
+ 849:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 550              		.loc 2 849 22 view .LVU150
+ 551              	.LBB103:
+ 851:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 552              		.loc 2 851 3 view .LVU151
+ 553 0122 0D4B     		ldr	r3, .L40
+ 554 0124 996A     		ldr	r1, [r3, #40]
+ 555 0126 21EA0201 		bic	r1, r1, r2
+ 556 012a 9962     		str	r1, [r3, #40]
+ 851:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 557              		.loc 2 851 3 is_stmt 0 view .LVU152
+ 558              	.LBE103:
+ 559              	.LBE102:
+ 252:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 560              		.loc 1 252 13 is_stmt 1 view .LVU153
+ 561              	.LVL29:
+ 562              	.LBB104:
+ 563              	.LBI104:
+ 979:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 564              		.loc 2 979 22 view .LVU154
+ 565              	.LBB105:
+ 981:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 566              		.loc 2 981 3 view .LVU155
+ 567 012c D96A     		ldr	r1, [r3, #44]
+ 568 012e 0A43     		orrs	r2, r2, r1
+ 569 0130 DA62     		str	r2, [r3, #44]
+ 570 0132 91E7     		b	.L6
+ 571              	.LVL30:
+ 572              	.L38:
+ 981:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 573              		.loc 2 981 3 is_stmt 0 view .LVU156
+ARM GAS  /tmp/ccUnHqr7.s 			page 36
+
+
+ 574              	.LBE105:
+ 575              	.LBE104:
+ 191:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             /* Then Enable Rising Trigger on provided Lines */
+ 576              		.loc 1 191 13 is_stmt 1 view .LVU157
+ 577              	.LBB106:
+ 578              	.LBI106:
+1023:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 579              		.loc 2 1023 22 view .LVU158
+ 580              	.LBB107:
+1025:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 581              		.loc 2 1025 3 view .LVU159
+ 582 0134 084C     		ldr	r4, .L40
+ 583 0136 E568     		ldr	r5, [r4, #12]
+ 584 0138 25EA0105 		bic	r5, r5, r1
+ 585 013c E560     		str	r5, [r4, #12]
+1025:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 586              		.loc 2 1025 3 is_stmt 0 view .LVU160
+ 587              	.LBE107:
+ 588              	.LBE106:
+ 193:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ 589              		.loc 1 193 13 is_stmt 1 view .LVU161
+ 590              	.LVL31:
+ 591              	.LBB108:
+ 592              	.LBI108:
+ 757:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 593              		.loc 2 757 22 view .LVU162
+ 594              	.LBB109:
+ 759:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 595              		.loc 2 759 3 view .LVU163
+ 596 013e A568     		ldr	r5, [r4, #8]
+ 597 0140 2943     		orrs	r1, r1, r5
+ 598 0142 A160     		str	r1, [r4, #8]
+ 599 0144 76E7     		b	.L8
+ 600              	.L14:
+ 759:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 601              		.loc 2 759 3 is_stmt 0 view .LVU164
+ 602              	.LBE109:
+ 603              	.LBE108:
+ 202:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             LL_EXTI_EnableFallingTrig_0_31(EXTI_InitStruct->Line_0_31);
+ 604              		.loc 1 202 13 is_stmt 1 view .LVU165
+ 605              	.LVL32:
+ 606              	.LBB110:
+ 607              	.LBI110:
+ 757:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 608              		.loc 2 757 22 view .LVU166
+ 609              	.LBB111:
+ 759:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 610              		.loc 2 759 3 view .LVU167
+ 611 0146 044C     		ldr	r4, .L40
+ 612 0148 A568     		ldr	r5, [r4, #8]
+ 613 014a 0D43     		orrs	r5, r5, r1
+ 614 014c A560     		str	r5, [r4, #8]
+ 759:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** 
+ 615              		.loc 2 759 3 is_stmt 0 view .LVU168
+ 616              	.LBE111:
+ 617              	.LBE110:
+ 203:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****             break;
+ARM GAS  /tmp/ccUnHqr7.s 			page 37
+
+
+ 618              		.loc 1 203 13 is_stmt 1 view .LVU169
+ 619              	.LVL33:
+ 620              	.LBB112:
+ 621              	.LBI112:
+ 956:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** {
+ 622              		.loc 2 956 22 view .LVU170
+ 623              	.LBB113:
+ 958:Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_exti.h **** }
+ 624              		.loc 2 958 3 view .LVU171
+ 625 014e E568     		ldr	r5, [r4, #12]
+ 626 0150 2943     		orrs	r1, r1, r5
+ 627 0152 E160     		str	r1, [r4, #12]
+ 628 0154 6EE7     		b	.L8
+ 629              	.L41:
+ 630 0156 00BF     		.align	2
+ 631              	.L40:
+ 632 0158 00040140 		.word	1073808384
+ 633              	.LBE113:
+ 634              	.LBE112:
+ 635              		.cfi_endproc
+ 636              	.LFE696:
+ 638              		.section	.text.LL_EXTI_StructInit,"ax",%progbits
+ 639              		.align	1
+ 640              		.p2align 2,,3
+ 641              		.global	LL_EXTI_StructInit
+ 642              		.syntax unified
+ 643              		.thumb
+ 644              		.thumb_func
+ 645              		.fpu fpv4-sp-d16
+ 647              	LL_EXTI_StructInit:
+ 648              	.LVL34:
+ 649              	.LFB697:
+ 280:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** 
+ 281:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** /**
+ 282:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @brief  Set each @ref LL_EXTI_InitTypeDef field to default value.
+ 283:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @param  EXTI_InitStruct Pointer to a @ref LL_EXTI_InitTypeDef structure.
+ 284:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   * @retval None
+ 285:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   */
+ 286:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** void LL_EXTI_StructInit(LL_EXTI_InitTypeDef *EXTI_InitStruct)
+ 287:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** {
+ 650              		.loc 1 287 1 view -0
+ 651              		.cfi_startproc
+ 652              		@ args = 0, pretend = 0, frame = 0
+ 653              		@ frame_needed = 0, uses_anonymous_args = 0
+ 654              		@ link register save eliminated.
+ 288:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   EXTI_InitStruct->Line_0_31      = LL_EXTI_LINE_NONE;
+ 655              		.loc 1 288 3 view .LVU173
+ 289:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 290:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   EXTI_InitStruct->Line_32_63     = LL_EXTI_LINE_NONE;
+ 656              		.loc 1 290 3 view .LVU174
+ 291:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 292:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   EXTI_InitStruct->LineCommand    = DISABLE;
+ 657              		.loc 1 292 3 view .LVU175
+ 293:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   EXTI_InitStruct->Mode           = LL_EXTI_MODE_IT;
+ 658              		.loc 1 293 3 view .LVU176
+ 294:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   EXTI_InitStruct->Trigger        = LL_EXTI_TRIGGER_FALLING;
+ 659              		.loc 1 294 3 view .LVU177
+ARM GAS  /tmp/ccUnHqr7.s 			page 38
+
+
+ 288:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #if defined(EXTI_32_63_SUPPORT)
+ 660              		.loc 1 288 35 is_stmt 0 view .LVU178
+ 661 0000 0023     		movs	r3, #0
+ 662              		.loc 1 294 35 view .LVU179
+ 663 0002 0222     		movs	r2, #2
+ 664 0004 8272     		strb	r2, [r0, #10]
+ 290:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** #endif
+ 665              		.loc 1 290 35 view .LVU180
+ 666 0006 C0E90033 		strd	r3, r3, [r0]
+ 292:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c ****   EXTI_InitStruct->Mode           = LL_EXTI_MODE_IT;
+ 667              		.loc 1 292 35 view .LVU181
+ 668 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 295:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_ll_exti.c **** }
+ 669              		.loc 1 295 1 view .LVU182
+ 670 000c 7047     		bx	lr
+ 671              		.cfi_endproc
+ 672              	.LFE697:
+ 674 000e 00BF     		.text
+ 675              	.Letext0:
+ 676              		.file 3 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 677              		.file 4 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 678              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ 679              		.file 6 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/system_stm32f3xx.h"
+ 680              		.file 7 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 681              		.file 8 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f3xx.h"
+ 682              		.file 9 "/usr/arm-none-eabi/include/sys/lock.h"
+ 683              		.file 10 "/usr/arm-none-eabi/include/sys/_types.h"
+ 684              		.file 11 "/usr/lib/gcc/arm-none-eabi/8.2.0/include/stddef.h"
+ 685              		.file 12 "/usr/arm-none-eabi/include/sys/reent.h"
+ 686              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_dma.h"
+ARM GAS  /tmp/ccUnHqr7.s 			page 39
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f3xx_ll_exti.c
+     /tmp/ccUnHqr7.s:18     .text.LL_EXTI_DeInit:0000000000000000 $t
+     /tmp/ccUnHqr7.s:27     .text.LL_EXTI_DeInit:0000000000000000 LL_EXTI_DeInit
+     /tmp/ccUnHqr7.s:94     .text.LL_EXTI_DeInit:0000000000000030 $d
+     /tmp/ccUnHqr7.s:100    .text.LL_EXTI_Init:0000000000000000 $t
+     /tmp/ccUnHqr7.s:108    .text.LL_EXTI_Init:0000000000000000 LL_EXTI_Init
+     /tmp/ccUnHqr7.s:632    .text.LL_EXTI_Init:0000000000000158 $d
+     /tmp/ccUnHqr7.s:639    .text.LL_EXTI_StructInit:0000000000000000 $t
+     /tmp/ccUnHqr7.s:647    .text.LL_EXTI_StructInit:0000000000000000 LL_EXTI_StructInit
+
+NO UNDEFINED SYMBOLS

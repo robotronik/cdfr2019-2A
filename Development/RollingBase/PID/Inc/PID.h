@@ -1,6 +1,8 @@
 #ifndef PID_H
 #define PID_H
 
+#include "Utils.h"
+
 typedef struct
 {
     float kp;
@@ -12,43 +14,49 @@ typedef struct
 {
     CORRECTOR_PARAMETERS correctorValues;
     int errorGap[3];
-    int previousVoltage;
-    int newVoltage;
+    int current;
+    int goal;
 }PID_VALUE;
 
-#define InitializationPid(pid)\
+#define InitializationPid(pid, value, newKp, newKi, newKd)\
 {\
     int i;\
     \
     for(i = 0; i<3; i++)\
     {\
-    pid.error = 0;\
+    pid.errorGap[i] = 0;\
     }\
     \
-    pid.previousVoltage = 0;\
-    pid.newVoltage = 0;\
-    pid.correctorValues.kp = 0;\
-    pid.correctorValues.kd = 0;\
-    pid.correctorValues.ki = 0;\
+    pid.current = 0;\
+    pid.goal = value;\
+    pid.correctorValues.kp = newKp;\
+    pid.correctorValues.kd = newKd;\
+    pid.correctorValues.ki = newKi;\
 }\
 
 #define PCalculation(pid)\
 {\
-    pid.newVoltage += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]);\
+    pid.current += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]);\
 }\
 
 #define ICalculation(pid, T)\
 {\
-    pid.newVoltage += pid.correctorValues.ki*pid.errorGap[0]*T;\
+    pid.current += pid.correctorValues.ki*pid.errorGap[0]*T;\
 }\
 
 #define DCalculation(pid, T)\
 {\
-    pid.newVoltage += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]*2 + pid.errorGap[2]);\
+    pid.current += pid.correctorValues.kp*(pid.errorGap[0] - pid.errorGap[1]*2 + pid.errorGap[2]);\
 }\
 
-#define NewVoltageCalculation(pid, T)\
+#define FinalValueCalculation(pid, T, currentValue)\
 {\
+    pid.errorGap[2] = 0;\
+    Swap(pid.errorGap[2],pid.errorGap[1])\
+    Swap(pid.errorGap[1],pid.errorGap[0])\
+    Swap(pid.current, pid.goal)\
+    pid.current = currentValue;\
+    pid.errorGap[0] = pid.goal - pid.current;\
     PCalculation(pid)\
     ICalculation(pid, T)\
     DCalculation(pid, T)\

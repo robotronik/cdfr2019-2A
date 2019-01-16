@@ -38,19 +38,27 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32f4xx_hal.h"
+#include "stm32f3xx_hal.h"
+#include "dma.h"
+#include "i2c.h"
+#include "tim.h"
 #include "usart.h"
+#include "wwdg.h"
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "motor.h"
+#include "odometry.h"
+#include "PID.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+Odometry odometry;
+PID_VALUE pidValSum;
+PID_VALUE pidValDiff;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,6 +81,34 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+  int sumGoal = 0;
+  int diffGoal = 0;
+  int sum = 0;
+  int diff = 0;
+  int Te =0.01; 
+  InitializationPid(pidValSum, sumGoal, 0.1, 0.1, 0.1);
+  InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+  init_odometry(&odometry,&htim2,&htim1,&htim15);
+  /**************************************************/
+  /*            Motors Init                         */
+  /**************************************************/
+  //Init variable used to reconfigure PWM
+  TIM_OC_InitTypeDef sConfigOC;
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+
+  //PWM Start
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);//EN_2
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);//EN_1
+
+  //Direction init : forward
+  HAL_GPIO_WritePin(DIR_R_GPIO_Port, DIR_R_Pin, 1);
+  HAL_GPIO_WritePin(DIR_L_GPIO_Port, DIR_L_Pin, 0);
+
+  //Enable : stop
+  DRIVE_MOTOR_R(0);//encoder2 forward positive positive voltage
+  DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
 
   /* USER CODE END 1 */
 
@@ -94,7 +130,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
+  MX_I2C1_Init();
+  MX_TIM1_Init();
+  MX_TIM2_Init();
   MX_USART2_UART_Init();
+  MX_TIM3_Init();
+  MX_TIM15_Init();
+  MX_WWDG_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -103,11 +146,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+   sum = odometry.encoder_l.steps + odometry.encoder_r.steps;
+   diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
 
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-
+  FinalValueCalculation(pidValDiff, Te, sum);
+  FinalValueCalculation(pidValSum, Te, diff);
+  DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+  DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+  HAL_Delay(Te);
   }
   /* USER CODE END 3 */
 
@@ -122,12 +171,7 @@ void SystemClock_Config(void)
 
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
-
-    /**Configure the main internal regulator output voltage 
-    */
-  __HAL_RCC_PWR_CLK_ENABLE();
-
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+  RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
     /**Initializes the CPU, AHB and APB busses clocks 
     */
@@ -136,10 +180,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSICalibrationValue = 16;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 16;
-  RCC_OscInitStruct.PLL.PLLN = 336;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
-  RCC_OscInitStruct.PLL.PLLQ = 7;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
@@ -155,6 +196,14 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_TIM1;
+  PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+  PeriphClkInit.Tim1ClockSelection = RCC_TIM1CLK_HCLK;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
