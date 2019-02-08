@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Motor_Card-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -14,13 +15,27 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
+L Motor_Card-rescue:+3.3V- #PWR?
+U 1 1 5962E5EC
+P 10425 2500
+AR Path="/5962E5EC" Ref="#PWR?"  Part="1" 
+AR Path="/59613F6F/5962E5EC" Ref="#PWR061"  Part="1" 
+F 0 "#PWR061" H 10425 2350 50  0001 C CNN
+F 1 "+3.3V" H 10425 2640 50  0000 C CNN
+F 2 "" H 10425 2500 50  0001 C CNN
+F 3 "" H 10425 2500 50  0001 C CNN
+	1    10425 2500
+	1    0    0    -1  
+$EndComp
+$Comp
 L 2:B_Plug_5mm U11
 U 1 1 5962E6CD
 P 2200 2150
 F 0 "U11" H 1675 2125 60  0000 C CNN
 F 1 "B_Plug_5mm" H 1675 2225 60  0000 C CNN
-F 2 "B plug:B plug 5mm" H 2200 2150 60  0001 C CNN
+F 2 "B plug:Bplug-5mm" H 2200 2150 60  0001 C CNN
 F 3 "" H 2200 2150 60  0000 C CNN
+F 4 "Plein au club" H 0   0   50  0001 C CNN "RS-1"
 	1    2200 2150
 	1    0    0    -1  
 $EndComp
@@ -40,9 +55,10 @@ L Device:Fuse F2
 U 1 1 5962E74B
 P 3025 2100
 F 0 "F2" V 3105 2100 50  0000 C CNN
-F 1 "Fuse" V 2950 2100 50  0000 C CNN
+F 1 "Fuse_Num" V 2950 2100 50  0000 C CNN
 F 2 "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2955 2100 50  0001 C CNN
 F 3 "" H 3025 2100 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mccfb1206ttt-4/fusible-4a-action-lente-1206/dp/2850033?st=Fusible%204A%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    3025 2100
 	0    1    1    0   
 $EndComp
@@ -52,8 +68,9 @@ U 1 1 5962E7D0
 P 3275 2300
 F 0 "D6" H 3275 2400 50  0000 C CNN
 F 1 "D_10A" H 3275 2200 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA_Handsoldering" H 3275 2300 50  0001 C CNN
+F 2 "Diode_SMD:D_SMA_Handsoldering" H 3275 2300 50  0001 C CNN
 F 3 "" H 3275 2300 50  0001 C CNN
+F 4 "https://fr.farnell.com/taiwan-semiconductor/rs1al/diode-fast-sma-gp-0-8a-50v/dp/1559132" H 0   0   50  0001 C CNN "RS-1"
 	1    3275 2300
 	0    1    1    0   
 $EndComp
@@ -116,20 +133,22 @@ U 1 1 5962EDF3
 P 7000 2550
 F 0 "U13" H 7000 2550 50  0000 C CNN
 F 1 "LM317_SOT223" H 7050 2300 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-223-3Lead_TabPin2" H 7000 2550 50  0001 C CNN
-F 3 "" H 7000 2550 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 7000 2550 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/slvs044x/slvs044x.pdf" H 7000 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/texas-instruments/lm317aemp-nopb/regulateur-lineaire-adj-cms/dp/1469084" H 0   0   50  0001 C CNN "RS-1"
 	1    7000 2550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Regulator_Linear:LM317_3PinPackage U14
 U 1 1 5962EF34
-P 9600 2550
-F 0 "U14" H 9600 2550 50  0000 C CNN
-F 1 "LM317_SOT223" H 9650 2300 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-223-3Lead_TabPin2" H 9600 2550 50  0001 C CNN
-F 3 "" H 9600 2550 50  0001 C CNN
-	1    9600 2550
+P 9625 2550
+F 0 "U14" H 9625 2550 50  0000 C CNN
+F 1 "LM317_SOT223" H 9675 2300 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 9625 2550 50  0001 C CNN
+F 3 "" H 9625 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/texas-instruments/lm317aemp-nopb/regulateur-lineaire-adj-cms/dp/1469084" H 0   0   50  0001 C CNN "RS-1"
+	1    9625 2550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -139,9 +158,9 @@ Wire Wire Line
 Wire Wire Line
 	7900 2450 7900 2550
 Wire Wire Line
-	9000 2500 9000 2550
+	9025 2500 9025 2550
 Wire Wire Line
-	10400 2500 10400 2550
+	10425 2500 10425 2550
 $Comp
 L Device:R R7
 U 1 1 5962F28F
@@ -150,6 +169,7 @@ F 0 "R7" V 7080 3350 50  0000 C CNN
 F 1 "820" V 7000 3350 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6930 3350 50  0001 C CNN
 F 3 "" H 7000 3350 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/crcw1206820rfkea/res-couche-epaisse-820r-1-0-25w/dp/1470029?st=Résistance%20820ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    7000 3350
 	1    0    0    -1  
 $EndComp
@@ -161,29 +181,32 @@ F 0 "R8" V 7430 3150 50  0000 C CNN
 F 1 "270" V 7350 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 7280 3150 50  0001 C CNN
 F 3 "" H 7350 3150 50  0001 C CNN
+F 4 "https://fr.farnell.com/tt-electronics-welwyn/wcr1206-270rfi/res-couche-epaisse-270r-1-0-25w/dp/1100175?st=Résistance%20270ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    7350 3150
 	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R10
 U 1 1 5962F32D
-P 9600 3400
-F 0 "R10" V 9680 3400 50  0000 C CNN
-F 1 "370" V 9600 3400 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 9530 3400 50  0001 C CNN
-F 3 "" H 9600 3400 50  0001 C CNN
-	1    9600 3400
+P 9625 3400
+F 0 "R10" V 9705 3400 50  0000 C CNN
+F 1 "370" V 9625 3400 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 9555 3400 50  0001 C CNN
+F 3 "" H 9625 3400 50  0001 C CNN
+F 4 "https://fr.farnell.com/panasonic-electronic-components/erj8enf3740v/res-couche-epaisse-374r-1-0-25w/dp/2307664?st=Résistance%20370ohm%201206" H 0   0   50  0001 C CNN "RS-1"
+	1    9625 3400
 	-1   0    0    1   
 $EndComp
 $Comp
 L Device:R R11
 U 1 1 5962F372
-P 9950 3200
-F 0 "R11" V 10030 3200 50  0000 C CNN
-F 1 "220" V 9950 3200 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 9880 3200 50  0001 C CNN
-F 3 "" H 9950 3200 50  0001 C CNN
-	1    9950 3200
+P 9975 3200
+F 0 "R11" V 10055 3200 50  0000 C CNN
+F 1 "220" V 9975 3200 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 9905 3200 50  0001 C CNN
+F 3 "" H 9975 3200 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mcwr12x2200ftl/res-couche-epaisse-220r-1-0-25w/dp/2447486?st=Résistance%20220ohm%201206" H 0   0   50  0001 C CNN "RS-1"
+	1    9975 3200
 	0    1    1    0   
 $EndComp
 $Comp
@@ -200,12 +223,12 @@ $EndComp
 $Comp
 L power:GND #PWR060
 U 1 1 5962F3F1
-P 9600 3650
-F 0 "#PWR060" H 9600 3400 50  0001 C CNN
-F 1 "GND" H 9600 3500 50  0000 C CNN
-F 2 "" H 9600 3650 50  0001 C CNN
-F 3 "" H 9600 3650 50  0001 C CNN
-	1    9600 3650
+P 9625 3650
+F 0 "#PWR060" H 9625 3400 50  0001 C CNN
+F 1 "GND" H 9625 3500 50  0000 C CNN
+F 2 "" H 9625 3650 50  0001 C CNN
+F 3 "" H 9625 3650 50  0001 C CNN
+	1    9625 3650
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -220,17 +243,17 @@ Wire Wire Line
 Wire Wire Line
 	7650 3150 7650 2550
 Wire Wire Line
-	9600 3250 9600 3200
+	9625 3250 9625 3200
 Wire Wire Line
-	9600 3650 9600 3550
+	9625 3650 9625 3550
 Wire Wire Line
-	9800 3200 9600 3200
-Connection ~ 9600 3200
+	9825 3200 9625 3200
+Connection ~ 9625 3200
 Wire Wire Line
-	10100 3200 10250 3200
+	10125 3200 10275 3200
 Wire Wire Line
-	10250 3200 10250 2550
-Connection ~ 10250 2550
+	10275 3200 10275 2550
+Connection ~ 10275 2550
 $Comp
 L Device:R R6
 U 1 1 59630075
@@ -239,6 +262,7 @@ F 0 "R6" V 4305 2100 50  0000 C CNN
 F 1 "2k" V 4225 2100 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 4155 2100 50  0001 C CNN
 F 3 "" H 4225 2100 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mcwr12x2001ftl/res-couche-epaisse-2k-1-0-25w/dp/2447495?st=Résistance%202k%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    4225 2100
 	0    1    1    0   
 $EndComp
@@ -250,18 +274,20 @@ F 0 "R9" V 8230 2550 50  0000 C CNN
 F 1 "470" V 8150 2550 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8080 2550 50  0001 C CNN
 F 3 "" H 8150 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mchp06w2f4700t5e/res-couche-epaisse-470r-1-0-5w/dp/1576624?st=Résistance%20470ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    8150 2550
 	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R12
 U 1 1 596302DA
-P 10600 2550
-F 0 "R12" V 10680 2550 50  0000 C CNN
-F 1 "470" V 10600 2550 50  0000 C CNN
-F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 10530 2550 50  0001 C CNN
-F 3 "" H 10600 2550 50  0001 C CNN
-	1    10600 2550
+P 10625 2550
+F 0 "R12" V 10705 2550 50  0000 C CNN
+F 1 "470" V 10625 2550 50  0000 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 10555 2550 50  0001 C CNN
+F 3 "" H 10625 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mchp06w2f4700t5e/res-couche-epaisse-470r-1-0-5w/dp/1576624?st=Résistance%20470ohm%201206" H 0   0   50  0001 C CNN "RS-1"
+	1    10625 2550
 	0    1    1    0   
 $EndComp
 $Comp
@@ -270,20 +296,22 @@ U 1 1 59630349
 P 8400 2750
 F 0 "D10" H 8400 2850 50  0000 C CNN
 F 1 "LED_5V" H 8400 2575 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 8400 2750 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 8400 2750 50  0001 C CNN
 F 3 "" H 8400 2750 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    8400 2750
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:LED_ALT D11
 U 1 1 59630393
-P 10800 2800
-F 0 "D11" H 10800 2900 50  0000 C CNN
-F 1 "LED_3.3V" H 10800 2650 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 10800 2800 50  0001 C CNN
-F 3 "" H 10800 2800 50  0001 C CNN
-	1    10800 2800
+P 10825 2800
+F 0 "D11" H 10825 2900 50  0000 C CNN
+F 1 "LED_3.3V" H 10825 2650 50  0000 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 10825 2800 50  0001 C CNN
+F 3 "" H 10825 2800 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
+	1    10825 2800
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -292,8 +320,9 @@ U 1 1 59630415
 P 4475 2300
 F 0 "D8" H 4475 2400 50  0000 C CNN
 F 1 "LED_VCC" H 4475 2100 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 4475 2300 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 4475 2300 50  0001 C CNN
 F 3 "" H 4475 2300 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    4475 2300
 	0    -1   -1   0   
 $EndComp
@@ -322,21 +351,21 @@ $EndComp
 $Comp
 L power:GND #PWR063
 U 1 1 596306A0
-P 10800 3150
-F 0 "#PWR063" H 10800 2900 50  0001 C CNN
-F 1 "GND" H 10800 3000 50  0000 C CNN
-F 2 "" H 10800 3150 50  0001 C CNN
-F 3 "" H 10800 3150 50  0001 C CNN
-	1    10800 3150
+P 10825 3150
+F 0 "#PWR063" H 10825 2900 50  0001 C CNN
+F 1 "GND" H 10825 3000 50  0000 C CNN
+F 2 "" H 10825 3150 50  0001 C CNN
+F 3 "" H 10825 3150 50  0001 C CNN
+	1    10825 3150
 	1    0    0    -1  
 $EndComp
-Connection ~ 10400 2550
+Connection ~ 10425 2550
 Wire Wire Line
-	10750 2550 10800 2550
+	10775 2550 10825 2550
 Wire Wire Line
-	10800 2550 10800 2650
+	10825 2550 10825 2650
 Wire Wire Line
-	10800 2950 10800 3150
+	10825 2950 10825 3150
 Connection ~ 7900 2550
 Wire Wire Line
 	8300 2550 8400 2550
@@ -358,18 +387,20 @@ F 0 "C7" H 7925 3050 50  0000 L CNN
 F 1 "10u" H 7925 2850 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 7938 2800 50  0001 C CNN
 F 3 "" H 7900 2950 50  0001 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    7900 2950
 	1    0    0    -1  
 $EndComp
 $Comp
 L Device:C C8
 U 1 1 5962624A
-P 10400 2900
-F 0 "C8" H 10425 3000 50  0000 L CNN
-F 1 "10u" H 10425 2800 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 10438 2750 50  0001 C CNN
-F 3 "" H 10400 2900 50  0001 C CNN
-	1    10400 2900
+P 10425 2900
+F 0 "C8" H 10450 3000 50  0000 L CNN
+F 1 "10u" H 10450 2800 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 10463 2750 50  0001 C CNN
+F 3 "" H 10425 2900 50  0001 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
+	1    10425 2900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -386,18 +417,18 @@ $EndComp
 $Comp
 L power:GND #PWR062
 U 1 1 5962633A
-P 10400 3400
-F 0 "#PWR062" H 10400 3150 50  0001 C CNN
-F 1 "GND" H 10400 3250 50  0000 C CNN
-F 2 "" H 10400 3400 50  0001 C CNN
-F 3 "" H 10400 3400 50  0001 C CNN
-	1    10400 3400
+P 10425 3400
+F 0 "#PWR062" H 10425 3150 50  0001 C CNN
+F 1 "GND" H 10425 3250 50  0000 C CNN
+F 2 "" H 10425 3400 50  0001 C CNN
+F 3 "" H 10425 3400 50  0001 C CNN
+	1    10425 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	7900 3300 7900 3100
 Wire Wire Line
-	10400 3050 10400 3400
+	10425 3050 10425 3400
 $Comp
 L Device:C C5
 U 1 1 596270DD
@@ -406,6 +437,7 @@ F 0 "C5" H 3850 2400 50  0000 L CNN
 F 1 "100n" H 3850 2200 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3863 2150 50  0001 C CNN
 F 3 "" H 3825 2300 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/vj1206y104kxxpw1bc/condensateur-0-1-f-25v-10-x7r/dp/2896646?st=Capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    3825 2300
 	1    0    0    -1  
 $EndComp
@@ -417,6 +449,7 @@ F 0 "C3" H 3600 2400 50  0000 L CNN
 F 1 "100u" H 3475 2200 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 3613 2150 50  0001 C CNN
 F 3 "" H 3575 2300 50  0001 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    3575 2300
 	1    0    0    -1  
 $EndComp
@@ -444,8 +477,10 @@ U 1 1 596A9627
 P 6425 1450
 F 0 "J3" H 6425 1600 50  0000 C CNN
 F 1 "FAN" V 6525 1450 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 6425 1450 50  0001 C CNN
+F 2 "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical" H 6425 1450 50  0001 C CNN
 F 3 "" H 6425 1450 50  0001 C CNN
+F 4 "https://fr.rs-online.com/web/p/embases-de-circuit-imprime/1732916/" H 0   0   50  0001 C CNN "RS-1"
+F 5 "https://fr.rs-online.com/web/p/boitier-pour-connecteur-ci/2964934/" H 0   0   50  0001 C CNN "RS-2"
 	1    6425 1450
 	1    0    0    -1  
 $EndComp
@@ -472,8 +507,9 @@ U 1 1 5A34421A
 P 2200 3375
 F 0 "U12" H 1675 3350 60  0000 C CNN
 F 1 "B_Plug_5mm" H 1650 3450 60  0000 C CNN
-F 2 "B plug:B plug 5mm" H 2200 3375 60  0001 C CNN
+F 2 "B plug:Bplug-5mm" H 2200 3375 60  0001 C CNN
 F 3 "" H 2200 3375 60  0000 C CNN
+F 4 "Plein au club" H 0   0   50  0001 C CNN "RS-1"
 	1    2200 3375
 	1    0    0    -1  
 $EndComp
@@ -482,9 +518,10 @@ L Device:Fuse F1
 U 1 1 5A3442DC
 P 3000 3325
 F 0 "F1" V 3080 3325 50  0000 C CNN
-F 1 "Fuse" V 2925 3325 50  0000 C CNN
+F 1 "Fuse_Puiss" V 2925 3325 50  0000 C CNN
 F 2 "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2930 3325 50  0001 C CNN
 F 3 "" H 3000 3325 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mccfb1206ttt-6/fusible-6a-action-lente-1206/dp/2850036RL" H 0   0   50  0001 C CNN "RS-1"
 	1    3000 3325
 	0    1    1    0   
 $EndComp
@@ -494,8 +531,9 @@ U 1 1 5A344361
 P 3275 3575
 F 0 "D7" H 3275 3675 50  0000 C CNN
 F 1 "D_10A" H 3275 3475 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA_Handsoldering" H 3275 3575 50  0001 C CNN
+F 2 "Diode_SMD:D_SMA_Handsoldering" H 3275 3575 50  0001 C CNN
 F 3 "" H 3275 3575 50  0000 C CNN
+F 4 "https://fr.farnell.com/taiwan-semiconductor/rs1al/diode-fast-sma-gp-0-8a-50v/dp/1559132" H 0   0   50  0001 C CNN "RS-1"
 	1    3275 3575
 	0    1    1    0   
 $EndComp
@@ -507,6 +545,7 @@ F 0 "C6" H 3900 3725 50  0000 L CNN
 F 1 "100n" H 3900 3525 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3913 3475 50  0001 C CNN
 F 3 "" H 3875 3625 50  0000 C CNN
+F 4 "https://fr.farnell.com/vishay/vj1206y104kxxpw1bc/condensateur-0-1-f-25v-10-x7r/dp/2896646?st=Capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    3875 3625
 	1    0    0    -1  
 $EndComp
@@ -518,6 +557,7 @@ F 0 "C4" H 3650 3725 50  0000 L CNN
 F 1 "100u" H 3525 3525 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 3663 3475 50  0001 C CNN
 F 3 "" H 3625 3625 50  0000 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    3625 3625
 	1    0    0    -1  
 $EndComp
@@ -529,6 +569,7 @@ F 0 "R5" V 4255 3325 50  0000 C CNN
 F 1 "2k" V 4175 3325 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 4105 3325 50  0001 C CNN
 F 3 "" H 4175 3325 50  0000 C CNN
+F 4 "https://fr.farnell.com/multicomp/mcwr12x2001ftl/res-couche-epaisse-2k-1-0-25w/dp/2447495?st=Résistance%202k%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    4175 3325
 	0    1    1    0   
 $EndComp
@@ -538,8 +579,9 @@ U 1 1 5A34463F
 P 4475 3575
 F 0 "D9" H 4475 3675 50  0000 C CNN
 F 1 "LED_ALT" H 4475 3475 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 4475 3575 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 4475 3575 50  0001 C CNN
 F 3 "" H 4475 3575 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    4475 3575
 	0    -1   -1   0   
 $EndComp
@@ -600,11 +642,11 @@ Wire Wire Line
 Wire Wire Line
 	2450 2400 2450 2450
 Wire Wire Line
-	10250 2550 10400 2550
+	10275 2550 10425 2550
 Wire Wire Line
-	10400 2550 10400 2750
+	10425 2550 10425 2750
 Wire Wire Line
-	10400 2550 10450 2550
+	10425 2550 10475 2550
 Wire Wire Line
 	7900 2550 7900 2800
 Wire Wire Line
@@ -637,11 +679,11 @@ Connection ~ 7650 2550
 Wire Wire Line
 	7000 2850 7000 3150
 Wire Wire Line
-	9900 2550 10250 2550
+	9925 2550 10275 2550
 Wire Wire Line
-	9000 2550 9300 2550
+	9025 2550 9325 2550
 Wire Wire Line
-	9600 2850 9600 3200
+	9625 2850 9625 3200
 Wire Wire Line
 	3275 2100 3575 2100
 Text Label 2325 2100 0    50   ~ 0
@@ -699,12 +741,12 @@ $EndComp
 $Comp
 L power:+10V #PWR058
 U 1 1 5C206EB6
-P 9000 2500
-F 0 "#PWR058" H 9000 2350 50  0001 C CNN
-F 1 "+10V" H 9015 2673 50  0000 C CNN
-F 2 "" H 9000 2500 50  0001 C CNN
-F 3 "" H 9000 2500 50  0001 C CNN
-	1    9000 2500
+P 9025 2500
+F 0 "#PWR058" H 9025 2350 50  0001 C CNN
+F 1 "+10V" H 9040 2673 50  0000 C CNN
+F 2 "" H 9025 2500 50  0001 C CNN
+F 3 "" H 9025 2500 50  0001 C CNN
+	1    9025 2500
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -715,6 +757,7 @@ F 0 "Cin_1" H 6350 2800 50  0000 L CNN
 F 1 "0,1u" H 6300 2600 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6588 2550 50  0001 C CNN
 F 3 "~" H 6550 2700 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/vj1206y104kxxpw1bc/condensateur-0-1-f-25v-10-x7r/dp/2896646?st=capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    6550 2700
 	1    0    0    -1  
 $EndComp
@@ -735,23 +778,24 @@ Vout = Vref(1 + R2/R1) avec Vref = 1,25V
 $Comp
 L Device:C Cin_2
 U 1 1 5C24DAB9
-P 9000 2700
-F 0 "Cin_2" H 8800 2800 50  0000 L CNN
-F 1 "0,1u" H 8750 2600 50  0000 L CNN
-F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 9038 2550 50  0001 C CNN
-F 3 "~" H 9000 2700 50  0001 C CNN
-	1    9000 2700
+P 9025 2700
+F 0 "Cin_2" H 8825 2800 50  0000 L CNN
+F 1 "0,1u" H 8775 2600 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 9063 2550 50  0001 C CNN
+F 3 "~" H 9025 2700 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/vj1206y104kxxpw1bc/condensateur-0-1-f-25v-10-x7r/dp/2896646?st=capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
+	1    9025 2700
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR059
 U 1 1 5C24DAC0
-P 9000 2850
-F 0 "#PWR059" H 9000 2600 50  0001 C CNN
-F 1 "GND" H 9000 2700 50  0000 C CNN
-F 2 "" H 9000 2850 50  0001 C CNN
-F 3 "" H 9000 2850 50  0001 C CNN
-	1    9000 2850
+P 9025 2850
+F 0 "#PWR059" H 9025 2600 50  0001 C CNN
+F 1 "GND" H 9025 2700 50  0000 C CNN
+F 2 "" H 9025 2850 50  0001 C CNN
+F 3 "" H 9025 2850 50  0001 C CNN
+	1    9025 2850
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -805,16 +849,4 @@ Wire Wire Line
 Connection ~ 2500 3550
 Wire Wire Line
 	2500 3550 2500 3575
-$Comp
-L power:+3V3 #PWR?
-U 1 1 5C54A8A0
-P 10400 2500
-F 0 "#PWR?" H 10400 2350 50  0001 C CNN
-F 1 "+3V3" H 10415 2673 50  0000 C CNN
-F 2 "" H 10400 2500 50  0001 C CNN
-F 3 "" H 10400 2500 50  0001 C CNN
-	1    10400 2500
-	1    0    0    -1  
-$EndComp
-Connection ~ 9000 2550
 $EndSCHEMATC
