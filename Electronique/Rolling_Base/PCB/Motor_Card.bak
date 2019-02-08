@@ -118,6 +118,7 @@ F 0 "U1" H 2000 4150 60  0000 C CNN
 F 1 "Trou-3" H 2000 4300 60  0000 C CNN
 F 2 "maxon:Trou-3" H 2000 4150 60  0001 C CNN
 F 3 "" H 2000 4150 60  0000 C CNN
+F 4 "C'est un trou de perçage" H 0   0   50  0001 C CNN "RS-1"
 	1    2000 4150
 	1    0    0    -1  
 $EndComp
@@ -129,6 +130,7 @@ F 0 "U2" H 2000 4400 60  0000 C CNN
 F 1 "Trou-3" H 2000 4550 60  0000 C CNN
 F 2 "maxon:Trou-3" H 2000 4400 60  0001 C CNN
 F 3 "" H 2000 4400 60  0000 C CNN
+F 4 "C'est un trou de perçage" H 0   0   50  0001 C CNN "RS-1"
 	1    2000 4400
 	1    0    0    -1  
 $EndComp
@@ -140,6 +142,7 @@ F 0 "U3" H 2000 4700 60  0000 C CNN
 F 1 "Trou-3" H 2000 4850 60  0000 C CNN
 F 2 "maxon:Trou-3" H 2000 4700 60  0001 C CNN
 F 3 "" H 2000 4700 60  0000 C CNN
+F 4 "C'est un trou de perçage" H 0   0   50  0001 C CNN "RS-1"
 	1    2000 4700
 	1    0    0    -1  
 $EndComp
@@ -151,6 +154,7 @@ F 0 "U4" H 2000 5000 60  0000 C CNN
 F 1 "Trou-3" H 2000 5150 60  0000 C CNN
 F 2 "maxon:Trou-3" H 2000 5000 60  0001 C CNN
 F 3 "" H 2000 5000 60  0000 C CNN
+F 4 "C'est un trou de perçage" H 0   0   50  0001 C CNN "RS-1"
 	1    2000 5000
 	1    0    0    -1  
 $EndComp

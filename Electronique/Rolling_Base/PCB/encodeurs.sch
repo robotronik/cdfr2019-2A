@@ -46,8 +46,10 @@ U 1 1 59C30399
 P 4375 2125
 F 0 "P3" H 4375 2375 50  0000 C CNN
 F 1 "encoder_1" V 4475 2125 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-04_04x2.54mm_Straight" H 4375 2125 50  0001 C CNN
+F 2 "Connector_Molex:Molex_KK-254_AE-6410-04A_1x04_P2.54mm_Vertical" H 4375 2125 50  0001 C CNN
 F 3 "" H 4375 2125 50  0000 C CNN
+F 4 "https://fr.rs-online.com/web/p/embases-de-circuit-imprime/4838483/" H 0   0   50  0001 C CNN "RS-1"
+F 5 "https://fr.rs-online.com/web/p/boitier-pour-connecteur-ci/2964956/" H 0   0   50  0001 C CNN "RS-2"
 	1    4375 2125
 	-1   0    0    -1  
 $EndComp
@@ -99,8 +101,10 @@ U 1 1 5C1AF6AF
 P 4375 4225
 F 0 "P4" H 4375 4475 50  0000 C CNN
 F 1 "encoder_2" V 4475 4225 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-04_04x2.54mm_Straight" H 4375 4225 50  0001 C CNN
+F 2 "Connector_Molex:Molex_KK-254_AE-6410-04A_1x04_P2.54mm_Vertical" H 4375 4225 50  0001 C CNN
 F 3 "" H 4375 4225 50  0000 C CNN
+F 4 "https://fr.rs-online.com/web/p/embases-de-circuit-imprime/4838483/" H 0   0   50  0001 C CNN "RS-1"
+F 5 "https://fr.rs-online.com/web/p/boitier-pour-connecteur-ci/2964956/" H 0   0   50  0001 C CNN "RS-2"
 	1    4375 4225
 	-1   0    0    -1  
 $EndComp
@@ -141,47 +145,51 @@ Ch_B2(+3V3)
 Text Notes 7625 3425 0    50   ~ 0
 Signaux allant vers le STM32f3\n
 $Comp
-L stm32f042k6tx:txb0108 U10
-U 3 1 5C8714C4
+L stm32f042k6tx:txb0108 U9
+U 7 1 5C8714C4
 P 6225 2125
-F 0 "U10" H 6225 2350 50  0000 C CNN
+F 0 "U9" H 6225 2350 50  0000 C CNN
 F 1 "txb0108" H 6225 2259 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 5875 2075 50  0001 C CNN
 F 3 "" H 5875 2075 50  0001 C CNN
-	3    6225 2125
+F 4 "https://fr.farnell.com/texas-instruments/txb0108pwr/ic-translator-8bit-bidirectional/dp/1494945?st=txb0108" H 0   0   50  0001 C CNN "RS-1"
+	7    6225 2125
 	-1   0    0    -1  
 $EndComp
 $Comp
-L stm32f042k6tx:txb0108 U10
-U 4 1 5C871561
+L stm32f042k6tx:txb0108 U9
+U 8 1 5C871561
 P 6225 2900
-F 0 "U10" H 6225 3125 50  0000 C CNN
+F 0 "U9" H 6225 3125 50  0000 C CNN
 F 1 "txb0108" H 6225 3034 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 5875 2850 50  0001 C CNN
 F 3 "" H 5875 2850 50  0001 C CNN
-	4    6225 2900
+F 4 "https://fr.farnell.com/texas-instruments/txb0108pwr/ic-translator-8bit-bidirectional/dp/1494945?st=txb0108" H 0   0   50  0001 C CNN "RS-1"
+	8    6225 2900
 	-1   0    0    -1  
 $EndComp
 $Comp
 L stm32f042k6tx:txb0108 U10
-U 5 1 5C871773
+U 8 1 5C871773
 P 6275 4225
 F 0 "U10" H 6275 4450 50  0000 C CNN
 F 1 "txb0108" H 6275 4359 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 5925 4175 50  0001 C CNN
 F 3 "" H 5925 4175 50  0001 C CNN
-	5    6275 4225
+F 4 "https://fr.farnell.com/texas-instruments/txb0108pwr/ic-translator-8bit-bidirectional/dp/1494945?st=txb0108" H 0   0   50  0001 C CNN "RS-1"
+	8    6275 4225
 	-1   0    0    -1  
 $EndComp
 $Comp
 L stm32f042k6tx:txb0108 U10
-U 6 1 5C87177A
+U 7 1 5C87177A
 P 6275 5000
 F 0 "U10" H 6275 5225 50  0000 C CNN
 F 1 "txb0108" H 6275 5134 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 5925 4950 50  0001 C CNN
 F 3 "" H 5925 4950 50  0001 C CNN
-	6    6275 5000
+F 4 "https://fr.farnell.com/texas-instruments/txb0108pwr/ic-translator-8bit-bidirectional/dp/1494945?st=txb0108" H 0   0   50  0001 C CNN "RS-1"
+	7    6275 5000
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -192,29 +200,30 @@ F 0 "U10" H 6375 5975 50  0000 C CNN
 F 1 "txb0108" H 6375 5884 50  0000 C CNN
 F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 6025 5700 50  0001 C CNN
 F 3 "" H 6025 5700 50  0001 C CNN
+F 4 "https://fr.farnell.com/texas-instruments/txb0108pwr/ic-translator-8bit-bidirectional/dp/1494945?st=txb0108" H 0   0   50  0001 C CNN "RS-1"
 	9    6375 5750
 	-1   0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR069
 U 1 1 5C87199F
-P 5925 5850
-F 0 "#PWR069" H 5925 5600 50  0001 C CNN
-F 1 "GND" H 5925 5700 50  0000 C CNN
-F 2 "" H 5925 5850 50  0001 C CNN
-F 3 "" H 5925 5850 50  0001 C CNN
-	1    5925 5850
+P 5675 6050
+F 0 "#PWR069" H 5675 5800 50  0001 C CNN
+F 1 "GND" H 5675 5900 50  0000 C CNN
+F 2 "" H 5675 6050 50  0001 C CNN
+F 3 "" H 5675 6050 50  0001 C CNN
+	1    5675 6050
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR068
 U 1 1 5C871A47
-P 5925 5750
-F 0 "#PWR068" H 5925 5600 50  0001 C CNN
-F 1 "+5V" H 5925 5890 50  0000 C CNN
-F 2 "" H 5925 5750 50  0001 C CNN
-F 3 "" H 5925 5750 50  0001 C CNN
-	1    5925 5750
+P 5675 5750
+F 0 "#PWR068" H 5675 5600 50  0001 C CNN
+F 1 "+5V" H 5675 5890 50  0000 C CNN
+F 2 "" H 5675 5750 50  0001 C CNN
+F 3 "" H 5675 5750 50  0001 C CNN
+	1    5675 5750
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -254,11 +263,57 @@ Text Notes 6075 1650 0    50   ~ 0
 Text Notes 6025 3750 0    50   ~ 0
 5V -> 3V3
 Wire Wire Line
-	6025 5750 5925 5750
-Wire Wire Line
-	6025 5850 5925 5850
-Wire Wire Line
 	6725 5850 6900 5850
 Wire Wire Line
 	6725 5750 6900 5750
+$Comp
+L Device:C C9
+U 1 1 5C3A9400
+P 5675 5900
+F 0 "C9" H 5450 5950 50  0000 L CNN
+F 1 "0,1u" H 5400 5850 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 5713 5750 50  0001 C CNN
+F 3 "~" H 5675 5900 50  0001 C CNN
+F 4 "https://fr.farnell.com/walsin/1206b104k250ct/cond-0-1-f-25v-10-x7r-1206-bobine/dp/2495574?st=Capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
+	1    5675 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C10
+U 1 1 5C3A943E
+P 7125 5900
+F 0 "C10" H 7240 5946 50  0000 L CNN
+F 1 "0,1u" H 7240 5855 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 7163 5750 50  0001 C CNN
+F 3 "~" H 7125 5900 50  0001 C CNN
+F 4 "https://fr.farnell.com/walsin/1206b104k250ct/cond-0-1-f-25v-10-x7r-1206-bobine/dp/2495574?st=Capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
+	1    7125 5900
+	1    0    0    -1  
+$EndComp
+Connection ~ 7125 5750
+$Comp
+L power:GND #PWR0103
+U 1 1 5C3A9490
+P 7125 6050
+F 0 "#PWR0103" H 7125 5800 50  0001 C CNN
+F 1 "GND" H 7125 5900 50  0000 C CNN
+F 2 "" H 7125 6050 50  0001 C CNN
+F 3 "" H 7125 6050 50  0001 C CNN
+	1    7125 6050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5675 5750 6025 5750
+Connection ~ 5675 5750
+$Comp
+L power:GND #PWR0104
+U 1 1 5C3AAB10
+P 6025 5850
+F 0 "#PWR0104" H 6025 5600 50  0001 C CNN
+F 1 "GND" H 6025 5700 50  0000 C CNN
+F 2 "" H 6025 5850 50  0001 C CNN
+F 3 "" H 6025 5850 50  0001 C CNN
+	1    6025 5850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -33,8 +33,9 @@ U 1 1 5962E6CD
 P 2200 2150
 F 0 "U11" H 1675 2125 60  0000 C CNN
 F 1 "B_Plug_5mm" H 1675 2225 60  0000 C CNN
-F 2 "B plug:B plug 5mm" H 2200 2150 60  0001 C CNN
+F 2 "B plug:Bplug-5mm" H 2200 2150 60  0001 C CNN
 F 3 "" H 2200 2150 60  0000 C CNN
+F 4 "Plein au club" H 0   0   50  0001 C CNN "RS-1"
 	1    2200 2150
 	1    0    0    -1  
 $EndComp
@@ -54,9 +55,10 @@ L Device:Fuse F2
 U 1 1 5962E74B
 P 3025 2100
 F 0 "F2" V 3105 2100 50  0000 C CNN
-F 1 "Fuse" V 2950 2100 50  0000 C CNN
-F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_horiz_SemiClosed_Casing10x25mm" V 2955 2100 50  0001 C CNN
+F 1 "Fuse_Num" V 2950 2100 50  0000 C CNN
+F 2 "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2955 2100 50  0001 C CNN
 F 3 "" H 3025 2100 50  0001 C CNN
+F 4 "https://fr.farnell.com/bourns/sf-1206sp500m-2/fusible-5a-action-retarde/dp/2854417RL" H 0   0   50  0001 C CNN "RS-1"
 	1    3025 2100
 	0    1    1    0   
 $EndComp
@@ -66,8 +68,9 @@ U 1 1 5962E7D0
 P 3275 2300
 F 0 "D6" H 3275 2400 50  0000 C CNN
 F 1 "D_10A" H 3275 2200 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA_Handsoldering" H 3275 2300 50  0001 C CNN
+F 2 "Diode_SMD:D_SMA_Handsoldering" H 3275 2300 50  0001 C CNN
 F 3 "" H 3275 2300 50  0001 C CNN
+F 4 "https://fr.farnell.com/taiwan-semiconductor/rs1al/diode-fast-sma-gp-0-8a-50v/dp/1559132" H 0   0   50  0001 C CNN "RS-1"
 	1    3275 2300
 	0    1    1    0   
 $EndComp
@@ -130,8 +133,9 @@ U 1 1 5962EDF3
 P 7000 2550
 F 0 "U13" H 7000 2550 50  0000 C CNN
 F 1 "LM317_SOT223" H 7050 2300 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-223-3Lead_TabPin2" H 7000 2550 50  0001 C CNN
-F 3 "" H 7000 2550 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 7000 2550 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/slvs044x/slvs044x.pdf" H 7000 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/texas-instruments/lm317aemp-nopb/regulateur-lineaire-adj-cms/dp/1469084" H 0   0   50  0001 C CNN "RS-1"
 	1    7000 2550
 	1    0    0    -1  
 $EndComp
@@ -141,8 +145,9 @@ U 1 1 5962EF34
 P 9625 2550
 F 0 "U14" H 9625 2550 50  0000 C CNN
 F 1 "LM317_SOT223" H 9675 2300 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-223-3Lead_TabPin2" H 9625 2550 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-223-3_TabPin2" H 9625 2550 50  0001 C CNN
 F 3 "" H 9625 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/texas-instruments/lm317aemp-nopb/regulateur-lineaire-adj-cms/dp/1469084" H 0   0   50  0001 C CNN "RS-1"
 	1    9625 2550
 	1    0    0    -1  
 $EndComp
@@ -164,6 +169,7 @@ F 0 "R7" V 7080 3350 50  0000 C CNN
 F 1 "820" V 7000 3350 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 6930 3350 50  0001 C CNN
 F 3 "" H 7000 3350 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/crcw1206820rfkea/res-couche-epaisse-820r-1-0-25w/dp/1470029?st=Résistance%20820ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    7000 3350
 	1    0    0    -1  
 $EndComp
@@ -175,6 +181,7 @@ F 0 "R8" V 7430 3150 50  0000 C CNN
 F 1 "270" V 7350 3150 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 7280 3150 50  0001 C CNN
 F 3 "" H 7350 3150 50  0001 C CNN
+F 4 "https://fr.farnell.com/tt-electronics-welwyn/wcr1206-270rfi/res-couche-epaisse-270r-1-0-25w/dp/1100175?st=Résistance%20270ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    7350 3150
 	0    1    1    0   
 $EndComp
@@ -186,6 +193,7 @@ F 0 "R10" V 9705 3400 50  0000 C CNN
 F 1 "370" V 9625 3400 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 9555 3400 50  0001 C CNN
 F 3 "" H 9625 3400 50  0001 C CNN
+F 4 "https://fr.farnell.com/panasonic-electronic-components/erj8enf3740v/res-couche-epaisse-374r-1-0-25w/dp/2307664?st=Résistance%20370ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    9625 3400
 	-1   0    0    1   
 $EndComp
@@ -197,6 +205,7 @@ F 0 "R11" V 10055 3200 50  0000 C CNN
 F 1 "220" V 9975 3200 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 9905 3200 50  0001 C CNN
 F 3 "" H 9975 3200 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mcwr12x2200ftl/res-couche-epaisse-220r-1-0-25w/dp/2447486?st=Résistance%20220ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    9975 3200
 	0    1    1    0   
 $EndComp
@@ -253,6 +262,7 @@ F 0 "R6" V 4305 2100 50  0000 C CNN
 F 1 "2k" V 4225 2100 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 4155 2100 50  0001 C CNN
 F 3 "" H 4225 2100 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mcwr12x2001ftl/res-couche-epaisse-2k-1-0-25w/dp/2447495?st=Résistance%202k%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    4225 2100
 	0    1    1    0   
 $EndComp
@@ -264,6 +274,7 @@ F 0 "R9" V 8230 2550 50  0000 C CNN
 F 1 "470" V 8150 2550 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 8080 2550 50  0001 C CNN
 F 3 "" H 8150 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mchp06w2f4700t5e/res-couche-epaisse-470r-1-0-5w/dp/1576624?st=Résistance%20470ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    8150 2550
 	0    1    1    0   
 $EndComp
@@ -275,6 +286,7 @@ F 0 "R12" V 10705 2550 50  0000 C CNN
 F 1 "470" V 10625 2550 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 10555 2550 50  0001 C CNN
 F 3 "" H 10625 2550 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mchp06w2f4700t5e/res-couche-epaisse-470r-1-0-5w/dp/1576624?st=Résistance%20470ohm%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    10625 2550
 	0    1    1    0   
 $EndComp
@@ -284,8 +296,9 @@ U 1 1 59630349
 P 8400 2750
 F 0 "D10" H 8400 2850 50  0000 C CNN
 F 1 "LED_5V" H 8400 2575 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 8400 2750 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 8400 2750 50  0001 C CNN
 F 3 "" H 8400 2750 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    8400 2750
 	0    -1   -1   0   
 $EndComp
@@ -295,8 +308,9 @@ U 1 1 59630393
 P 10825 2800
 F 0 "D11" H 10825 2900 50  0000 C CNN
 F 1 "LED_3.3V" H 10825 2650 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 10825 2800 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 10825 2800 50  0001 C CNN
 F 3 "" H 10825 2800 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    10825 2800
 	0    -1   -1   0   
 $EndComp
@@ -306,8 +320,9 @@ U 1 1 59630415
 P 4475 2300
 F 0 "D8" H 4475 2400 50  0000 C CNN
 F 1 "LED_VCC" H 4475 2100 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 4475 2300 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 4475 2300 50  0001 C CNN
 F 3 "" H 4475 2300 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    4475 2300
 	0    -1   -1   0   
 $EndComp
@@ -372,6 +387,7 @@ F 0 "C7" H 7925 3050 50  0000 L CNN
 F 1 "10u" H 7925 2850 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 7938 2800 50  0001 C CNN
 F 3 "" H 7900 2950 50  0001 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    7900 2950
 	1    0    0    -1  
 $EndComp
@@ -383,6 +399,7 @@ F 0 "C8" H 10450 3000 50  0000 L CNN
 F 1 "10u" H 10450 2800 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 10463 2750 50  0001 C CNN
 F 3 "" H 10425 2900 50  0001 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    10425 2900
 	1    0    0    -1  
 $EndComp
@@ -420,6 +437,7 @@ F 0 "C5" H 3850 2400 50  0000 L CNN
 F 1 "100n" H 3850 2200 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3863 2150 50  0001 C CNN
 F 3 "" H 3825 2300 50  0001 C CNN
+F 4 "https://www.mouser.fr/ProductDetail/KEMET/C1206C104M5RAC?qs=sGAEpiMZZMv1SwTN0vukIBGVpjeKpnnG" H 0   0   50  0001 C CNN "RS-1"
 	1    3825 2300
 	1    0    0    -1  
 $EndComp
@@ -431,6 +449,7 @@ F 0 "C3" H 3600 2400 50  0000 L CNN
 F 1 "100u" H 3475 2200 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 3613 2150 50  0001 C CNN
 F 3 "" H 3575 2300 50  0001 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    3575 2300
 	1    0    0    -1  
 $EndComp
@@ -458,8 +477,10 @@ U 1 1 596A9627
 P 6425 1450
 F 0 "J3" H 6425 1600 50  0000 C CNN
 F 1 "FAN" V 6525 1450 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_KK-6410-02_02x2.54mm_Straight" H 6425 1450 50  0001 C CNN
+F 2 "Connector_Molex:Molex_KK-254_AE-6410-02A_1x02_P2.54mm_Vertical" H 6425 1450 50  0001 C CNN
 F 3 "" H 6425 1450 50  0001 C CNN
+F 4 "https://fr.rs-online.com/web/p/embases-de-circuit-imprime/1732916/" H 0   0   50  0001 C CNN "RS-1"
+F 5 "https://fr.rs-online.com/web/p/boitier-pour-connecteur-ci/2964934/" H 0   0   50  0001 C CNN "RS-2"
 	1    6425 1450
 	1    0    0    -1  
 $EndComp
@@ -486,8 +507,9 @@ U 1 1 5A34421A
 P 2200 3375
 F 0 "U12" H 1675 3350 60  0000 C CNN
 F 1 "B_Plug_5mm" H 1650 3450 60  0000 C CNN
-F 2 "B plug:B plug 5mm" H 2200 3375 60  0001 C CNN
+F 2 "B plug:Bplug-5mm" H 2200 3375 60  0001 C CNN
 F 3 "" H 2200 3375 60  0000 C CNN
+F 4 "Plein au club" H 0   0   50  0001 C CNN "RS-1"
 	1    2200 3375
 	1    0    0    -1  
 $EndComp
@@ -496,9 +518,10 @@ L Device:Fuse F1
 U 1 1 5A3442DC
 P 3000 3325
 F 0 "F1" V 3080 3325 50  0000 C CNN
-F 1 "Fuse" V 2925 3325 50  0000 C CNN
-F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_horiz_SemiClosed_Casing10x25mm" V 2930 3325 50  0001 C CNN
+F 1 "Fuse_Puiss" V 2925 3325 50  0000 C CNN
+F 2 "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2930 3325 50  0001 C CNN
 F 3 "" H 3000 3325 50  0001 C CNN
+F 4 "https://fr.farnell.com/multicomp/mccfb1206ttt-6/fusible-6a-action-lente-1206/dp/2850036RL" H 0   0   50  0001 C CNN "RS-1"
 	1    3000 3325
 	0    1    1    0   
 $EndComp
@@ -508,8 +531,9 @@ U 1 1 5A344361
 P 3275 3575
 F 0 "D7" H 3275 3675 50  0000 C CNN
 F 1 "D_10A" H 3275 3475 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA_Handsoldering" H 3275 3575 50  0001 C CNN
+F 2 "Diode_SMD:D_SMA_Handsoldering" H 3275 3575 50  0001 C CNN
 F 3 "" H 3275 3575 50  0000 C CNN
+F 4 "https://fr.farnell.com/taiwan-semiconductor/rs1al/diode-fast-sma-gp-0-8a-50v/dp/1559132" H 0   0   50  0001 C CNN "RS-1"
 	1    3275 3575
 	0    1    1    0   
 $EndComp
@@ -521,6 +545,7 @@ F 0 "C6" H 3900 3725 50  0000 L CNN
 F 1 "100n" H 3900 3525 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3913 3475 50  0001 C CNN
 F 3 "" H 3875 3625 50  0000 C CNN
+F 4 "https://www.mouser.fr/ProductDetail/KEMET/C1206C104M5RAC?qs=sGAEpiMZZMv1SwTN0vukIBGVpjeKpnnG" H 0   0   50  0001 C CNN "RS-1"
 	1    3875 3625
 	1    0    0    -1  
 $EndComp
@@ -532,6 +557,7 @@ F 0 "C4" H 3650 3725 50  0000 L CNN
 F 1 "100u" H 3525 3525 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 3663 3475 50  0001 C CNN
 F 3 "" H 3625 3625 50  0000 C CNN
+F 4 "Plein au Club" H 0   0   50  0001 C CNN "RS-1"
 	1    3625 3625
 	1    0    0    -1  
 $EndComp
@@ -543,6 +569,7 @@ F 0 "R5" V 4255 3325 50  0000 C CNN
 F 1 "2k" V 4175 3325 50  0000 C CNN
 F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 4105 3325 50  0001 C CNN
 F 3 "" H 4175 3325 50  0000 C CNN
+F 4 "https://fr.farnell.com/multicomp/mcwr12x2001ftl/res-couche-epaisse-2k-1-0-25w/dp/2447495?st=Résistance%202k%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    4175 3325
 	0    1    1    0   
 $EndComp
@@ -552,8 +579,9 @@ U 1 1 5A34463F
 P 4475 3575
 F 0 "D9" H 4475 3675 50  0000 C CNN
 F 1 "LED_ALT" H 4475 3475 50  0000 C CNN
-F 2 "Diodes_SMD:D_SMA-SMB_Universal_Handsoldering" H 4475 3575 50  0001 C CNN
+F 2 "LED_SMD:LED_1206_3216Metric" H 4475 3575 50  0001 C CNN
 F 3 "" H 4475 3575 50  0001 C CNN
+F 4 "https://fr.farnell.com/kingbright/kpt-1608lvvbc-d/led-bleue-24mcd-470nm-cms/dp/2610410" H 0   0   50  0001 C CNN "RS-1"
 	1    4475 3575
 	0    -1   -1   0   
 $EndComp
@@ -729,6 +757,7 @@ F 0 "Cin_1" H 6350 2800 50  0000 L CNN
 F 1 "0,1u" H 6300 2600 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 6588 2550 50  0001 C CNN
 F 3 "~" H 6550 2700 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/vj1206y104kxxpw1bc/condensateur-0-1-f-25v-10-x7r/dp/2896646?st=capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    6550 2700
 	1    0    0    -1  
 $EndComp
@@ -754,6 +783,7 @@ F 0 "Cin_2" H 8825 2800 50  0000 L CNN
 F 1 "0,1u" H 8775 2600 50  0000 L CNN
 F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 9063 2550 50  0001 C CNN
 F 3 "~" H 9025 2700 50  0001 C CNN
+F 4 "https://fr.farnell.com/vishay/vj1206y104kxxpw1bc/condensateur-0-1-f-25v-10-x7r/dp/2896646?st=capacité%20100n%201206" H 0   0   50  0001 C CNN "RS-1"
 	1    9025 2700
 	1    0    0    -1  
 $EndComp
