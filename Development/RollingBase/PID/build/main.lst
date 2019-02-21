@@ -1,0 +1,1422 @@
+ARM GAS  /tmp/ccoaZNfM.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SystemClock_Config,"ax",%progbits
+  18              		.align	1
+  19              		.p2align 2,,3
+  20              		.global	SystemClock_Config
+  21              		.arch armv7e-m
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  25              		.fpu fpv4-sp-d16
+  27              	SystemClock_Config:
+  28              	.LFB729:
+  29              		.file 1 "Src/main.c"
+   1:Src/main.c    **** 
+   2:Src/main.c    **** /**
+   3:Src/main.c    ****   ******************************************************************************
+   4:Src/main.c    ****   * @file           : main.c
+   5:Src/main.c    ****   * @brief          : Main program body
+   6:Src/main.c    ****   ******************************************************************************
+   7:Src/main.c    ****   ** This notice applies to any and all portions of this file
+   8:Src/main.c    ****   * that are not between comment pairs USER CODE BEGIN and
+   9:Src/main.c    ****   * USER CODE END. Other portions of this file, whether 
+  10:Src/main.c    ****   * inserted by the user or by software development tools
+  11:Src/main.c    ****   * are owned by their respective copyright owners.
+  12:Src/main.c    ****   *
+  13:Src/main.c    ****   * COPYRIGHT(c) 2018 STMicroelectronics
+  14:Src/main.c    ****   *
+  15:Src/main.c    ****   * Redistribution and use in source and binary forms, with or without modification,
+  16:Src/main.c    ****   * are permitted provided that the following conditions are met:
+  17:Src/main.c    ****   *   1. Redistributions of source code must retain the above copyright notice,
+  18:Src/main.c    ****   *      this list of conditions and the following disclaimer.
+  19:Src/main.c    ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Src/main.c    ****   *      this list of conditions and the following disclaimer in the documentation
+  21:Src/main.c    ****   *      and/or other materials provided with the distribution.
+  22:Src/main.c    ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  23:Src/main.c    ****   *      may be used to endorse or promote products derived from this software
+  24:Src/main.c    ****   *      without specific prior written permission.
+  25:Src/main.c    ****   *
+  26:Src/main.c    ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Src/main.c    ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  28:Src/main.c    ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  29:Src/main.c    ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ARM GAS  /tmp/ccoaZNfM.s 			page 2
+
+
+  30:Src/main.c    ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  31:Src/main.c    ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  32:Src/main.c    ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  33:Src/main.c    ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  34:Src/main.c    ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  35:Src/main.c    ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  36:Src/main.c    ****   *
+  37:Src/main.c    ****   ******************************************************************************
+  38:Src/main.c    ****   */
+  39:Src/main.c    **** /* Includes ------------------------------------------------------------------*/
+  40:Src/main.c    **** #include "main.h"
+  41:Src/main.c    **** #include "stm32f3xx_hal.h"
+  42:Src/main.c    **** #include "dma.h"
+  43:Src/main.c    **** #include "i2c.h"
+  44:Src/main.c    **** #include "tim.h"
+  45:Src/main.c    **** #include "usart.h"
+  46:Src/main.c    **** #include "wwdg.h"
+  47:Src/main.c    **** #include "gpio.h"
+  48:Src/main.c    **** 
+  49:Src/main.c    **** /* USER CODE BEGIN Includes */
+  50:Src/main.c    **** #include "motor.h"
+  51:Src/main.c    **** #include "odometry.h"
+  52:Src/main.c    **** #include "PID.h"
+  53:Src/main.c    **** /* USER CODE END Includes */
+  54:Src/main.c    **** 
+  55:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  56:Src/main.c    **** 
+  57:Src/main.c    **** /* USER CODE BEGIN PV */
+  58:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
+  59:Src/main.c    **** Odometry odometry;
+  60:Src/main.c    **** PID_VALUE pidValSum;
+  61:Src/main.c    **** PID_VALUE pidValDiff;
+  62:Src/main.c    **** /* USER CODE END PV */
+  63:Src/main.c    **** 
+  64:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  65:Src/main.c    **** void SystemClock_Config(void);
+  66:Src/main.c    **** 
+  67:Src/main.c    **** /* USER CODE BEGIN PFP */
+  68:Src/main.c    **** /* Private function prototypes -----------------------------------------------*/
+  69:Src/main.c    **** 
+  70:Src/main.c    **** /* USER CODE END PFP */
+  71:Src/main.c    **** 
+  72:Src/main.c    **** /* USER CODE BEGIN 0 */
+  73:Src/main.c    **** 
+  74:Src/main.c    **** /* USER CODE END 0 */
+  75:Src/main.c    **** 
+  76:Src/main.c    **** /**
+  77:Src/main.c    ****   * @brief  The application entry point.
+  78:Src/main.c    ****   *
+  79:Src/main.c    ****   * @retval None
+  80:Src/main.c    ****   */
+  81:Src/main.c    **** int main(void)
+  82:Src/main.c    **** {
+  83:Src/main.c    ****   /* USER CODE BEGIN 1 */
+  84:Src/main.c    ****   int sumGoal = 0;
+  85:Src/main.c    ****   int diffGoal = 0;
+  86:Src/main.c    ****   int sum = 0;
+ARM GAS  /tmp/ccoaZNfM.s 			page 3
+
+
+  87:Src/main.c    ****   int diff = 0;
+  88:Src/main.c    ****   int Te =0.01; 
+  89:Src/main.c    ****   InitializationPid(pidValSum, sumGoal, 0.1, 0.1, 0.1);
+  90:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+  91:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+  92:Src/main.c    ****   /**************************************************/
+  93:Src/main.c    ****   /*            Motors Init                         */
+  94:Src/main.c    ****   /**************************************************/
+  95:Src/main.c    ****   //Init variable used to reconfigure PWM
+  96:Src/main.c    ****   TIM_OC_InitTypeDef sConfigOC;
+  97:Src/main.c    ****   sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  98:Src/main.c    ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  99:Src/main.c    ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+ 100:Src/main.c    **** 
+ 101:Src/main.c    ****   //PWM Start
+ 102:Src/main.c    ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);//EN_2
+ 103:Src/main.c    ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);//EN_1
+ 104:Src/main.c    **** 
+ 105:Src/main.c    ****   //Direction init : forward
+ 106:Src/main.c    ****   HAL_GPIO_WritePin(DIR_R_GPIO_Port, DIR_R_Pin, 1);
+ 107:Src/main.c    ****   HAL_GPIO_WritePin(DIR_L_GPIO_Port, DIR_L_Pin, 0);
+ 108:Src/main.c    **** 
+ 109:Src/main.c    ****   //Enable : stop
+ 110:Src/main.c    ****   DRIVE_MOTOR_R(0);//encoder2 forward positive positive voltage
+ 111:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 112:Src/main.c    **** 
+ 113:Src/main.c    ****   /* USER CODE END 1 */
+ 114:Src/main.c    **** 
+ 115:Src/main.c    ****   /* MCU Configuration----------------------------------------------------------*/
+ 116:Src/main.c    **** 
+ 117:Src/main.c    ****   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+ 118:Src/main.c    ****   HAL_Init();
+ 119:Src/main.c    **** 
+ 120:Src/main.c    ****   /* USER CODE BEGIN Init */
+ 121:Src/main.c    **** 
+ 122:Src/main.c    ****   /* USER CODE END Init */
+ 123:Src/main.c    **** 
+ 124:Src/main.c    ****   /* Configure the system clock */
+ 125:Src/main.c    ****   SystemClock_Config();
+ 126:Src/main.c    **** 
+ 127:Src/main.c    ****   /* USER CODE BEGIN SysInit */
+ 128:Src/main.c    **** 
+ 129:Src/main.c    ****   /* USER CODE END SysInit */
+ 130:Src/main.c    **** 
+ 131:Src/main.c    ****   /* Initialize all configured peripherals */
+ 132:Src/main.c    ****   MX_GPIO_Init();
+ 133:Src/main.c    ****   MX_DMA_Init();
+ 134:Src/main.c    ****   MX_I2C1_Init();
+ 135:Src/main.c    ****   MX_TIM1_Init();
+ 136:Src/main.c    ****   MX_TIM2_Init();
+ 137:Src/main.c    ****   MX_USART2_UART_Init();
+ 138:Src/main.c    ****   MX_TIM3_Init();
+ 139:Src/main.c    ****   MX_TIM15_Init();
+ 140:Src/main.c    ****   MX_WWDG_Init();
+ 141:Src/main.c    ****   /* USER CODE BEGIN 2 */
+ 142:Src/main.c    **** 
+ 143:Src/main.c    ****   /* USER CODE END 2 */
+ARM GAS  /tmp/ccoaZNfM.s 			page 4
+
+
+ 144:Src/main.c    **** 
+ 145:Src/main.c    ****   /* Infinite loop */
+ 146:Src/main.c    ****   /* USER CODE BEGIN WHILE */
+ 147:Src/main.c    ****   while (1)
+ 148:Src/main.c    ****   {
+ 149:Src/main.c    ****    sum = odometry.encoder_l.steps + odometry.encoder_r.steps;
+ 150:Src/main.c    ****    diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
+ 151:Src/main.c    **** 
+ 152:Src/main.c    ****   /* USER CODE END WHILE */
+ 153:Src/main.c    **** 
+ 154:Src/main.c    ****   /* USER CODE BEGIN 3 */
+ 155:Src/main.c    ****   FinalValueCalculation(pidValDiff, Te, sum);
+ 156:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 157:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 158:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 159:Src/main.c    ****   HAL_Delay(Te);
+ 160:Src/main.c    ****   }
+ 161:Src/main.c    ****   /* USER CODE END 3 */
+ 162:Src/main.c    **** 
+ 163:Src/main.c    **** }
+ 164:Src/main.c    **** 
+ 165:Src/main.c    **** /**
+ 166:Src/main.c    ****   * @brief System Clock Configuration
+ 167:Src/main.c    ****   * @retval None
+ 168:Src/main.c    ****   */
+ 169:Src/main.c    **** void SystemClock_Config(void)
+ 170:Src/main.c    **** {
+  30              		.loc 1 170 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 88
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171:Src/main.c    **** 
+ 172:Src/main.c    ****   RCC_OscInitTypeDef RCC_OscInitStruct;
+  34              		.loc 1 172 3 view .LVU1
+ 173:Src/main.c    ****   RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  35              		.loc 1 173 3 view .LVU2
+ 174:Src/main.c    ****   RCC_PeriphCLKInitTypeDef PeriphClkInit;
+  36              		.loc 1 174 3 view .LVU3
+ 175:Src/main.c    **** 
+ 176:Src/main.c    ****     /**Initializes the CPU, AHB and APB busses clocks 
+ 177:Src/main.c    ****     */
+ 178:Src/main.c    ****   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  37              		.loc 1 178 3 view .LVU4
+ 170:Src/main.c    **** 
+  38              		.loc 1 170 1 is_stmt 0 view .LVU5
+  39 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 20
+  42              		.cfi_offset 4, -20
+  43              		.cfi_offset 5, -16
+  44              		.cfi_offset 6, -12
+  45              		.cfi_offset 7, -8
+  46              		.cfi_offset 14, -4
+  47 0002 97B0     		sub	sp, sp, #92
+  48              	.LCFI1:
+  49              		.cfi_def_cfa_offset 112
+  50              		.loc 1 178 36 view .LVU6
+ARM GAS  /tmp/ccoaZNfM.s 			page 5
+
+
+  51 0004 0224     		movs	r4, #2
+ 179:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  52              		.loc 1 179 30 view .LVU7
+  53 0006 0126     		movs	r6, #1
+  54 0008 1027     		movs	r7, #16
+ 180:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+ 181:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+ 182:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  55              		.loc 1 182 35 view .LVU8
+  56 000a 0022     		movs	r2, #0
+ 183:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
+  57              		.loc 1 183 32 view .LVU9
+  58 000c 4FF46013 		mov	r3, #3670016
+ 184:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  59              		.loc 1 184 7 view .LVU10
+  60 0010 0CA8     		add	r0, sp, #48
+ 178:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  61              		.loc 1 178 36 view .LVU11
+  62 0012 0C94     		str	r4, [sp, #48]
+ 179:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+  63              		.loc 1 179 3 is_stmt 1 view .LVU12
+ 180:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  64              		.loc 1 180 3 view .LVU13
+ 181:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  65              		.loc 1 181 34 is_stmt 0 view .LVU14
+  66 0014 1394     		str	r4, [sp, #76]
+ 179:Src/main.c    ****   RCC_OscInitStruct.HSICalibrationValue = 16;
+  67              		.loc 1 179 30 view .LVU15
+  68 0016 CDE91067 		strd	r6, [sp, #64]
+ 181:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  69              		.loc 1 181 3 is_stmt 1 view .LVU16
+ 182:Src/main.c    ****   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
+  70              		.loc 1 182 3 view .LVU17
+ 183:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  71              		.loc 1 183 32 is_stmt 0 view .LVU18
+  72 001a CDE91423 		strd	r2, r3, [sp, #80]
+  73              		.loc 1 184 3 is_stmt 1 view .LVU19
+  74              		.loc 1 184 7 is_stmt 0 view .LVU20
+  75 001e FFF7FEFF 		bl	HAL_RCC_OscConfig
+  76              	.LVL0:
+  77              		.loc 1 184 6 view .LVU21
+  78 0022 00B1     		cbz	r0, .L2
+  79              	.L3:
+ 185:Src/main.c    ****   {
+ 186:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 187:Src/main.c    ****   }
+ 188:Src/main.c    **** 
+ 189:Src/main.c    ****     /**Initializes the CPU, AHB and APB busses clocks 
+ 190:Src/main.c    ****     */
+ 191:Src/main.c    ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+ 192:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 193:Src/main.c    ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+ 194:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+ 195:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+ 196:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+ 197:Src/main.c    **** 
+ 198:Src/main.c    ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+ARM GAS  /tmp/ccoaZNfM.s 			page 6
+
+
+ 199:Src/main.c    ****   {
+ 200:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 201:Src/main.c    ****   }
+ 202:Src/main.c    **** 
+ 203:Src/main.c    ****   PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C1|RCC_PERIPHCLK_TIM1;
+ 204:Src/main.c    ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+ 205:Src/main.c    ****   PeriphClkInit.Tim1ClockSelection = RCC_TIM1CLK_HCLK;
+ 206:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 207:Src/main.c    ****   {
+ 208:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
+ 209:Src/main.c    ****   }
+ 210:Src/main.c    **** 
+ 211:Src/main.c    ****     /**Configure the Systick interrupt time 
+ 212:Src/main.c    ****     */
+ 213:Src/main.c    ****   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+ 214:Src/main.c    **** 
+ 215:Src/main.c    ****     /**Configure the Systick 
+ 216:Src/main.c    ****     */
+ 217:Src/main.c    ****   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+ 218:Src/main.c    **** 
+ 219:Src/main.c    ****   /* SysTick_IRQn interrupt configuration */
+ 220:Src/main.c    ****   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+ 221:Src/main.c    **** }
+ 222:Src/main.c    **** 
+ 223:Src/main.c    **** /* USER CODE BEGIN 4 */
+ 224:Src/main.c    **** 
+ 225:Src/main.c    **** /* USER CODE END 4 */
+ 226:Src/main.c    **** 
+ 227:Src/main.c    **** /**
+ 228:Src/main.c    ****   * @brief  This function is executed in case of error occurrence.
+ 229:Src/main.c    ****   * @param  file: The file name as string.
+ 230:Src/main.c    ****   * @param  line: The line in file as a number.
+ 231:Src/main.c    ****   * @retval None
+ 232:Src/main.c    ****   */
+ 233:Src/main.c    **** void _Error_Handler(char *file, int line)
+ 234:Src/main.c    **** {
+ 235:Src/main.c    ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 236:Src/main.c    ****   /* User can add his own implementation to report the HAL error return state */
+ 237:Src/main.c    ****   while(1)
+  80              		.loc 1 237 3 is_stmt 1 view .LVU22
+ 238:Src/main.c    ****   {
+ 239:Src/main.c    ****   }
+  81              		.loc 1 239 3 view .LVU23
+ 237:Src/main.c    ****   {
+  82              		.loc 1 237 3 view .LVU24
+  83              		.loc 1 239 3 view .LVU25
+  84 0024 FEE7     		b	.L3
+  85              	.L2:
+ 191:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  86              		.loc 1 191 3 view .LVU26
+ 193:Src/main.c    ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  87              		.loc 1 193 3 view .LVU27
+ 194:Src/main.c    ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  88              		.loc 1 194 3 view .LVU28
+ 195:Src/main.c    ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  89              		.loc 1 195 3 view .LVU29
+  90 0026 0346     		mov	r3, r0
+ARM GAS  /tmp/ccoaZNfM.s 			page 7
+
+
+ 198:Src/main.c    ****   {
+  91              		.loc 1 198 7 is_stmt 0 view .LVU30
+  92 0028 2146     		mov	r1, r4
+ 196:Src/main.c    **** 
+  93              		.loc 1 196 36 view .LVU31
+  94 002a 0493     		str	r3, [sp, #16]
+ 191:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  95              		.loc 1 191 31 view .LVU32
+  96 002c 0022     		movs	r2, #0
+  97 002e 4FF48063 		mov	r3, #1024
+  98 0032 0F24     		movs	r4, #15
+  99 0034 0225     		movs	r5, #2
+ 198:Src/main.c    ****   {
+ 100              		.loc 1 198 7 view .LVU33
+ 101 0036 6846     		mov	r0, sp
+ 191:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 102              		.loc 1 191 31 view .LVU34
+ 103 0038 CDE90223 		strd	r2, [sp, #8]
+ 196:Src/main.c    **** 
+ 104              		.loc 1 196 3 is_stmt 1 view .LVU35
+ 198:Src/main.c    ****   {
+ 105              		.loc 1 198 3 view .LVU36
+ 191:Src/main.c    ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+ 106              		.loc 1 191 31 is_stmt 0 view .LVU37
+ 107 003c CDE90045 		strd	r4, [sp]
+ 198:Src/main.c    ****   {
+ 108              		.loc 1 198 7 view .LVU38
+ 109 0040 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 110              	.LVL1:
+ 198:Src/main.c    ****   {
+ 111              		.loc 1 198 6 view .LVU39
+ 112 0044 0346     		mov	r3, r0
+ 113 0046 00B1     		cbz	r0, .L4
+ 114              	.L5:
+ 237:Src/main.c    ****   {
+ 115              		.loc 1 237 3 is_stmt 1 view .LVU40
+ 116              		.loc 1 239 3 view .LVU41
+ 237:Src/main.c    ****   {
+ 117              		.loc 1 237 3 view .LVU42
+ 118              		.loc 1 239 3 view .LVU43
+ 119 0048 FEE7     		b	.L5
+ 120              	.L4:
+ 203:Src/main.c    ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+ 121              		.loc 1 203 3 view .LVU44
+ 203:Src/main.c    ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+ 122              		.loc 1 203 38 is_stmt 0 view .LVU45
+ 123 004a 4FF48152 		mov	r2, #4128
+ 206:Src/main.c    ****   {
+ 124              		.loc 1 206 7 view .LVU46
+ 125 004e 06A8     		add	r0, sp, #24
+ 204:Src/main.c    ****   PeriphClkInit.Tim1ClockSelection = RCC_TIM1CLK_HCLK;
+ 126              		.loc 1 204 36 view .LVU47
+ 127 0050 0993     		str	r3, [sp, #36]
+ 205:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 128              		.loc 1 205 36 view .LVU48
+ 129 0052 0B93     		str	r3, [sp, #44]
+ 203:Src/main.c    ****   PeriphClkInit.I2c1ClockSelection = RCC_I2C1CLKSOURCE_HSI;
+ARM GAS  /tmp/ccoaZNfM.s 			page 8
+
+
+ 130              		.loc 1 203 38 view .LVU49
+ 131 0054 0692     		str	r2, [sp, #24]
+ 204:Src/main.c    ****   PeriphClkInit.Tim1ClockSelection = RCC_TIM1CLK_HCLK;
+ 132              		.loc 1 204 3 is_stmt 1 view .LVU50
+ 205:Src/main.c    ****   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+ 133              		.loc 1 205 3 view .LVU51
+ 206:Src/main.c    ****   {
+ 134              		.loc 1 206 3 view .LVU52
+ 206:Src/main.c    ****   {
+ 135              		.loc 1 206 7 is_stmt 0 view .LVU53
+ 136 0056 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 137              	.LVL2:
+ 206:Src/main.c    ****   {
+ 138              		.loc 1 206 6 view .LVU54
+ 139 005a 0446     		mov	r4, r0
+ 140 005c 00B1     		cbz	r0, .L6
+ 141              	.L7:
+ 237:Src/main.c    ****   {
+ 142              		.loc 1 237 3 is_stmt 1 view .LVU55
+ 143              		.loc 1 239 3 view .LVU56
+ 237:Src/main.c    ****   {
+ 144              		.loc 1 237 3 view .LVU57
+ 145              		.loc 1 239 3 view .LVU58
+ 146 005e FEE7     		b	.L7
+ 147              	.L6:
+ 148              	.LBB10:
+ 149              	.LBB11:
+ 213:Src/main.c    **** 
+ 150              		.loc 1 213 3 view .LVU59
+ 213:Src/main.c    **** 
+ 151              		.loc 1 213 22 is_stmt 0 view .LVU60
+ 152 0060 FFF7FEFF 		bl	HAL_RCC_GetHCLKFreq
+ 153              	.LVL3:
+ 213:Src/main.c    **** 
+ 154              		.loc 1 213 3 view .LVU61
+ 155 0064 084B     		ldr	r3, .L10
+ 156 0066 A3FB0030 		umull	r3, r0, r3, r0
+ 157 006a 8009     		lsrs	r0, r0, #6
+ 158 006c FFF7FEFF 		bl	HAL_SYSTICK_Config
+ 159              	.LVL4:
+ 217:Src/main.c    **** 
+ 160              		.loc 1 217 3 is_stmt 1 view .LVU62
+ 161 0070 0420     		movs	r0, #4
+ 162 0072 FFF7FEFF 		bl	HAL_SYSTICK_CLKSourceConfig
+ 163              	.LVL5:
+ 220:Src/main.c    **** }
+ 164              		.loc 1 220 3 view .LVU63
+ 165 0076 2246     		mov	r2, r4
+ 166 0078 2146     		mov	r1, r4
+ 167 007a 4FF0FF30 		mov	r0, #-1
+ 168 007e FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 169              	.LVL6:
+ 170              	.LBE11:
+ 171              	.LBE10:
+ 221:Src/main.c    **** 
+ 172              		.loc 1 221 1 is_stmt 0 view .LVU64
+ 173 0082 17B0     		add	sp, sp, #92
+ARM GAS  /tmp/ccoaZNfM.s 			page 9
+
+
+ 174              	.LCFI2:
+ 175              		.cfi_def_cfa_offset 20
+ 176              		@ sp needed
+ 177 0084 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 178              	.L11:
+ 179 0086 00BF     		.align	2
+ 180              	.L10:
+ 181 0088 D34D6210 		.word	274877907
+ 182              		.cfi_endproc
+ 183              	.LFE729:
+ 185              		.global	__aeabi_i2d
+ 186              		.global	__aeabi_dmul
+ 187              		.global	__aeabi_dadd
+ 188              		.global	__aeabi_d2iz
+ 189              		.global	__aeabi_dsub
+ 190              		.section	.text.startup.main,"ax",%progbits
+ 191              		.align	1
+ 192              		.p2align 2,,3
+ 193              		.global	main
+ 194              		.syntax unified
+ 195              		.thumb
+ 196              		.thumb_func
+ 197              		.fpu fpv4-sp-d16
+ 199              	main:
+ 200              	.LFB728:
+  82:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 201              		.loc 1 82 1 is_stmt 1 view -0
+ 202              		.cfi_startproc
+ 203              		@ args = 0, pretend = 0, frame = 32
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+  84:Src/main.c    ****   int diffGoal = 0;
+ 205              		.loc 1 84 3 view .LVU66
+ 206              	.LVL7:
+  85:Src/main.c    ****   int sum = 0;
+ 207              		.loc 1 85 3 view .LVU67
+  86:Src/main.c    ****   int diff = 0;
+ 208              		.loc 1 86 3 view .LVU68
+  87:Src/main.c    ****   int Te =0.01; 
+ 209              		.loc 1 87 3 view .LVU69
+  88:Src/main.c    ****   InitializationPid(pidValSum, sumGoal, 0.1, 0.1, 0.1);
+ 210              		.loc 1 88 3 view .LVU70
+ 211              	.LBB12:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 212              		.loc 1 89 3 view .LVU71
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 213              		.loc 1 89 3 view .LVU72
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 214              		.loc 1 89 3 view .LVU73
+ 215              	.LBE12:
+  82:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 216              		.loc 1 82 1 is_stmt 0 view .LVU74
+ 217 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 218              	.LCFI3:
+ 219              		.cfi_def_cfa_offset 36
+ 220              		.cfi_offset 4, -36
+ 221              		.cfi_offset 5, -32
+ 222              		.cfi_offset 6, -28
+ARM GAS  /tmp/ccoaZNfM.s 			page 10
+
+
+ 223              		.cfi_offset 7, -24
+ 224              		.cfi_offset 8, -20
+ 225              		.cfi_offset 9, -16
+ 226              		.cfi_offset 10, -12
+ 227              		.cfi_offset 11, -8
+ 228              		.cfi_offset 14, -4
+ 229 0004 2DED028B 		vpush.64	{d8}
+ 230              	.LCFI4:
+ 231              		.cfi_def_cfa_offset 44
+ 232              		.cfi_offset 80, -44
+ 233              		.cfi_offset 81, -40
+ 234              	.LBB13:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 235              		.loc 1 89 3 view .LVU75
+ 236 0008 B04D     		ldr	r5, .L20
+ 237              	.LBE13:
+ 238              	.LBB14:
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 239              		.loc 1 90 3 view .LVU76
+ 240 000a B14C     		ldr	r4, .L20+4
+ 241              	.LBE14:
+ 242              	.LBB15:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 243              		.loc 1 89 3 view .LVU77
+ 244 000c B14F     		ldr	r7, .L20+8
+ 245              	.LBE15:
+  91:Src/main.c    ****   /**************************************************/
+ 246              		.loc 1 91 3 view .LVU78
+ 247 000e B24A     		ldr	r2, .L20+12
+ 248 0010 B24B     		ldr	r3, .L20+16
+ 249 0012 B349     		ldr	r1, .L20+20
+ 250 0014 B348     		ldr	r0, .L20+24
+ 251              	.LBB16:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 252              		.loc 1 89 3 view .LVU79
+ 253 0016 2F60     		str	r7, [r5]	@ float
+ 254              	.LBE16:
+  82:Src/main.c    ****   /* USER CODE BEGIN 1 */
+ 255              		.loc 1 82 1 view .LVU80
+ 256 0018 89B0     		sub	sp, sp, #36
+ 257              	.LCFI5:
+ 258              		.cfi_def_cfa_offset 80
+ 259              	.LBB17:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 260              		.loc 1 89 3 view .LVU81
+ 261 001a 0026     		movs	r6, #0
+ 262 001c C5E90366 		strd	r6, r6, [r5, #12]
+ 263              	.LVL8:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 264              		.loc 1 89 3 is_stmt 1 view .LVU82
+ 265 0020 C5E90566 		strd	r6, r6, [r5, #20]
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 266              		.loc 1 89 3 view .LVU83
+ 267 0024 EE61     		str	r6, [r5, #28]
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 268              		.loc 1 89 3 view .LVU84
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ARM GAS  /tmp/ccoaZNfM.s 			page 11
+
+
+ 269              		.loc 1 89 3 view .LVU85
+ 270 0026 6F60     		str	r7, [r5, #4]	@ float
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 271              		.loc 1 89 3 view .LVU86
+ 272 0028 AF60     		str	r7, [r5, #8]	@ float
+ 273              	.LBE17:
+  89:Src/main.c    ****   InitializationPid(pidValDiff, diffGoal, 0.1, 0.1, 0.1);
+ 274              		.loc 1 89 55 view .LVU87
+ 275              	.LBB18:
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 276              		.loc 1 90 3 view .LVU88
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 277              		.loc 1 90 3 view .LVU89
+ 278              	.LVL9:
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 279              		.loc 1 90 3 view .LVU90
+ 280 002a C4E90366 		strd	r6, r6, [r4, #12]
+ 281              	.LVL10:
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 282              		.loc 1 90 3 view .LVU91
+ 283 002e C4E90566 		strd	r6, r6, [r4, #20]
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 284              		.loc 1 90 3 view .LVU92
+ 285 0032 E661     		str	r6, [r4, #28]
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 286              		.loc 1 90 3 view .LVU93
+ 287 0034 2760     		str	r7, [r4]	@ float
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 288              		.loc 1 90 3 view .LVU94
+ 289 0036 6760     		str	r7, [r4, #4]	@ float
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 290              		.loc 1 90 3 view .LVU95
+ 291 0038 A760     		str	r7, [r4, #8]	@ float
+ 292              	.LBE18:
+  90:Src/main.c    ****   init_odometry(&odometry,&htim2,&htim1,&htim15);
+ 293              		.loc 1 90 57 view .LVU96
+  91:Src/main.c    ****   /**************************************************/
+ 294              		.loc 1 91 3 view .LVU97
+ 295 003a FFF7FEFF 		bl	init_odometry
+ 296              	.LVL11:
+  96:Src/main.c    ****   sConfigOC.OCMode = TIM_OCMODE_PWM1;
+ 297              		.loc 1 96 3 view .LVU98
+  97:Src/main.c    ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+ 298              		.loc 1 97 3 view .LVU99
+  97:Src/main.c    ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+ 299              		.loc 1 97 20 is_stmt 0 view .LVU100
+ 300 003e 6023     		movs	r3, #96
+ 102:Src/main.c    ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);//EN_1
+ 301              		.loc 1 102 3 view .LVU101
+ 302 0040 0421     		movs	r1, #4
+ 303 0042 A948     		ldr	r0, .L20+28
+  97:Src/main.c    ****   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+ 304              		.loc 1 97 20 view .LVU102
+ 305 0044 0193     		str	r3, [sp, #4]
+  98:Src/main.c    ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+ 306              		.loc 1 98 3 is_stmt 1 view .LVU103
+  99:Src/main.c    **** 
+ARM GAS  /tmp/ccoaZNfM.s 			page 12
+
+
+ 307              		.loc 1 99 3 view .LVU104
+ 102:Src/main.c    ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);//EN_1
+ 308              		.loc 1 102 3 view .LVU105
+  98:Src/main.c    ****   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+ 309              		.loc 1 98 24 is_stmt 0 view .LVU106
+ 310 0046 0396     		str	r6, [sp, #12]
+  99:Src/main.c    **** 
+ 311              		.loc 1 99 24 view .LVU107
+ 312 0048 0596     		str	r6, [sp, #20]
+ 102:Src/main.c    ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);//EN_1
+ 313              		.loc 1 102 3 view .LVU108
+ 314 004a FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 315              	.LVL12:
+ 103:Src/main.c    **** 
+ 316              		.loc 1 103 3 is_stmt 1 view .LVU109
+ 317 004e 3146     		mov	r1, r6
+ 318 0050 A548     		ldr	r0, .L20+28
+ 319 0052 A44F     		ldr	r7, .L20+24
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 320              		.loc 1 155 3 is_stmt 0 view .LVU110
+ 321 0054 9FEDA58A 		vldr.32	s16, .L20+32
+ 103:Src/main.c    **** 
+ 322              		.loc 1 103 3 view .LVU111
+ 323 0058 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 324              	.LVL13:
+ 106:Src/main.c    ****   HAL_GPIO_WritePin(DIR_L_GPIO_Port, DIR_L_Pin, 0);
+ 325              		.loc 1 106 3 is_stmt 1 view .LVU112
+ 326 005c 0122     		movs	r2, #1
+ 327 005e 1146     		mov	r1, r2
+ 328 0060 A348     		ldr	r0, .L20+36
+ 329 0062 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 330              	.LVL14:
+ 107:Src/main.c    **** 
+ 331              		.loc 1 107 3 view .LVU113
+ 332 0066 3246     		mov	r2, r6
+ 333 0068 0821     		movs	r1, #8
+ 334 006a A148     		ldr	r0, .L20+36
+ 335 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 336              	.LVL15:
+ 337              	.LBB19:
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 338              		.loc 1 110 3 view .LVU114
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 339              		.loc 1 110 3 view .LVU115
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 340              		.loc 1 110 3 view .LVU116
+ 341 0070 3246     		mov	r2, r6
+ 342 0072 0121     		movs	r1, #1
+ 343 0074 9E48     		ldr	r0, .L20+36
+ 344 0076 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 345              	.LVL16:
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 346              		.loc 1 110 3 view .LVU117
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 347              		.loc 1 110 3 view .LVU118
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 348              		.loc 1 110 3 view .LVU119
+ARM GAS  /tmp/ccoaZNfM.s 			page 13
+
+
+ 349 007a 3246     		mov	r2, r6
+ 350 007c 01A9     		add	r1, sp, #4
+ 351 007e 9A48     		ldr	r0, .L20+28
+ 352 0080 0296     		str	r6, [sp, #8]
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 353              		.loc 1 110 3 view .LVU120
+ 354 0082 FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 355              	.LVL17:
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 356              		.loc 1 110 3 view .LVU121
+ 357 0086 3146     		mov	r1, r6
+ 358 0088 9748     		ldr	r0, .L20+28
+ 359 008a FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 360              	.LVL18:
+ 361              	.LBE19:
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 362              		.loc 1 110 3 view .LVU122
+ 110:Src/main.c    ****   DRIVE_MOTOR_L(0);//encoder1 forward positive positive voltage
+ 363              		.loc 1 110 19 view .LVU123
+ 364              	.LBB20:
+ 111:Src/main.c    **** 
+ 365              		.loc 1 111 3 view .LVU124
+ 111:Src/main.c    **** 
+ 366              		.loc 1 111 3 view .LVU125
+ 111:Src/main.c    **** 
+ 367              		.loc 1 111 3 view .LVU126
+ 368 008e 0122     		movs	r2, #1
+ 369 0090 0821     		movs	r1, #8
+ 370 0092 9748     		ldr	r0, .L20+36
+ 371 0094 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 372              	.LVL19:
+ 111:Src/main.c    **** 
+ 373              		.loc 1 111 3 view .LVU127
+ 111:Src/main.c    **** 
+ 374              		.loc 1 111 3 view .LVU128
+ 111:Src/main.c    **** 
+ 375              		.loc 1 111 3 view .LVU129
+ 376 0098 0422     		movs	r2, #4
+ 377 009a 01A9     		add	r1, sp, #4
+ 378 009c 9248     		ldr	r0, .L20+28
+ 379 009e 0296     		str	r6, [sp, #8]
+ 111:Src/main.c    **** 
+ 380              		.loc 1 111 3 view .LVU130
+ 381 00a0 FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 382              	.LVL20:
+ 111:Src/main.c    **** 
+ 383              		.loc 1 111 3 view .LVU131
+ 384 00a4 9048     		ldr	r0, .L20+28
+ 385 00a6 0421     		movs	r1, #4
+ 386              	.LBE20:
+ 387              	.LBB21:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 388              		.loc 1 157 3 is_stmt 0 view .LVU132
+ 389 00a8 0646     		mov	r6, r0
+ 390              	.LBE21:
+ 391              	.LBB22:
+ 111:Src/main.c    **** 
+ARM GAS  /tmp/ccoaZNfM.s 			page 14
+
+
+ 392              		.loc 1 111 3 view .LVU133
+ 393 00aa FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 394              	.LVL21:
+ 395              	.LBE22:
+ 111:Src/main.c    **** 
+ 396              		.loc 1 111 3 is_stmt 1 view .LVU134
+ 111:Src/main.c    **** 
+ 397              		.loc 1 111 19 view .LVU135
+ 118:Src/main.c    **** 
+ 398              		.loc 1 118 3 view .LVU136
+ 399 00ae FFF7FEFF 		bl	HAL_Init
+ 400              	.LVL22:
+ 125:Src/main.c    **** 
+ 401              		.loc 1 125 3 view .LVU137
+ 402 00b2 FFF7FEFF 		bl	SystemClock_Config
+ 403              	.LVL23:
+ 132:Src/main.c    ****   MX_DMA_Init();
+ 404              		.loc 1 132 3 view .LVU138
+ 405 00b6 FFF7FEFF 		bl	MX_GPIO_Init
+ 406              	.LVL24:
+ 133:Src/main.c    ****   MX_I2C1_Init();
+ 407              		.loc 1 133 3 view .LVU139
+ 408 00ba FFF7FEFF 		bl	MX_DMA_Init
+ 409              	.LVL25:
+ 134:Src/main.c    ****   MX_TIM1_Init();
+ 410              		.loc 1 134 3 view .LVU140
+ 411 00be FFF7FEFF 		bl	MX_I2C1_Init
+ 412              	.LVL26:
+ 135:Src/main.c    ****   MX_TIM2_Init();
+ 413              		.loc 1 135 3 view .LVU141
+ 414 00c2 FFF7FEFF 		bl	MX_TIM1_Init
+ 415              	.LVL27:
+ 136:Src/main.c    ****   MX_USART2_UART_Init();
+ 416              		.loc 1 136 3 view .LVU142
+ 417 00c6 FFF7FEFF 		bl	MX_TIM2_Init
+ 418              	.LVL28:
+ 137:Src/main.c    ****   MX_TIM3_Init();
+ 419              		.loc 1 137 3 view .LVU143
+ 420 00ca FFF7FEFF 		bl	MX_USART2_UART_Init
+ 421              	.LVL29:
+ 138:Src/main.c    ****   MX_TIM15_Init();
+ 422              		.loc 1 138 3 view .LVU144
+ 423 00ce FFF7FEFF 		bl	MX_TIM3_Init
+ 424              	.LVL30:
+ 139:Src/main.c    ****   MX_WWDG_Init();
+ 425              		.loc 1 139 3 view .LVU145
+ 426 00d2 FFF7FEFF 		bl	MX_TIM15_Init
+ 427              	.LVL31:
+ 140:Src/main.c    ****   /* USER CODE BEGIN 2 */
+ 428              		.loc 1 140 3 view .LVU146
+ 429 00d6 FFF7FEFF 		bl	MX_WWDG_Init
+ 430              	.LVL32:
+ 431 00da 49E0     		b	.L17
+ 432              	.LVL33:
+ 433              	.L19:
+ 434              	.LBB23:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ARM GAS  /tmp/ccoaZNfM.s 			page 15
+
+
+ 435              		.loc 1 157 3 discriminator 1 view .LVU147
+ 436 00dc 0122     		movs	r2, #1
+ 437 00de 1146     		mov	r1, r2
+ 438 00e0 8348     		ldr	r0, .L20+36
+ 439 00e2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 440              	.LVL34:
+ 441              	.L14:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 442              		.loc 1 157 3 discriminator 4 view .LVU148
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 443              		.loc 1 157 3 discriminator 4 view .LVU149
+ 444 00e6 4B46     		mov	r3, r9
+ 445 00e8 322B     		cmp	r3, #50
+ 446 00ea A8BF     		it	ge
+ 447 00ec 3223     		movge	r3, #50
+ 448 00ee 0022     		movs	r2, #0
+ 449 00f0 01A9     		add	r1, sp, #4
+ 450 00f2 3046     		mov	r0, r6
+ 451 00f4 0293     		str	r3, [sp, #8]
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 452              		.loc 1 157 3 discriminator 4 view .LVU150
+ 453 00f6 FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 454              	.LVL35:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 455              		.loc 1 157 3 discriminator 4 view .LVU151
+ 456 00fa 0021     		movs	r1, #0
+ 457 00fc 3046     		mov	r0, r6
+ 458 00fe FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 459              	.LVL36:
+ 460              	.LBE23:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 461              		.loc 1 157 3 discriminator 4 view .LVU152
+ 462              	.LBB24:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 463              		.loc 1 158 3 discriminator 4 view .LVU153
+ 464 0102 D4F81880 		ldr	r8, [r4, #24]
+ 465 0106 D5F81890 		ldr	r9, [r5, #24]
+ 466              	.LVL37:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 467              		.loc 1 158 3 is_stmt 0 discriminator 4 view .LVU154
+ 468 010a 4046     		mov	r0, r8
+ 469 010c FFF7FEFF 		bl	__aeabi_i2d
+ 470              	.LVL38:
+ 471 0110 8246     		mov	r10, r0
+ 472 0112 4846     		mov	r0, r9
+ 473 0114 8B46     		mov	fp, r1
+ 474 0116 FFF7FEFF 		bl	__aeabi_i2d
+ 475              	.LVL39:
+ 476 011a 0022     		movs	r2, #0
+ 477 011c 754B     		ldr	r3, .L20+40
+ 478 011e FFF7FEFF 		bl	__aeabi_dmul
+ 479              	.LVL40:
+ 480 0122 0B46     		mov	r3, r1
+ 481 0124 0246     		mov	r2, r0
+ 482 0126 5946     		mov	r1, fp
+ 483 0128 5046     		mov	r0, r10
+ 484 012a FFF7FEFF 		bl	__aeabi_dsub
+ARM GAS  /tmp/ccoaZNfM.s 			page 16
+
+
+ 485              	.LVL41:
+ 486 012e FFF7FEFF 		bl	__aeabi_d2iz
+ 487              	.LVL42:
+ 488 0132 A8EB0903 		sub	r3, r8, r9
+ 489 0136 002B     		cmp	r3, #0
+ 490 0138 0FFA80F8 		sxth	r8, r0
+ 491              	.LVL43:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 492              		.loc 1 158 3 is_stmt 1 discriminator 4 view .LVU155
+ 493 013c 40F3BC80 		ble	.L15
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 494              		.loc 1 158 3 discriminator 1 view .LVU156
+ 495 0140 0022     		movs	r2, #0
+ 496 0142 0821     		movs	r1, #8
+ 497 0144 6A48     		ldr	r0, .L20+36
+ 498 0146 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 499              	.LVL44:
+ 500              	.L16:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 501              		.loc 1 158 3 discriminator 4 view .LVU157
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 502              		.loc 1 158 3 discriminator 4 view .LVU158
+ 503 014a 4346     		mov	r3, r8
+ 504 014c 322B     		cmp	r3, #50
+ 505 014e 4FF00402 		mov	r2, #4
+ 506 0152 A8BF     		it	ge
+ 507 0154 3223     		movge	r3, #50
+ 508 0156 0DEB0201 		add	r1, sp, r2
+ 509 015a 3046     		mov	r0, r6
+ 510 015c 0293     		str	r3, [sp, #8]
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 511              		.loc 1 158 3 discriminator 4 view .LVU159
+ 512 015e FFF7FEFF 		bl	HAL_TIM_PWM_ConfigChannel
+ 513              	.LVL45:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 514              		.loc 1 158 3 discriminator 4 view .LVU160
+ 515 0162 0421     		movs	r1, #4
+ 516 0164 3046     		mov	r0, r6
+ 517 0166 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 518              	.LVL46:
+ 519              	.LBE24:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 520              		.loc 1 158 3 discriminator 4 view .LVU161
+ 159:Src/main.c    ****   }
+ 521              		.loc 1 159 3 discriminator 4 view .LVU162
+ 522 016a 0020     		movs	r0, #0
+ 523 016c FFF7FEFF 		bl	HAL_Delay
+ 524              	.LVL47:
+ 525              	.L17:
+ 147:Src/main.c    ****   {
+ 526              		.loc 1 147 3 view .LVU163
+ 149:Src/main.c    ****    diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
+ 527              		.loc 1 149 4 view .LVU164
+ 149:Src/main.c    ****    diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
+ 528              		.loc 1 149 28 is_stmt 0 view .LVU165
+ 529 0170 7A68     		ldr	r2, [r7, #4]
+ 149:Src/main.c    ****    diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
+ARM GAS  /tmp/ccoaZNfM.s 			page 17
+
+
+ 530              		.loc 1 149 55 view .LVU166
+ 531 0172 D7F810C0 		ldr	ip, [r7, #16]
+ 150:Src/main.c    **** 
+ 532              		.loc 1 150 29 view .LVU167
+ 533 0176 7968     		ldr	r1, [r7, #4]
+ 150:Src/main.c    **** 
+ 534              		.loc 1 150 56 view .LVU168
+ 535 0178 D7F81080 		ldr	r8, [r7, #16]
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 536              		.loc 1 156 3 view .LVU169
+ 537 017c AB69     		ldr	r3, [r5, #24]
+ 538 017e E868     		ldr	r0, [r5, #12]
+ 539 0180 EB61     		str	r3, [r5, #28]
+ 150:Src/main.c    **** 
+ 540              		.loc 1 150 9 view .LVU170
+ 541 0182 A1EB0808 		sub	r8, r1, r8
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 542              		.loc 1 156 3 view .LVU171
+ 543 0186 A3EB0803 		sub	r3, r3, r8
+ 544 018a 191A     		subs	r1, r3, r0
+ 545 018c 07EE901A 		vmov	s15, r1	@ int
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 546              		.loc 1 155 3 view .LVU172
+ 547 0190 D4F818E0 		ldr	lr, [r4, #24]
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 548              		.loc 1 156 3 view .LVU173
+ 549 0194 95ED005A 		vldr.32	s10, [r5]
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 550              		.loc 1 155 3 view .LVU174
+ 551 0198 D4ED005A 		vldr.32	s11, [r4]
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 552              		.loc 1 156 3 view .LVU175
+ 553 019c 95ED024A 		vldr.32	s8, [r5, #8]
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 554              		.loc 1 155 3 view .LVU176
+ 555 01a0 D4ED024A 		vldr.32	s9, [r4, #8]
+ 556 01a4 C4F81CE0 		str	lr, [r4, #28]
+ 149:Src/main.c    ****    diff = odometry.encoder_l.steps - odometry.encoder_r.steps;
+ 557              		.loc 1 149 8 view .LVU177
+ 558 01a8 6244     		add	r2, r2, ip
+ 559              	.LVL48:
+ 150:Src/main.c    **** 
+ 560              		.loc 1 150 4 is_stmt 1 view .LVU178
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 561              		.loc 1 155 3 view .LVU179
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 562              		.loc 1 155 3 view .LVU180
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 563              		.loc 1 156 3 is_stmt 0 view .LVU181
+ 564 01aa B8EEE76A 		vcvt.f32.s32	s12, s15
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 565              		.loc 1 155 3 view .LVU182
+ 566 01ae D4F80CC0 		ldr	ip, [r4, #12]
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 567              		.loc 1 156 3 view .LVU183
+ 568 01b2 EB60     		str	r3, [r5, #12]
+ 569 01b4 07EE908A 		vmov	s15, r8	@ int
+ARM GAS  /tmp/ccoaZNfM.s 			page 18
+
+
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 570              		.loc 1 155 3 view .LVU184
+ 571 01b8 AEEB0208 		sub	r8, lr, r2
+ 572              	.LVL49:
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 573              		.loc 1 156 3 view .LVU185
+ 574 01bc B8EEE77A 		vcvt.f32.s32	s14, s15
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 575              		.loc 1 155 3 view .LVU186
+ 576 01c0 07EE902A 		vmov	s15, r2	@ int
+ 577              	.LVL50:
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 578              		.loc 1 155 3 view .LVU187
+ 579 01c4 A8EB0C02 		sub	r2, r8, ip
+ 580              	.LVL51:
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 581              		.loc 1 155 3 view .LVU188
+ 582 01c8 06EE902A 		vmov	s13, r2	@ int
+ 583 01cc F8EEE77A 		vcvt.f32.s32	s15, s15
+ 584              	.LVL52:
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 585              		.loc 1 155 3 view .LVU189
+ 586 01d0 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 587              		.loc 1 156 3 view .LVU190
+ 588 01d4 A5EE067A 		vfma.f32	s14, s10, s12
+ 589 01d8 D5F810E0 		ldr	lr, [r5, #16]
+ 590 01dc C5F814E0 		str	lr, [r5, #20]
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 591              		.loc 1 155 3 view .LVU191
+ 592 01e0 E5EEA67A 		vfma.f32	s15, s11, s13
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 593              		.loc 1 156 3 view .LVU192
+ 594 01e4 091A     		subs	r1, r1, r0
+ 595 01e6 7144     		add	r1, r1, lr
+ 596 01e8 06EE903A 		vmov	s13, r3	@ int
+ 597 01ec B8EEE66A 		vcvt.f32.s32	s12, s13
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 598              		.loc 1 155 3 view .LVU193
+ 599 01f0 06EE908A 		vmov	s13, r8	@ int
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 600              		.loc 1 156 3 view .LVU194
+ 601 01f4 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 602              		.loc 1 155 3 view .LVU195
+ 603 01f8 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 604 01fc F8EEE66A 		vcvt.f32.s32	s13, s13
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 605              		.loc 1 156 3 view .LVU196
+ 606 0200 26EE046A 		vmul.f32	s12, s12, s8
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 607              		.loc 1 155 3 view .LVU197
+ 608 0204 66EEA46A 		vmul.f32	s13, s13, s9
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 609              		.loc 1 156 3 view .LVU198
+ 610 0208 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ARM GAS  /tmp/ccoaZNfM.s 			page 19
+
+
+ 611              		.loc 1 155 3 view .LVU199
+ 612 020c F8EEE77A 		vcvt.f32.s32	s15, s15
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 613              		.loc 1 156 3 view .LVU200
+ 614 0210 A6EE087A 		vfma.f32	s14, s12, s16
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 615              		.loc 1 155 3 view .LVU201
+ 616 0214 2369     		ldr	r3, [r4, #16]
+ 617 0216 C4F80C80 		str	r8, [r4, #12]
+ 618 021a E6EE887A 		vfma.f32	s15, s13, s16
+ 619 021e A2EB0C02 		sub	r2, r2, ip
+ 620 0222 1A44     		add	r2, r2, r3
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 621              		.loc 1 156 3 view .LVU202
+ 622 0224 06EE901A 		vmov	s13, r1	@ int
+ 623 0228 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 624 022c B8EEE66A 		vcvt.f32.s32	s12, s13
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 625              		.loc 1 155 3 view .LVU203
+ 626 0230 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 627 0234 06EE902A 		vmov	s13, r2	@ int
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 628              		.loc 1 156 3 view .LVU204
+ 629 0238 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 630              		.loc 1 155 3 view .LVU205
+ 631 023c F8EEE66A 		vcvt.f32.s32	s13, s13
+ 632 0240 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 633              		.loc 1 156 3 view .LVU206
+ 634 0244 A5EE067A 		vfma.f32	s14, s10, s12
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 635              		.loc 1 155 3 view .LVU207
+ 636 0248 C4F810C0 		str	ip, [r4, #16]
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 637              		.loc 1 156 3 view .LVU208
+ 638 024c 2861     		str	r0, [r5, #16]
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 639              		.loc 1 155 3 view .LVU209
+ 640 024e E5EEA67A 		vfma.f32	s15, s11, s13
+ 641 0252 6361     		str	r3, [r4, #20]
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 642              		.loc 1 155 3 is_stmt 1 view .LVU210
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 643              		.loc 1 155 3 view .LVU211
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 644              		.loc 1 155 3 view .LVU212
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 645              		.loc 1 155 3 view .LVU213
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 646              		.loc 1 155 3 view .LVU214
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 647              		.loc 1 155 3 view .LVU215
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 648              		.loc 1 155 3 view .LVU216
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 649              		.loc 1 155 3 view .LVU217
+ARM GAS  /tmp/ccoaZNfM.s 			page 20
+
+
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 650              		.loc 1 155 3 view .LVU218
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 651              		.loc 1 155 3 view .LVU219
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 652              		.loc 1 155 3 view .LVU220
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 653              		.loc 1 155 3 view .LVU221
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 654              		.loc 1 155 3 view .LVU222
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 655              		.loc 1 156 3 is_stmt 0 view .LVU223
+ 656 0254 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 657              		.loc 1 155 3 view .LVU224
+ 658 0258 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 659              	.LBB25:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 660              		.loc 1 157 3 view .LVU225
+ 661 025c 17EE100A 		vmov	r0, s14	@ int
+ 662              	.LBE25:
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 663              		.loc 1 156 3 view .LVU226
+ 664 0260 85ED067A 		vstr.32	s14, [r5, #24]	@ int
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 665              		.loc 1 155 3 view .LVU227
+ 666 0264 C4ED067A 		vstr.32	s15, [r4, #24]	@ int
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 667              		.loc 1 155 45 is_stmt 1 view .LVU228
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 668              		.loc 1 156 3 view .LVU229
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 669              		.loc 1 156 3 view .LVU230
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 670              		.loc 1 156 3 view .LVU231
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 671              		.loc 1 156 3 view .LVU232
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 672              		.loc 1 156 3 view .LVU233
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 673              		.loc 1 156 3 view .LVU234
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 674              		.loc 1 156 3 view .LVU235
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 675              		.loc 1 156 3 view .LVU236
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 676              		.loc 1 156 3 view .LVU237
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 677              		.loc 1 156 3 view .LVU238
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 678              		.loc 1 156 3 view .LVU239
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 679              		.loc 1 156 3 view .LVU240
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 680              		.loc 1 156 3 view .LVU241
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 681              		.loc 1 156 3 view .LVU242
+ARM GAS  /tmp/ccoaZNfM.s 			page 21
+
+
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 682              		.loc 1 156 3 view .LVU243
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 683              		.loc 1 156 45 view .LVU244
+ 684              	.LBB26:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 685              		.loc 1 157 3 view .LVU245
+ 686              	.LBE26:
+ 156:Src/main.c    ****   DRIVE_MOTOR_R(pidValDiff.current+pidValSum.current)
+ 687              		.loc 1 156 3 is_stmt 0 view .LVU246
+ 688 0268 17EE109A 		vmov	r9, s14	@ int
+ 155:Src/main.c    ****   FinalValueCalculation(pidValSum, Te, diff);
+ 689              		.loc 1 155 3 view .LVU247
+ 690 026c 17EE908A 		vmov	r8, s15	@ int
+ 691              	.LBB27:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 692              		.loc 1 157 3 view .LVU248
+ 693 0270 FFF7FEFF 		bl	__aeabi_i2d
+ 694              	.LVL53:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 695              		.loc 1 157 3 view .LVU249
+ 696 0274 0022     		movs	r2, #0
+ 697 0276 1F4B     		ldr	r3, .L20+40
+ 698 0278 FFF7FEFF 		bl	__aeabi_dmul
+ 699              	.LVL54:
+ 700 027c 8246     		mov	r10, r0
+ 701 027e 4046     		mov	r0, r8
+ 702 0280 8B46     		mov	fp, r1
+ 703 0282 FFF7FEFF 		bl	__aeabi_i2d
+ 704              	.LVL55:
+ 705 0286 0246     		mov	r2, r0
+ 706 0288 0B46     		mov	r3, r1
+ 707 028a 5046     		mov	r0, r10
+ 708 028c 5946     		mov	r1, fp
+ 709 028e FFF7FEFF 		bl	__aeabi_dadd
+ 710              	.LVL56:
+ 711 0292 FFF7FEFF 		bl	__aeabi_d2iz
+ 712              	.LVL57:
+ 713 0296 C844     		add	r8, r8, r9
+ 714 0298 B8F1000F 		cmp	r8, #0
+ 715 029c 0FFA80F9 		sxth	r9, r0
+ 716              	.LVL58:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 717              		.loc 1 157 3 is_stmt 1 view .LVU250
+ 718 02a0 3FF71CAF 		bgt	.L19
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 719              		.loc 1 157 3 discriminator 2 view .LVU251
+ 720 02a4 0022     		movs	r2, #0
+ 721 02a6 0121     		movs	r1, #1
+ 722 02a8 1148     		ldr	r0, .L20+36
+ 723 02aa C9F10009 		rsb	r9, r9, #0
+ 724              	.LVL59:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 725              		.loc 1 157 3 is_stmt 0 discriminator 2 view .LVU252
+ 726 02ae FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 727              	.LVL60:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ARM GAS  /tmp/ccoaZNfM.s 			page 22
+
+
+ 728              		.loc 1 157 3 is_stmt 1 discriminator 2 view .LVU253
+ 729 02b2 0FFA89F9 		sxth	r9, r9
+ 730              	.LVL61:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 731              		.loc 1 157 3 is_stmt 0 discriminator 2 view .LVU254
+ 732 02b6 16E7     		b	.L14
+ 733              	.LVL62:
+ 734              	.L15:
+ 157:Src/main.c    ****   DRIVE_MOTOR_L(pidValDiff.current-pidValSum.current)
+ 735              		.loc 1 157 3 discriminator 2 view .LVU255
+ 736              	.LBE27:
+ 737              	.LBB28:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 738              		.loc 1 158 3 is_stmt 1 discriminator 2 view .LVU256
+ 739 02b8 0122     		movs	r2, #1
+ 740 02ba 0821     		movs	r1, #8
+ 741 02bc 0C48     		ldr	r0, .L20+36
+ 742 02be C8F10008 		rsb	r8, r8, #0
+ 743              	.LVL63:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 744              		.loc 1 158 3 is_stmt 0 discriminator 2 view .LVU257
+ 745 02c2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 746              	.LVL64:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 747              		.loc 1 158 3 is_stmt 1 discriminator 2 view .LVU258
+ 748 02c6 0FFA88F8 		sxth	r8, r8
+ 749              	.LVL65:
+ 158:Src/main.c    ****   HAL_Delay(Te);
+ 750              		.loc 1 158 3 is_stmt 0 discriminator 2 view .LVU259
+ 751 02ca 3EE7     		b	.L16
+ 752              	.L21:
+ 753              		.align	2
+ 754              	.L20:
+ 755 02cc 00000000 		.word	pidValSum
+ 756 02d0 00000000 		.word	pidValDiff
+ 757 02d4 CDCCCC3D 		.word	1036831949
+ 758 02d8 00000000 		.word	htim1
+ 759 02dc 00000000 		.word	htim15
+ 760 02e0 00000000 		.word	htim2
+ 761 02e4 00000000 		.word	odometry
+ 762 02e8 00000000 		.word	htim3
+ 763 02ec 00000000 		.word	0
+ 764 02f0 00040048 		.word	1207960576
+ 765 02f4 00403540 		.word	1077231616
+ 766              	.LBE28:
+ 767              		.cfi_endproc
+ 768              	.LFE728:
+ 770              		.section	.text._Error_Handler,"ax",%progbits
+ 771              		.align	1
+ 772              		.p2align 2,,3
+ 773              		.global	_Error_Handler
+ 774              		.syntax unified
+ 775              		.thumb
+ 776              		.thumb_func
+ 777              		.fpu fpv4-sp-d16
+ 779              	_Error_Handler:
+ 780              	.LFB730:
+ARM GAS  /tmp/ccoaZNfM.s 			page 23
+
+
+ 234:Src/main.c    ****   /* USER CODE BEGIN Error_Handler_Debug */
+ 781              		.loc 1 234 1 is_stmt 1 view -0
+ 782              		.cfi_startproc
+ 783              		@ Volatile: function does not return.
+ 784              		@ args = 0, pretend = 0, frame = 0
+ 785              		@ frame_needed = 0, uses_anonymous_args = 0
+ 786              		@ link register save eliminated.
+ 787              	.LVL66:
+ 788              	.L23:
+ 237:Src/main.c    ****   {
+ 789              		.loc 1 237 3 discriminator 1 view .LVU261
+ 790              		.loc 1 239 3 discriminator 1 view .LVU262
+ 791 0000 FEE7     		b	.L23
+ 792              		.cfi_endproc
+ 793              	.LFE730:
+ 795              		.comm	pidValDiff,32,4
+ 796              		.comm	pidValSum,32,4
+ 797              		.comm	odometry,48,4
+ 798 0002 00BF     		.text
+ 799              	.Letext0:
+ 800              		.file 2 "/usr/arm-none-eabi/include/machine/_default_types.h"
+ 801              		.file 3 "/usr/arm-none-eabi/include/sys/_stdint.h"
+ 802              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 803              		.file 5 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/system_stm32f3xx.h"
+ 804              		.file 6 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 805              		.file 7 "/usr/arm-none-eabi/include/sys/lock.h"
+ 806              		.file 8 "/usr/arm-none-eabi/include/sys/_types.h"
+ 807              		.file 9 "/usr/lib/gcc/arm-none-eabi/8.2.0/include/stddef.h"
+ 808              		.file 10 "/usr/arm-none-eabi/include/sys/reent.h"
+ 809              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 810              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rcc.h"
+ 811              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_rcc_ex.h"
+ 812              		.file 14 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 813              		.file 15 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_i2c.h"
+ 814              		.file 16 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 815              		.file 17 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_wwdg.h"
+ 816              		.file 18 "Inc/i2c.h"
+ 817              		.file 19 "Inc/tim.h"
+ 818              		.file 20 "Inc/wwdg.h"
+ 819              		.file 21 "/usr/arm-none-eabi/include/math.h"
+ 820              		.file 22 "Inc/encoder.h"
+ 821              		.file 23 "Inc/odometry.h"
+ 822              		.file 24 "Inc/PID.h"
+ 823              		.file 25 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_ll_dma.h"
+ 824              		.file 26 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 825              		.file 27 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
+ 826              		.file 28 "Inc/gpio.h"
+ 827              		.file 29 "Inc/dma.h"
+ 828              		.file 30 "Inc/usart.h"
+ 829              		.file 31 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_cortex.h"
+ARM GAS  /tmp/ccoaZNfM.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccoaZNfM.s:18     .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccoaZNfM.s:27     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccoaZNfM.s:181    .text.SystemClock_Config:0000000000000088 $d
+     /tmp/ccoaZNfM.s:191    .text.startup.main:0000000000000000 $t
+     /tmp/ccoaZNfM.s:199    .text.startup.main:0000000000000000 main
+     /tmp/ccoaZNfM.s:755    .text.startup.main:00000000000002cc $d
+                            *COM*:0000000000000020 pidValSum
+                            *COM*:0000000000000020 pidValDiff
+                            *COM*:0000000000000030 odometry
+     /tmp/ccoaZNfM.s:771    .text._Error_Handler:0000000000000000 $t
+     /tmp/ccoaZNfM.s:779    .text._Error_Handler:0000000000000000 _Error_Handler
+
+UNDEFINED SYMBOLS
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCCEx_PeriphCLKConfig
+HAL_RCC_GetHCLKFreq
+HAL_SYSTICK_Config
+HAL_SYSTICK_CLKSourceConfig
+HAL_NVIC_SetPriority
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dadd
+__aeabi_d2iz
+__aeabi_dsub
+init_odometry
+HAL_TIM_PWM_Start
+HAL_GPIO_WritePin
+HAL_TIM_PWM_ConfigChannel
+HAL_Init
+MX_GPIO_Init
+MX_DMA_Init
+MX_I2C1_Init
+MX_TIM1_Init
+MX_TIM2_Init
+MX_USART2_UART_Init
+MX_TIM3_Init
+MX_TIM15_Init
+MX_WWDG_Init
+HAL_Delay
+htim1
+htim15
+htim2
+htim3
